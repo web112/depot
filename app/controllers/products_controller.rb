@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
       format.xml  { render :xml => @product }
     end
   end
+  
+  
 
   # GET /products/new
   # GET /products/new.xml
@@ -30,6 +32,9 @@ class ProductsController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @product }
     end
+  end
+  
+  def hi
   end
 
   # GET /products/1/edit
