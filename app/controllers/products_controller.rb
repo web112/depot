@@ -20,8 +20,6 @@ class ProductsController < ApplicationController
       format.xml  { render :xml => @product }
     end
   end
-  
-  
 
   # GET /products/new
   # GET /products/new.xml
@@ -32,9 +30,6 @@ class ProductsController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @product }
     end
-  end
-  
-  def hi
   end
 
   # GET /products/1/edit
@@ -85,12 +80,4 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  def who_bought
-    @product = Product.find(params[:id])
-	respond_to do |format|
-		format.atom
-		format.xml { render :xml => @product }
-	end
-   end
 end
