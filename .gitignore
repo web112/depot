@@ -2,3 +2,5 @@
 db/*.sqlite3
 log/*.log
 tmp/
+db/migrate/20110725005304_add_quantity_to_line_item.rb
+a.txt
