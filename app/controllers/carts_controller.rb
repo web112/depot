@@ -3,7 +3,6 @@ class CartsController < ApplicationController
   # GET /carts.xml
   def index
     @carts = Cart.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @carts }
@@ -13,12 +12,17 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.xml
   def show
-    @cart = Cart.find(params[:id])
-
+    begin
+      @cart = Cart.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access incalid cart #{params[:id]}"
+      redirect_to store_url,:notice=>"Invalid cart"
+    else
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @cart }
     end
+   end
   end
 
   # GET /carts/new
@@ -74,9 +78,10 @@ class CartsController < ApplicationController
   def destroy
     @cart = Cart.find(params[:id])
     @cart.destroy
+    session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to(carts_url) }
+      format.html { redirect_to(store_url)}
       format.xml  { head :ok }
     end
   end
