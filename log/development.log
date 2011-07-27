@@ -17885,3 +17885,2064 @@ Completed 200 OK in 156ms (Views: 109.4ms | ActiveRecord: 0.0ms)
   [1m[36mSQL (109.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
   [1m[35mSQL (46.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
   [1m[36mSQL (62.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 09:51:00 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "carts" ("updated_at", "created_at") VALUES ('2011-07-27 01:51:02.703125', '2011-07-27 01:51:02.703125')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 62)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (375.0ms)
+Completed 200 OK in 734ms (Views: 421.9ms | ActiveRecord: 31.2ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:19:28 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 62 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 62) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "quantity", "created_at", "updated_at", "order_id", "product_id") VALUES (62, 1, '2011-07-27 02:19:28.609375', '2011-07-27 02:19:28.609375', NULL, 19)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 62)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 62)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (31.2ms)
+Rendered carts/_cart.html.erb (46.9ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 62)
+Rendered line_items/create.js.rjs (62.5ms)
+Completed 200 OK in 375ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:19:30 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 62 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 62)
+Rendered orders/_form.html.erb (125.0ms)
+Rendered orders/new.html.erb within layouts/application (140.6ms)
+Completed 200 OK in 266ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:19:39 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"df ", "address"=>"df ", "pay_type"=>"", "email"=>"df@11.c"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 62 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 62)
+Rendered orders/_form.html.erb (31.2ms)
+Rendered orders/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 219ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:19:46 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"df ", "address"=>"df ", "pay_type"=>"Check", "email"=>"df@11.c"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 62 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 62)
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("email", "created_at", "name", "address", "pay_type", "updated_at") VALUES ('df@11.c', '2011-07-27 02:19:47.156250', 'df ', 'df ', 'Check', '2011-07-27 02:19:47.156250')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "cart_id" = NULL, "order_id" = 105, "updated_at" = '2011-07-27 02:19:47.171875' WHERE "line_items"."id" = 116
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 62 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 62)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 62[0m
+Rendered notifier/order_received.text.erb (0.0ms)
+Completed   in 2297ms
+
+ActionView::Template::Error (undefined method `line_items' for nil:NilClass):
+    7: 	
+    8: 	You ordered the following items:
+    9: 	
+    10: 	<%= render @oder.line_items%>
+    11: 	
+    12: 	We'll send you a separete email when your order ships.
+  app/views/notifier/order_received.text.erb:10:in `_app_views_notifier_order_received_text_erb___561636831_34238016_0'
+  app/mailers/notifier.rb:28:in `order_received'
+  app/controllers/orders_controller.rb:54:in `create'
+  app/controllers/orders_controller.rb:50:in `create'
+
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (125.0ms)
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (171.9ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:20:34 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"df ", "address"=>"df ", "pay_type"=>"", "email"=>"df@11.c"}}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 62 LIMIT 1
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 02:20:34.218750', '2011-07-27 02:20:34.218750')[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 63)
+Rendered orders/_form.html.erb (15.6ms)
+Rendered orders/new.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 172ms (Views: 46.9ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:20:38 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"df ", "address"=>"df ", "pay_type"=>"Check", "email"=>"df@11.c"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 63 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 63)
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("pay_type", "name", "email", "address", "updated_at", "created_at") VALUES ('Check', 'df ', 'df@11.c', 'df ', '2011-07-27 02:20:38.671875', '2011-07-27 02:20:38.671875')[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 63 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 63)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 63
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".order_id = 106)[0m
+Rendered collection (0.0ms)
+Rendered notifier/order_received.text.erb (15.6ms)
+
+Sent mail to df@11.c (2156ms)
+Date: Wed, 27 Jul 2011 10:20:38 +0800
+From: from@example.com
+To: df@11.c
+Message-ID: <4e2f75f6dd40a_d9c22e06fc427c3@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Notifier#order_received
+
+, find me in app/views/app/views/notifier/order_received.text.erb
+
+Dear df 
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 2453ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:20:41 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 02:20:41.171875', '2011-07-27 02:20:41.171875')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 64)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (203.1ms)
+Completed 200 OK in 297ms (Views: 234.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mailers" for 127.0.0.1 at Wed Jul 27 10:20:59 +0800 2011
+
+ActionController::RoutingError (No route matches "/mailers"):
+  
+
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:22:31 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 64 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 64)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (203.1ms)
+Completed 200 OK in 297ms (Views: 250.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:22:33 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 64 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 64) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("order_id", "updated_at", "cart_id", "created_at", "product_id", "quantity") VALUES (NULL, '2011-07-27 02:22:33.359375', 64, '2011-07-27 02:22:33.359375', 19, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 64)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 64)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (0.0ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 64)[0m
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 234ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 10:22:34 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 64 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 64) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("updated_at", "order_id", "cart_id", "product_id", "created_at", "quantity") VALUES ('2011-07-27 02:22:35.250000', NULL, 64, 20, '2011-07-27 02:22:35.250000', 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 64)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 64)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 64)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 422ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:22:36 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 64 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 64)
+Rendered orders/_form.html.erb (171.9ms)
+Rendered orders/new.html.erb within layouts/application (187.5ms)
+Completed 200 OK in 313ms (Views: 218.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:22:48 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"3", "address"=>"3", "pay_type"=>"Check", "email"=>"3@q.c"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 64 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 64)
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("updated_at", "created_at", "address", "pay_type", "name", "email") VALUES ('2011-07-27 02:22:48.921875', '2011-07-27 02:22:48.921875', '3', 'Check', '3', '3@q.c')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "order_id" = 107, "cart_id" = NULL, "updated_at" = '2011-07-27 02:22:48.921875' WHERE "line_items"."id" = 117
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "order_id" = 107, "cart_id" = NULL, "updated_at" = '2011-07-27 02:22:48.937500' WHERE "line_items"."id" = 118[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 64 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 64)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 64
+Rendered notifier/order_received.text.erb (15.6ms)
+Completed   in 359ms
+
+ActionView::Template::Error (Missing partial line_items/line_item with {:formats=>[:text], :handlers=>[:erb, :builder, :rjs, :rhtml, :rxml], :locale=>[:en]} in view paths "D:/rails workspace/depot/app/views"):
+    7: 	
+    8: 	You ordered the following items:
+    9: 	
+    10: 	<%= render @order.line_items%>
+    11: 	
+    12: 	We'll send you a separete email when your order ships.
+  app/views/notifier/order_received.text.erb:10:in `_app_views_notifier_order_received_text_erb___561636831_37522008_0'
+  app/mailers/notifier.rb:28:in `order_received'
+  app/controllers/orders_controller.rb:54:in `create'
+  app/controllers/orders_controller.rb:50:in `create'
+
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (46.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:24:34 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 64 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 02:24:34.312500', '2011-07-27 02:24:34.312500')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 65)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (265.6ms)
+Completed 200 OK in 359ms (Views: 296.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:24:36 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 65 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 65) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("created_at", "order_id", "product_id", "updated_at", "cart_id", "quantity") VALUES ('2011-07-27 02:24:37.015625', NULL, 19, '2011-07-27 02:24:37.015625', 65, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 65)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 65)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 65)
+Rendered line_items/create.js.rjs (31.2ms)
+Completed 200 OK in 234ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 10:24:37 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 65 LIMIT 1[0m
+  [1m[35mProduct Load (15.6ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 65) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("created_at", "product_id", "order_id", "cart_id", "quantity", "updated_at") VALUES ('2011-07-27 02:24:38.343750', 20, NULL, 65, 1, '2011-07-27 02:24:38.343750')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 65)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 65)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 65)[0m
+Rendered line_items/create.js.rjs (62.5ms)
+Completed 200 OK in 375ms (Views: 109.4ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:24:39 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 65 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 65)[0m
+Rendered orders/_form.html.erb (187.5ms)
+Rendered orders/new.html.erb within layouts/application (218.8ms)
+Completed 200 OK in 406ms (Views: 296.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:24:47 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"2", "address"=>"34", "pay_type"=>"Check", "email"=>"4@q.v"}}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 65 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 65)[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "orders" ("name", "updated_at", "created_at", "email", "pay_type", "address") VALUES ('2', '2011-07-27 02:24:48.062500', '2011-07-27 02:24:48.062500', '4@q.v', 'Check', '34')
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "order_id" = 108, "cart_id" = NULL, "updated_at" = '2011-07-27 02:24:48.062500' WHERE "line_items"."id" = 119[0m
+  [1m[35mAREL (15.6ms)[0m  UPDATE "line_items" SET "order_id" = 108, "cart_id" = NULL, "updated_at" = '2011-07-27 02:24:48.078125' WHERE "line_items"."id" = 120
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 65 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 65)
+  [1m[36mAREL (109.4ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 65[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.text.erb (62.5ms)
+Rendered notifier/order_received.text.erb (78.1ms)
+
+Sent mail to 4@q.v (2125ms)
+Date: Wed, 27 Jul 2011 10:24:48 +0800
+From: from@example.com
+To: 4@q.v
+Message-ID: <4e2f76f05f5e1_d9c22203a842843@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Notifier#order_received
+
+, find me in app/views/app/views/notifier/order_received.text.erb
+
+Dear 2
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 2703ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:24:50 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 02:24:50.640625', '2011-07-27 02:24:50.640625')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 66)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (375.0ms)
+Completed 200 OK in 469ms (Views: 406.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/notifier" for 127.0.0.1 at Wed Jul 27 10:25:26 +0800 2011
+
+ActionController::RoutingError (No route matches "/notifier"):
+  
+
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:25:51 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 66 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 66)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 188ms (Views: 125.0ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:25:54 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 66 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 66) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("cart_id", "created_at", "updated_at", "order_id", "product_id", "quantity") VALUES (66, '2011-07-27 02:25:54.390625', '2011-07-27 02:25:54.390625', NULL, 19, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 66)
+  [1m[36mLineItem Load (15.6ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 66)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (15.6ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 66)[0m
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 250ms (Views: 78.1ms | ActiveRecord: 31.2ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 10:25:55 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 66 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 66) LIMIT 1
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "line_items" ("created_at", "quantity", "cart_id", "updated_at", "order_id", "product_id") VALUES ('2011-07-27 02:25:55.640625', 1, 66, '2011-07-27 02:25:55.640625', NULL, 20)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 66)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 66)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 66)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 469ms (Views: 109.4ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:25:57 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 66 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 66)
+Rendered orders/_form.html.erb (140.6ms)
+Rendered orders/new.html.erb within layouts/application (171.9ms)
+Completed 200 OK in 266ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:26:11 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"feng", "address"=>"fenggggg", "pay_type"=>"Credit card", "email"=>"448951907@qq.com"}}
+  [1m[36mCart Load (15.6ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 66 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 66)
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "orders" ("created_at", "email", "updated_at", "name", "address", "pay_type") VALUES ('2011-07-27 02:26:11.375000', '448951907@qq.com', '2011-07-27 02:26:11.375000', 'feng', 'fenggggg', 'Credit card')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 02:26:11.500000', "order_id" = 109 WHERE "line_items"."id" = 121
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 02:26:11.500000', "order_id" = 109 WHERE "line_items"."id" = 122[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 66 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 66)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 66
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.text.erb (62.5ms)
+Rendered notifier/order_received.text.erb (62.5ms)
+
+Sent mail to 448951907@qq.com (2109ms)
+Date: Wed, 27 Jul 2011 10:26:11 +0800
+From: from@example.com
+To: 448951907@qq.com
+Message-ID: <4e2f7743a4083_d9c22c2d9842986@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Notifier#order_received
+
+, find me in app/views/app/views/notifier/order_received.text.erb
+
+Dear feng
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 2609ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:26:13 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 02:26:13.906250', '2011-07-27 02:26:13.906250')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 67)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (531.2ms)
+Completed 200 OK in 625ms (Views: 562.5ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:28:11 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 67 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 67)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 172ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:28:16 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 67 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 67) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "quantity", "product_id", "created_at", "updated_at", "order_id") VALUES (67, 1, 19, '2011-07-27 02:28:16.218750', '2011-07-27 02:28:16.218750', NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 67)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 67)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (0.0ms)
+Rendered carts/_cart.html.erb (46.9ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 67)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 219ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 10:28:17 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 67 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 67) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("updated_at", "cart_id", "order_id", "created_at", "product_id", "quantity") VALUES ('2011-07-27 02:28:17.531250', 67, NULL, '2011-07-27 02:28:17.531250', 20, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 67)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 67)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (93.8ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 67)[0m
+Rendered line_items/create.js.rjs (109.4ms)
+Completed 200 OK in 469ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 10:28:18 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 67 LIMIT 1
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 67) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "quantity" = 2, "updated_at" = '2011-07-27 02:28:18.546875' WHERE "line_items"."id" = 124[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 67)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 67)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (31.2ms)
+Rendered carts/_cart.html.erb (46.9ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 67)
+Rendered line_items/create.js.rjs (78.1ms)
+Completed 200 OK in 281ms (Views: 140.6ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:28:20 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 67 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 67)
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 172ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:28:41 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"df", "address"=>"df", "pay_type"=>"Credit card", "email"=>"fenghaoming2010@gmail.com"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 67 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 67)
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("pay_type", "name", "email", "updated_at", "created_at", "address") VALUES ('Credit card', 'df', 'fenghaoming2010@gmail.com', '2011-07-27 02:28:41.828125', '2011-07-27 02:28:41.828125', 'df')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 02:28:41.828125', "order_id" = 110 WHERE "line_items"."id" = 123
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 02:28:41.843750', "order_id" = 110 WHERE "line_items"."id" = 124[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 67 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 67)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 67
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.text.erb (78.1ms)
+Rendered notifier/order_received.text.erb (78.1ms)
+
+Sent mail to fenghaoming2010@gmail.com (1891ms)
+Date: Wed, 27 Jul 2011 10:28:42 +0800
+From: from@example.com
+To: fenghaoming2010@gmail.com
+Message-ID: <4e2f77da0_d9c22e5c7c430dc@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Notifier#order_received
+
+, find me in app/views/app/views/notifier/order_received.text.erb
+
+Dear df
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 2 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 2188ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:28:43 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 02:28:44.031250', '2011-07-27 02:28:44.031250')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 68)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 219ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:34:50 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 68 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 68) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("order_id", "quantity", "cart_id", "product_id", "updated_at", "created_at") VALUES (NULL, 1, 68, 19, '2011-07-27 02:34:50.578125', '2011-07-27 02:34:50.578125')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 68)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 68)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (0.0ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 68)[0m
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 422ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:34:51 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 68 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 68) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "updated_at" = '2011-07-27 02:34:51.906250', "quantity" = 2 WHERE "line_items"."id" = 125[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 68)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 68)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (0.0ms)
+Rendered carts/_cart.html.erb (187.5ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 68)[0m
+Rendered line_items/create.js.rjs (203.1ms)
+Completed 200 OK in 359ms (Views: 250.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:34:53 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 68 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 68)[0m
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 188ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:36:34 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"df", "address"=>"df", "pay_type"=>"Credit card", "email"=>"chiukong.lee@gmail.com"}}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 68 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 68)[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "orders" ("updated_at", "pay_type", "name", "address", "email", "created_at") VALUES ('2011-07-27 02:36:34.296875', 'Credit card', 'df', 'df', 'chiukong.lee@gmail.com', '2011-07-27 02:36:34.296875')
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 02:36:34.312500', "order_id" = 111 WHERE "line_items"."id" = 125[0m
+  [1m[35mCart Load (15.6ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 68 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 68)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 68
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.text.erb (140.6ms)
+Rendered notifier/order_received.text.erb (156.2ms)
+
+Sent mail to chiukong.lee@gmail.com (2078ms)
+Date: Wed, 27 Jul 2011 10:36:34 +0800
+From: from@example.com
+To: chiukong.lee@gmail.com
+Message-ID: <4e2f79b289544_d9c2410f684315c@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Notifier#order_received
+
+, find me in app/views/app/views/notifier/order_received.text.erb
+
+Dear df
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 2 x Programming Ruby 1.9
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 2516ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:36:36 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 02:36:36.765625', '2011-07-27 02:36:36.765625')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 69)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 219ms (Views: 156.2ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:43:27 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 69 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 69)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 219ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:43:30 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 69 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 69) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("cart_id", "updated_at", "quantity", "created_at", "order_id", "product_id") VALUES (69, '2011-07-27 02:43:30.359375', 1, '2011-07-27 02:43:30.359375', NULL, 19)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 69)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 69)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (78.1ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 69)[0m
+Rendered line_items/create.js.rjs (93.8ms)
+Completed 200 OK in 500ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 10:43:31 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 69 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 69) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("order_id", "cart_id", "created_at", "quantity", "updated_at", "product_id") VALUES (NULL, 69, '2011-07-27 02:43:31.687500', 1, '2011-07-27 02:43:31.687500', 20)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 69)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 69)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (125.0ms)
+Rendered carts/_cart.html.erb (171.9ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 69)
+Rendered line_items/create.js.rjs (203.1ms)
+Completed 200 OK in 734ms (Views: 281.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:43:33 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 69 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 69)
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 297ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:43:47 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"ed", "address"=>"e", "pay_type"=>"Credit card", "email"=>"chiukong.lee@gmail.com"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 69 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 69)
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("email", "created_at", "pay_type", "updated_at", "address", "name") VALUES ('chiukong.lee@gmail.com', '2011-07-27 02:43:47.468750', 'Credit card', '2011-07-27 02:43:47.468750', 'e', 'ed')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "order_id" = 112, "cart_id" = NULL, "updated_at" = '2011-07-27 02:43:47.468750' WHERE "line_items"."id" = 126
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "order_id" = 112, "cart_id" = NULL, "updated_at" = '2011-07-27 02:43:47.468750' WHERE "line_items"."id" = 127[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 69 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 69)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 69
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.text.erb (78.1ms)
+Rendered notifier/order_received.text.erb (78.1ms)
+
+Sent mail to chiukong.lee@gmail.com (2141ms)
+Date: Wed, 27 Jul 2011 10:43:47 +0800
+From: from@example.com
+To: chiukong.lee@gmail.com
+Message-ID: <4e2f7b63a037a_d9c236e668432c6@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Notifier#order_received
+
+, find me in app/views/app/views/notifier/order_received.text.erb
+
+Dear ed
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 2453ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:43:49 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 02:43:49.921875', '2011-07-27 02:43:49.921875')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 70)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 172ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:48:12 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 70 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 70) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("cart_id", "order_id", "quantity", "product_id", "updated_at", "created_at") VALUES (70, NULL, 1, 19, '2011-07-27 02:48:13.562500', '2011-07-27 02:48:13.562500')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 70)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 70)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 70)[0m
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 516ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 10:48:14 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (15.6ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 70 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 70) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("cart_id", "product_id", "created_at", "quantity", "updated_at", "order_id") VALUES (70, 20, '2011-07-27 02:48:14.843750', 1, '2011-07-27 02:48:14.843750', NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 70)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 70)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (187.5ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 70)
+Rendered line_items/create.js.rjs (187.5ms)
+Completed 200 OK in 391ms (Views: 250.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:48:15 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 70 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 70)
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 250ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:48:25 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"3", "address"=>"hj", "pay_type"=>"Check", "email"=>"chiukong.lee@gmail.com"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 70 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 70)
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("created_at", "address", "pay_type", "email", "name", "updated_at") VALUES ('2011-07-27 02:48:25.468750', 'hj', 'Check', 'chiukong.lee@gmail.com', '3', '2011-07-27 02:48:25.468750')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "updated_at" = '2011-07-27 02:48:25.484375', "cart_id" = NULL, "order_id" = 113 WHERE "line_items"."id" = 128
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "updated_at" = '2011-07-27 02:48:25.484375', "cart_id" = NULL, "order_id" = 113 WHERE "line_items"."id" = 129[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 70 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 70)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 70
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.text.erb (62.5ms)
+Rendered notifier/order_received.text.erb (78.1ms)
+
+Sent mail to chiukong.lee@gmail.com (1891ms)
+Date: Wed, 27 Jul 2011 10:48:25 +0800
+From: from@example.com
+To: chiukong.lee@gmail.com
+Message-ID: <4e2f7c79a037a_d9c231aa4c433e2@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear 3
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 2234ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:48:27 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "carts" ("updated_at", "created_at") VALUES ('2011-07-27 02:48:27.703125', '2011-07-27 02:48:27.703125')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 71)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 188ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:50:14 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 71 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 71)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 547ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 10:50:16 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 71 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 71) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("quantity", "cart_id", "product_id", "updated_at", "created_at", "order_id") VALUES (1, 71, 19, '2011-07-27 02:50:17.187500', '2011-07-27 02:50:17.187500', NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 71)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 71)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 71)
+Rendered line_items/create.js.rjs (62.5ms)
+Completed 200 OK in 375ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 10:50:17 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 71 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 71) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("product_id", "updated_at", "quantity", "order_id", "cart_id", "created_at") VALUES (20, '2011-07-27 02:50:18.156250', 1, NULL, 71, '2011-07-27 02:50:18.156250')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 71)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 71)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (31.2ms)
+Rendered carts/_cart.html.erb (62.5ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 71)[0m
+Rendered line_items/create.js.rjs (93.8ms)
+Completed 200 OK in 594ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 10:50:19 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 71 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 71)[0m
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 438ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 10:50:27 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"df", "address"=>"df", "pay_type"=>"Check", "email"=>"chiukong.lee@gmail.com"}}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 71 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 71)[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "orders" ("name", "address", "pay_type", "updated_at", "created_at", "email") VALUES ('df', 'df', 'Check', '2011-07-27 02:50:28.265625', '2011-07-27 02:50:28.265625', 'chiukong.lee@gmail.com')
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 02:50:28.265625', "order_id" = 114 WHERE "line_items"."id" = 130[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 02:50:28.281250', "order_id" = 114 WHERE "line_items"."id" = 131
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 71 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 71)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 71[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.text.erb (62.5ms)
+Rendered notifier/order_received.text.erb (78.1ms)
+
+Sent mail to chiukong.lee@gmail.com (2094ms)
+Date: Wed, 27 Jul 2011 10:50:28 +0800
+From: from@example.com
+To: chiukong.lee@gmail.com
+Message-ID: <4e2f7cf46ea05_d9c2397c0043412@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear df
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 2516ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 10:50:30 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("updated_at", "created_at") VALUES ('2011-07-27 02:50:30.765625', '2011-07-27 02:50:30.765625')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 72)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (140.6ms)
+Completed 200 OK in 328ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 11:11:21 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mSQL (15.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 72 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 72)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (406.2ms)
+Completed 200 OK in 531ms (Views: 437.5ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 11:11:26 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 72 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 72) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("order_id", "updated_at", "product_id", "cart_id", "quantity", "created_at") VALUES (NULL, '2011-07-27 03:11:26.437500', 19, 72, 1, '2011-07-27 03:11:26.437500')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 72)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 72)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (46.9ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 72)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 406ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 11:11:28 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 72 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 72)
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 297ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 11:11:38 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"4489", "address"=>"4489", "pay_type"=>"Purchase order", "email"=>"448951907@qq.com"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 72 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 72)
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("updated_at", "pay_type", "created_at", "name", "address", "email") VALUES ('2011-07-27 03:11:38.718750', 'Purchase order', '2011-07-27 03:11:38.718750', '4489', '4489', '448951907@qq.com')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "order_id" = 115, "cart_id" = NULL, "updated_at" = '2011-07-27 03:11:38.718750' WHERE "line_items"."id" = 132
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 72 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 72)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 72[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.text.erb (203.1ms)
+Rendered notifier/order_received.text.erb (218.8ms)
+
+Sent mail to 448951907@qq.com (5250ms)
+Date: Wed, 27 Jul 2011 11:11:41 +0800
+From: from@example.com
+To: 448951907@qq.com
+Message-ID: <4e2f81ed22551_9dc23e1a84993bf@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear 4489
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 7812ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 11:11:46 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 03:11:46.484375', '2011-07-27 03:11:46.484375')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 73)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (265.6ms)
+Completed 200 OK in 359ms (Views: 296.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 11:19:40 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 73 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 73)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (468.8ms)
+Completed 200 OK in 688ms (Views: 515.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 11:20:08 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 73 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 73) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("order_id", "quantity", "created_at", "updated_at", "cart_id", "product_id") VALUES (NULL, 1, '2011-07-27 03:20:09.046875', '2011-07-27 03:20:09.046875', 73, 19)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 73)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 73)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 73)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 375ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 11:20:09 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[36mCart Load (15.6ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 73 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 73) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "product_id", "order_id", "updated_at", "created_at", "quantity") VALUES (73, 20, NULL, '2011-07-27 03:20:10.156250', '2011-07-27 03:20:10.156250', 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 73)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 73)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (46.9ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 73)[0m
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 422ms (Views: 125.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 11:20:11 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 73 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 73)[0m
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 406ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 11:20:18 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"3", "address"=>"地方", "pay_type"=>"Credit card", "email"=>"448951907@qq.com"}}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 73 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 73)[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "orders" ("email", "updated_at", "pay_type", "created_at", "name", "address") VALUES ('448951907@qq.com', '2011-07-27 03:20:19.093750', 'Credit card', '2011-07-27 03:20:19.093750', '3', '地方')
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "cart_id" = NULL, "order_id" = 116, "updated_at" = '2011-07-27 03:20:19.109375' WHERE "line_items"."id" = 133[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "cart_id" = NULL, "order_id" = 116, "updated_at" = '2011-07-27 03:20:19.109375' WHERE "line_items"."id" = 134
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 73 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 73)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 73[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.text.erb (187.5ms)
+Rendered notifier/order_received.text.erb (203.1ms)
+
+Sent mail to 448951907@qq.com (4234ms)
+Date: Wed, 27 Jul 2011 11:20:21 +0800
+From: from@example.com
+To: 448951907@qq.com
+Message-ID: <4e2f83f57de29_73023e19b8439d1@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear 3
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 6844ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 11:20:25 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("updated_at", "created_at") VALUES ('2011-07-27 03:20:25.890625', '2011-07-27 03:20:25.890625')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 74)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 172ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 11:25:35 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 74 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 74)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 297ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 11:25:37 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 74 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 74) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("quantity", "created_at", "order_id", "product_id", "cart_id", "updated_at") VALUES (1, '2011-07-27 03:25:37.421875', NULL, 19, 74, '2011-07-27 03:25:37.421875')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 74)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 74)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (0.0ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 74)[0m
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 359ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 11:25:38 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 74 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 74) LIMIT 1
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "line_items" ("updated_at", "product_id", "order_id", "created_at", "cart_id", "quantity") VALUES ('2011-07-27 03:25:38.625000', 20, NULL, '2011-07-27 03:25:38.625000', 74, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 74)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 74)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (46.9ms)
+Rendered carts/_cart.html.erb (93.8ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 74)
+Rendered line_items/create.js.rjs (140.6ms)
+Completed 200 OK in 453ms (Views: 203.1ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 11:25:39 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 74 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 74)
+Rendered orders/_form.html.erb (62.5ms)
+Rendered orders/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 188ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 11:25:46 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"3", "address"=>"对方乳房", "pay_type"=>"", "email"=>"448951907@qq.com"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 74 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 74)
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 250ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 11:25:50 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"3", "address"=>"对方乳房", "pay_type"=>"Check", "email"=>"448951907@qq.com"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 74 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 74)
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("created_at", "updated_at", "address", "email", "pay_type", "name") VALUES ('2011-07-27 03:25:50.500000', '2011-07-27 03:25:50.500000', '对方乳房', '448951907@qq.com', 'Check', '3')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "order_id" = 117, "updated_at" = '2011-07-27 03:25:50.500000', "cart_id" = NULL WHERE "line_items"."id" = 135
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "order_id" = 117, "updated_at" = '2011-07-27 03:25:50.500000', "cart_id" = NULL WHERE "line_items"."id" = 136[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 74 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 74)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 74
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.text.erb (78.1ms)
+Rendered notifier/order_received.text.erb (78.1ms)
+
+Sent mail to 448951907@qq.com (4000ms)
+Date: Wed, 27 Jul 2011 11:25:50 +0800
+From: from@example.com
+To: 448951907@qq.com
+Message-ID: <4e2f853ea7d8c_73023084044405c@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear 3
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 4297ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 11:25:54 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 03:25:55.093750', '2011-07-27 03:25:55.093750')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 75)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 203ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at Wed Jul 27 11:26:59 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (15.6ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered products/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 234ms (Views: 93.8ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 11:30:11 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 75 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 75)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (203.1ms)
+Completed 200 OK in 281ms (Views: 218.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 11:30:13 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 75 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 75) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("order_id", "cart_id", "created_at", "quantity", "updated_at", "product_id") VALUES (NULL, 75, '2011-07-27 03:30:13.203125', 1, '2011-07-27 03:30:13.203125', 19)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 75)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 75)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 75)[0m
+Rendered line_items/create.js.rjs (62.5ms)
+Completed 200 OK in 250ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 11:30:13 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 75 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 75) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("updated_at", "product_id", "created_at", "order_id", "cart_id", "quantity") VALUES ('2011-07-27 03:30:14.421875', 20, '2011-07-27 03:30:14.421875', NULL, 75, 1)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 75)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 75)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (46.9ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 75)
+Rendered line_items/create.js.rjs (62.5ms)
+Completed 200 OK in 375ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 11:30:15 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 75 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 75)
+Rendered orders/_form.html.erb (218.8ms)
+Rendered orders/new.html.erb within layouts/application (281.2ms)
+Completed 200 OK in 594ms (Views: 359.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 11:30:22 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"SQkFDoOtPGaWo3jvZ2c2pFTVF/2MrENimTlBEgb8Wxw=", "utf8"=>"✓", "order"=>{"name"=>"地方", "address"=>"地方", "pay_type"=>"Credit card", "email"=>"448951907@qq.com"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 75 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 75)
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "orders" ("email", "pay_type", "updated_at", "address", "name", "created_at") VALUES ('448951907@qq.com', 'Credit card', '2011-07-27 03:30:23.390625', '地方', '地方', '2011-07-27 03:30:23.390625')[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 03:30:23.406250', "order_id" = 118 WHERE "line_items"."id" = 137
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 03:30:23.406250', "order_id" = 118 WHERE "line_items"."id" = 138[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 75 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 75)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 75
+Completed   in 562ms
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/orders_controller.rb:54:in `create'
+  app/controllers/orders_controller.rb:50:in `create'
+
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (46.9ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (31.2ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (46.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (93.8ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (359.4ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (250.0ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (140.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (156.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (281.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (187.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (468.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (171.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (125.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (78.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (250.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053745')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 13:59:09 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("updated_at", "created_at") VALUES ('2011-07-27 05:59:11.171875', '2011-07-27 05:59:11.171875')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 76)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (375.0ms)
+Completed 200 OK in 719ms (Views: 515.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 13:59:16 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"ioo/14gLZR9JVZt2zEZMlf/jCpNnpbSvCGePMyAp9tk="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 76 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 76) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "product_id", "updated_at", "quantity", "created_at", "order_id") VALUES (76, 19, '2011-07-27 05:59:16.468750', 1, '2011-07-27 05:59:16.468750', NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 76)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 76)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 76)
+Rendered line_items/create.js.rjs (62.5ms)
+Completed 200 OK in 406ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 13:59:17 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"ioo/14gLZR9JVZt2zEZMlf/jCpNnpbSvCGePMyAp9tk="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 76 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 76) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "updated_at", "product_id", "quantity", "created_at", "order_id") VALUES (76, '2011-07-27 05:59:18.187500', 20, 1, '2011-07-27 05:59:18.187500', NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 76)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 76)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (46.9ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 76)[0m
+Rendered line_items/create.js.rjs (62.5ms)
+Completed 200 OK in 344ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 13:59:19 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 76 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 76)[0m
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 297ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 13:59:30 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"ioo/14gLZR9JVZt2zEZMlf/jCpNnpbSvCGePMyAp9tk=", "utf8"=>"✓", "order"=>{"name"=>"lizhaog", "address"=>"zhongda", "pay_type"=>"Credit card", "email"=>"448951907@qq.com"}}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 76 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 76)[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "orders" ("created_at", "email", "name", "address", "pay_type", "updated_at") VALUES ('2011-07-27 05:59:31.437500', '448951907@qq.com', 'lizhaog', 'zhongda', 'Credit card', '2011-07-27 05:59:31.437500')
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 05:59:31.453125', "order_id" = 119 WHERE "line_items"."id" = 139[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 05:59:31.453125', "order_id" = 119 WHERE "line_items"."id" = 140
+  [1m[36mCart Load (15.6ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 76 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 76)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 76[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.text.erb (218.8ms)
+Rendered notifier/order_received.text.erb (218.8ms)
+
+Sent mail to 448951907@qq.com (4938ms)
+Date: Wed, 27 Jul 2011 13:59:33 +0800
+From: from@example.com
+To: 448951907@qq.com
+Message-ID: <4e2fa945c28cb_b5423d8160261a@D203b-06.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear lizhaog
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 7656ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 13:59:38 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("updated_at", "created_at") VALUES ('2011-07-27 05:59:38.984375', '2011-07-27 05:59:38.984375')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 77)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 188ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 13:59:51 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"ioo/14gLZR9JVZt2zEZMlf/jCpNnpbSvCGePMyAp9tk="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 77 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 77) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("product_id", "created_at", "updated_at", "quantity", "order_id", "cart_id") VALUES (19, '2011-07-27 05:59:52.093750', '2011-07-27 05:59:52.093750', 1, NULL, 77)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 77)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 77)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 77)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 328ms (Views: 93.8ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 13:59:53 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"ioo/14gLZR9JVZt2zEZMlf/jCpNnpbSvCGePMyAp9tk="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 77 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 77) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("updated_at", "cart_id", "quantity", "order_id", "product_id", "created_at") VALUES ('2011-07-27 05:59:53.640625', 77, 1, NULL, 20, '2011-07-27 05:59:53.640625')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 77)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 77)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (140.6ms)
+Rendered carts/_cart.html.erb (156.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 77)[0m
+Rendered line_items/create.js.rjs (171.9ms)
+Completed 200 OK in 766ms (Views: 234.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/carts/77" for 127.0.0.1 at Wed Jul 27 13:59:55 +0800 2011
+  Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ioo/14gLZR9JVZt2zEZMlf/jCpNnpbSvCGePMyAp9tk=", "id"=>"77"}
+  [1m[35mCart Load (15.6ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 77 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 77)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = 141
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = 142[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 77
+Redirected to http://localhost:3000/
+Completed 302 Found in 156ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 13:59:56 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "carts" ("updated_at", "created_at") VALUES ('2011-07-27 05:59:56.234375', '2011-07-27 05:59:56.234375')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 78)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (281.2ms)
+Completed 200 OK in 531ms (Views: 328.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at Wed Jul 27 14:00:04 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered products/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/item_lines" for 127.0.0.1 at Wed Jul 27 14:00:12 +0800 2011
+
+ActionController::RoutingError (No route matches "/item_lines"):
+  
+
+Rendered d:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 14:00:19 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 78 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 78)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 172ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts" for 127.0.0.1 at Wed Jul 27 14:00:24 +0800 2011
+  Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts"
+Rendered carts/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 125ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/carts/16" for 127.0.0.1 at Wed Jul 27 14:00:28 +0800 2011
+  Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ioo/14gLZR9JVZt2zEZMlf/jCpNnpbSvCGePMyAp9tk=", "id"=>"16"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 16 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 16)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 16[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 219ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 14:00:28 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 06:00:29.062500', '2011-07-27 06:00:29.062500')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 79)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 375ms (Views: 140.6ms | ActiveRecord: 0.0ms)
