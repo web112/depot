@@ -19946,3 +19946,2689 @@ Started GET "/" for 127.0.0.1 at Wed Jul 27 14:00:28 +0800 2011
 Rendered carts/_cart.html.erb (0.0ms)
 Rendered store/index.html.erb within layouts/application (109.4ms)
 Completed 200 OK in 375ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 14:19:37 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 06:19:39.578125', '2011-07-27 06:19:39.578125')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 80)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (437.5ms)
+Completed 200 OK in 719ms (Views: 468.8ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 14:20:12 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 80 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 80) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("order_id", "product_id", "updated_at", "quantity", "created_at", "cart_id") VALUES (NULL, 19, '2011-07-27 06:20:13.093750', 1, '2011-07-27 06:20:13.093750', 80)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 80)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 80)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 80)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 438ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 14:20:15 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 80 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 80) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("order_id", "quantity", "cart_id", "updated_at", "product_id", "created_at") VALUES (NULL, 1, 80, '2011-07-27 06:20:15.859375', 20, '2011-07-27 06:20:15.859375')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 80)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 80)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 80)[0m
+Rendered line_items/create.js.rjs (62.5ms)
+Completed 200 OK in 297ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 14:20:24 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 80 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 80)[0m
+Rendered orders/_form.html.erb (46.9ms)
+Rendered orders/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 313ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for 127.0.0.1 at Wed Jul 27 14:20:38 +0800 2011
+  Processing by OrdersController#create as HTML
+  Parameters: {"commit"=>"Place Order", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "order"=>{"name"=>"sdas", "address"=>"fggfhjk", "pay_type"=>"Credit card", "email"=>"dushoujun@gmail.com"}}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 80 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 80)[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "orders" ("pay_type", "created_at", "name", "email", "updated_at", "address") VALUES ('Credit card', '2011-07-27 06:20:38.656250', 'sdas', 'dushoujun@gmail.com', '2011-07-27 06:20:38.656250', 'fggfhjk')
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 06:20:38.671875', "order_id" = 120 WHERE "line_items"."id" = 143[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "line_items" SET "cart_id" = NULL, "updated_at" = '2011-07-27 06:20:38.671875', "order_id" = 120 WHERE "line_items"."id" = 144
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 80 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 80)
+  [1m[36mAREL (15.6ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 80[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.text.erb (234.4ms)
+Rendered notifier/order_received.text.erb (234.4ms)
+
+Sent mail to dushoujun@gmail.com (4547ms)
+Date: Wed, 27 Jul 2011 14:20:40 +0800
+From: from@example.com
+To: dushoujun@gmail.com
+Message-ID: <4e2fae38ec82e_63823bf8a848c8@D303b-13.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear sdas
+	Thank you for your recent order from The Pramgatic Store.
+	
+	You ordered the following items:
+	
+	 1 x Programming Ruby 1.9 1 x Rails Test Prescriptions
+	
+	We'll send you a separete email when your order ships.
+Redirected to http://localhost:3000/
+Completed 302 Found in 7109ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 14:20:45 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-27 06:20:45.609375', '2011-07-27 06:20:45.609375')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 81)
+Rendered carts/_cart.html.erb (15.6ms)
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 188ms (Views: 125.0ms | ActiveRecord: 31.2ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 14:20:48 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 81 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 81) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "order_id", "product_id", "created_at", "quantity", "updated_at") VALUES (81, NULL, 19, '2011-07-27 06:20:49.046875', 1, '2011-07-27 06:20:49.046875')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 81)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 81)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 81)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 234ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Wed Jul 27 14:20:51 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 81 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 81) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "created_at", "quantity", "updated_at", "product_id", "order_id") VALUES (81, '2011-07-27 06:20:52.062500', 1, '2011-07-27 06:20:52.062500', 20, NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 81)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 81)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 81)[0m
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 328ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/carts/81" for 127.0.0.1 at Wed Jul 27 14:20:58 +0800 2011
+  Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "id"=>"81"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 81 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 81)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = 145
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = 146[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = 81
+Redirected to http://localhost:3000/
+Completed 302 Found in 109ms
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 14:20:58 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "carts" ("updated_at", "created_at") VALUES ('2011-07-27 06:20:59.437500', '2011-07-27 06:20:59.437500')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 82)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (234.4ms)
+Completed 200 OK in 656ms (Views: 281.2ms | ActiveRecord: 15.6ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateProducts (20110713074315)
+Migrating to CreateCarts (20110718071600)
+Migrating to CreateLineItems (20110719081517)
+Migrating to AddQuantityToLineItem (20110725022956)
+Migrating to CombineItemsInCart (20110725024717)
+Migrating to CreateOrders (20110726053553)
+Migrating to AddOrderIdToLineItem (20110726053745)
+Migrating to CreateUsers (20110727062252)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "hashed_password" varchar(255), "salt" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110727062252')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("carts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("line_items")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("orders")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("products")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:54:30 +0800 2011
+  Processing by UsersController#new as HTML
+ERROR: compiling _app_views_users__form_html_erb__675495132_35004564_638518 RAISED compile error
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tSTRING_BEG, expecting ')'
+....append= ( f.label :password 'Password);@output_buffer.safe_...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:24: syntax error, unexpected '<'
+  <div class="field">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tCONSTANT, expecting ')'
+...password_confirmation,'Confirm' );@output_buffer.safe_concat...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:28: syntax error, unexpected '<'
+  <div class="actions">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unmatched ): /div>
+'); end 
+@output_buffer.safe_concat('</
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: unterminated string meets end of file
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: syntax error, unexpected $end, expecting ')'
+Function body:           def _app_views_users__form_html_erb__675495132_35004564_638518(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "users/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<div class="depot_form"></>
+');@output_buffer.append=  form_for(@user) do |f| @output_buffer.safe_concat('
+');   if @user.errors.any? 
+@output_buffer.safe_concat('    <div id="error_explanation">
+      <h2>');@output_buffer.append= ( pluralize(@user.errors.count, "error") );@output_buffer.safe_concat(' prohibited this user from being saved:</h2>
+
+      <ul>
+');@output_buffer.append_if_string=        @user.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('        <li>');@output_buffer.append= ( msg );@output_buffer.safe_concat('</li>
+');       end 
+@output_buffer.safe_concat('      </ul>
+    </div>
+');   end 
+@output_buffer.safe_concat('	<fieldset>
+		<legend>Enter User Details</legends>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :name );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :name,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :password 'Password);@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :password_confirmation,'Confirm' );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="actions">
+    ');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.safe_concat('</div>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:262:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:31:in `render'
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___723064438_35012052_0'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:135:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:135:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:14:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/controllers/users_controller.rb:29:in `new'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:436:in `_run__434435962__process_action__943997142__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered users/_form.html.erb (15.6ms)
+Rendered users/new.html.erb within layouts/application (15.6ms)
+Completed   in 78ms
+
+ActionView::Template::Error (compile error
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tSTRING_BEG, expecting ')'
+....append= ( f.label :password 'Password);@output_buffer.safe_...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:24: syntax error, unexpected '<'
+  <div class="field">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tCONSTANT, expecting ')'
+...password_confirmation,'Confirm' );@output_buffer.safe_concat...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:28: syntax error, unexpected '<'
+  <div class="actions">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unmatched ): /div>
+'); end 
+@output_buffer.safe_concat('</
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: unterminated string meets end of file
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: syntax error, unexpected $end, expecting ')'):
+    18:     <%= f.text_field :name,:size=>40 %>
+    19:   </div>
+    20:   <div class="field">
+    21:     <%= f.label :password 'Password%><br />
+    22:     <%= f.password_field :password ,:size=>40%>
+    23:   </div>
+    24:   <div class="field">
+  app/views/users/_form.html.erb:33:in `compile'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___723064438_35012052_0'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (156.2ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (218.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:54:52 +0800 2011
+  Processing by UsersController#new as HTML
+ERROR: compiling _app_views_users__form_html_erb__675495132_36808068_638518 RAISED compile error
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tSTRING_BEG, expecting ')'
+....append= ( f.label :password 'Password'');@output_buffer.saf...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:24: syntax error, unexpected '<'
+  <div class="field">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tCONSTANT, expecting ')'
+...password_confirmation,'Confirm' );@output_buffer.safe_concat...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:28: syntax error, unexpected '<'
+  <div class="actions">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unmatched ): /div>
+'); end 
+@output_buffer.safe_concat('</
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: unterminated string meets end of file
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: syntax error, unexpected $end, expecting ')'
+Function body:           def _app_views_users__form_html_erb__675495132_36808068_638518(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "users/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<div class="depot_form"></>
+');@output_buffer.append=  form_for(@user) do |f| @output_buffer.safe_concat('
+');   if @user.errors.any? 
+@output_buffer.safe_concat('    <div id="error_explanation">
+      <h2>');@output_buffer.append= ( pluralize(@user.errors.count, "error") );@output_buffer.safe_concat(' prohibited this user from being saved:</h2>
+
+      <ul>
+');@output_buffer.append_if_string=        @user.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('        <li>');@output_buffer.append= ( msg );@output_buffer.safe_concat('</li>
+');       end 
+@output_buffer.safe_concat('      </ul>
+    </div>
+');   end 
+@output_buffer.safe_concat('	<fieldset>
+		<legend>Enter User Details</legends>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :name );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :name,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :password 'Password'');@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :password_confirmation,'Confirm' );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="actions">
+    ');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.safe_concat('</div>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:262:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:31:in `render'
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___723064438_36840792_0'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:135:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:135:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:14:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/controllers/users_controller.rb:29:in `new'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:436:in `_run__434435962__process_action__943997142__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered users/_form.html.erb (0.0ms)
+Rendered users/new.html.erb within layouts/application (15.6ms)
+Completed   in 94ms
+
+ActionView::Template::Error (compile error
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tSTRING_BEG, expecting ')'
+....append= ( f.label :password 'Password'');@output_buffer.saf...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:24: syntax error, unexpected '<'
+  <div class="field">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tCONSTANT, expecting ')'
+...password_confirmation,'Confirm' );@output_buffer.safe_concat...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:28: syntax error, unexpected '<'
+  <div class="actions">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unmatched ): /div>
+'); end 
+@output_buffer.safe_concat('</
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: unterminated string meets end of file
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: syntax error, unexpected $end, expecting ')'):
+    18:     <%= f.text_field :name,:size=>40 %>
+    19:   </div>
+    20:   <div class="field">
+    21:     <%= f.label :password 'Password''%><br />
+    22:     <%= f.password_field :password ,:size=>40%>
+    23:   </div>
+    24:   <div class="field">
+  app/views/users/_form.html.erb:33:in `compile'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___723064438_36840792_0'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (78.1ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:55:00 +0800 2011
+  Processing by UsersController#new as HTML
+ERROR: compiling _app_views_users__form_html_erb__675495132_35525604_638518 RAISED compile error
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tSTRING_BEG, expecting ')'
+....append= ( f.label :password 'Password'');@output_buffer.saf...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:24: syntax error, unexpected '<'
+  <div class="field">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tCONSTANT, expecting ')'
+...password_confirmation,'Confirm' );@output_buffer.safe_concat...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:28: syntax error, unexpected '<'
+  <div class="actions">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unmatched ): /div>
+'); end 
+@output_buffer.safe_concat('</
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: unterminated string meets end of file
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: syntax error, unexpected $end, expecting ')'
+Function body:           def _app_views_users__form_html_erb__675495132_35525604_638518(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "users/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<div class="depot_form"></>
+');@output_buffer.append=  form_for(@user) do |f| @output_buffer.safe_concat('
+');   if @user.errors.any? 
+@output_buffer.safe_concat('    <div id="error_explanation">
+      <h2>');@output_buffer.append= ( pluralize(@user.errors.count, "error") );@output_buffer.safe_concat(' prohibited this user from being saved:</h2>
+
+      <ul>
+');@output_buffer.append_if_string=        @user.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('        <li>');@output_buffer.append= ( msg );@output_buffer.safe_concat('</li>
+');       end 
+@output_buffer.safe_concat('      </ul>
+    </div>
+');   end 
+@output_buffer.safe_concat('	<fieldset>
+		<legend>Enter User Details</legends>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :name );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :name,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :password 'Password'');@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :password_confirmation,'Confirm' );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="actions">
+    ');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.safe_concat('</div>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:262:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:31:in `render'
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___723064438_35534436_0'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:135:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:135:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:14:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/controllers/users_controller.rb:29:in `new'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:436:in `_run__434435962__process_action__943997142__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered users/_form.html.erb (0.0ms)
+Rendered users/new.html.erb within layouts/application (15.6ms)
+Completed   in 62ms
+
+ActionView::Template::Error (compile error
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tSTRING_BEG, expecting ')'
+....append= ( f.label :password 'Password'');@output_buffer.saf...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:24: syntax error, unexpected '<'
+  <div class="field">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tCONSTANT, expecting ')'
+...password_confirmation,'Confirm' );@output_buffer.safe_concat...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:28: syntax error, unexpected '<'
+  <div class="actions">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unmatched ): /div>
+'); end 
+@output_buffer.safe_concat('</
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: unterminated string meets end of file
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: syntax error, unexpected $end, expecting ')'):
+    18:     <%= f.text_field :name,:size=>40 %>
+    19:   </div>
+    20:   <div class="field">
+    21:     <%= f.label :password 'Password''%><br />
+    22:     <%= f.password_field :password ,:size=>40%>
+    23:   </div>
+    24:   <div class="field">
+  app/views/users/_form.html.erb:33:in `compile'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___723064438_35534436_0'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (140.6ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (156.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:55:13 +0800 2011
+  Processing by UsersController#new as HTML
+ERROR: compiling _app_views_users__form_html_erb__675495132_37000272_638518 RAISED compile error
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:24: syntax error, unexpected '<'
+  <div class="field">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tCONSTANT, expecting ')'
+...password_confirmation,'Confirm' );@output_buffer.safe_concat...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:28: syntax error, unexpected '<'
+  <div class="actions">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unmatched ): /div>
+'); end 
+@output_buffer.safe_concat('</
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: unterminated string meets end of file
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: syntax error, unexpected $end, expecting ')'
+Function body:           def _app_views_users__form_html_erb__675495132_37000272_638518(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "users/_form";_old_output_buffer = @output_buffer;form = local_assigns[:form];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<div class="depot_form"></>
+');@output_buffer.append=  form_for(@user) do |f| @output_buffer.safe_concat('
+');   if @user.errors.any? 
+@output_buffer.safe_concat('    <div id="error_explanation">
+      <h2>');@output_buffer.append= ( pluralize(@user.errors.count, "error") );@output_buffer.safe_concat(' prohibited this user from being saved:</h2>
+
+      <ul>
+');@output_buffer.append_if_string=        @user.errors.full_messages.each do |msg| 
+@output_buffer.safe_concat('        <li>');@output_buffer.append= ( msg );@output_buffer.safe_concat('</li>
+');       end 
+@output_buffer.safe_concat('      </ul>
+    </div>
+');   end 
+@output_buffer.safe_concat('	<fieldset>
+		<legend>Enter User Details</legends>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :name );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.text_field :name,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :password ,'Password'');@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="field">
+    ');@output_buffer.append= ( f.label :password_confirmation,'Confirm' );@output_buffer.safe_concat('<br />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+  <div class="actions">
+    ');@output_buffer.append= ( f.submit );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </div>
+'); end 
+@output_buffer.safe_concat('</div>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33:in `compile'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:134:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:262:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:31:in `render'
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___723064438_37015200_0'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:135:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:135:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/template.rb:127:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:59:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:115:in `_render_template'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:93:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:40:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:14:in `default_render'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:261:in `retrieve_response_from_mimes'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:192:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/mime_responds.rb:192:in `respond_to'
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/controllers/users_controller.rb:29:in `new'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:150:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:18:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:436:in `_run__434435962__process_action__943997142__callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:94:in `run_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/base.rb:119:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/abstract_controller/rendering.rb:41:in `process'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_controller/metal.rb:178:in `action'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:148:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:93:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-mount-0.6.14/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/routing/route_set.rb:493:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:32:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activerecord-3.0.7/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/runtime.rb:17:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/activesupport-3.0.7/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/lock.rb:11:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:168:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `send'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/content_length.rb:13:in `call'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/handler/webrick.rb:13:in `run'
+c:/Ruby187/lib/ruby/gems/1.8/gems/rack-1.2.3/lib/rack/server.rb:217:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands/server.rb:65:in `start'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:30
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:27:in `tap'
+c:/Ruby187/lib/ruby/gems/1.8/gems/railties-3.0.7/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered users/_form.html.erb (15.6ms)
+Rendered users/new.html.erb within layouts/application (31.2ms)
+Completed   in 109ms
+
+ActionView::Template::Error (compile error
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:21: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:23: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password ,:size=>40);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:24: syntax error, unexpected '<'
+  <div class="field">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tCONSTANT, expecting ')'
+...password_confirmation,'Confirm' );@output_buffer.safe_concat...
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:25: syntax error, unexpected tREGEXP_BEG, expecting kDO or '{' or '('
+...tput_buffer.safe_concat('<br />
+                              ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:27: unmatched ): />
+    ');@output_buffer.append= ( f.password_field :password_confirmation,:size=>40 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  </
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:28: syntax error, unexpected '<'
+  <div class="actions">
+   ^
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unknown regexp options - dv
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:32: unmatched ): /div>
+'); end 
+@output_buffer.safe_concat('</
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: unterminated string meets end of file
+C:/Documents and Settings/Administrator/My Documents/Aptana Studio 3 Workspace/ds/app/views/users/_form.html.erb:33: syntax error, unexpected $end, expecting ')'):
+    18:     <%= f.text_field :name,:size=>40 %>
+    19:   </div>
+    20:   <div class="field">
+    21:     <%= f.label :password ,'Password''%><br />
+    22:     <%= f.password_field :password ,:size=>40%>
+    23:   </div>
+    24:   <div class="field">
+  app/views/users/_form.html.erb:33:in `compile'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___723064438_37015200_0'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (62.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:56:21 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (187.5ms)
+Rendered users/new.html.erb within layouts/application (250.0ms)
+Completed 200 OK in 344ms (Views: 312.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:56:54 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 109ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:56:57 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 125ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:57:38 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 578ms (Views: 453.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 14:57:41 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (140.6ms)
+Rendered users/new.html.erb within layouts/application (156.2ms)
+Completed 200 OK in 219ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:00:28 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 188ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:00:32 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 109ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:00:42 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 266ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:00:54 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (140.6ms)
+Rendered users/new.html.erb within layouts/application (156.3ms)
+Completed 200 OK in 469ms (Views: 359.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:01:46 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 125ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:01:48 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (31.2ms)
+Rendered users/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 109ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 15:06:09 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 82 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 82)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 188ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Wed Jul 27 15:06:12 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 82 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 82) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "updated_at", "order_id", "created_at", "product_id", "quantity") VALUES (82, '2011-07-27 07:06:13.093750', NULL, '2011-07-27 07:06:13.093750', 19, 1)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 82)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 82)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 82)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 328ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Wed Jul 27 15:06:14 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 82 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 82)
+Rendered orders/_form.html.erb (250.0ms)
+Rendered orders/new.html.erb within layouts/application (250.0ms)
+Completed 200 OK in 375ms (Views: 281.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/uers/new" for 127.0.0.1 at Wed Jul 27 15:07:17 +0800 2011
+
+ActionController::RoutingError (No route matches "/uers/new"):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:07:28 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 125ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:08:55 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 125ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 15:08:57 +0800 2011
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 109ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed Jul 27 15:09:08 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "user"=>{"name"=>"dave", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."name" = 'dave') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "users" ("hashed_password", "updated_at", "name", "created_at", "salt") VALUES ('1d4c9137ff7fa8835e08b7580f68493cd7173ac8c8df4a0c8fd91368938337ba', '2011-07-27 07:09:08.828125', 'dave', '2011-07-27 07:09:08.828125', '359476200.236876799966459')[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 125ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 15:09:08 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 16:37:05 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+Rendered admin/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at Wed Jul 27 16:50:38 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Completed   in 31ms
+
+NoMethodError (undefined method `redirected_to' for #<ProductsController:0x46d5560>):
+  app/controllers/application_controller.rb:18:in `authorize'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at Wed Jul 27 16:51:24 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 94ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 16:51:25 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 16:58:09 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at Wed Jul 27 16:58:24 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 16:58:24 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 16:59:39 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 16:59:39 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (15.6ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "hashed_password" varchar(255), "salt" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110727062252')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110726053745')
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:04:01 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:04:02 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:04:03 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:04:03 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "hashed_password" varchar(255), "salt" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (31.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110727062252')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (31.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110726053745')
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:09:39 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 17:12:26 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (15.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 31ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:12:26 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 17:13:24 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 62ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:13:25 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 17:13:46 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:13:46 +0800 2011
+
+ActionController::RoutingError (uninitialized constant SessionController):
+  
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jul 27 17:16:15 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (15.6ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mCart Load (15.6ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 82 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 82)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 82)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 82)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (187.5ms)
+Rendered store/index.html.erb within layouts/application (687.5ms)
+Completed 200 OK in 828ms (Views: 718.8ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 17:16:22 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:16:22 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:16:24 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Completed   in 78ms
+
+NameError (undefined local variable or method `user_id' for #<SessionsController:0x47916a8>):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (62.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:16:43 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 31ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:16:44 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 62ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:16:50 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Completed   in 31ms
+
+NameError (undefined local variable or method `user_id' for #<SessionsController:0x4799478>):
+  app/controllers/sessions_controller.rb:8:in `create'
+
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered c:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (46.9ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:18:10 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 31ms
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 17:18:10 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (31.2ms)[0m  SELECT COUNT(*) FROM "orders"
+Rendered admin/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 234ms (Views: 62.5ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:18:33 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 17:18:38 +0800 2011
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered users/_form.html.erb (31.2ms)
+Rendered users/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 203ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed Jul 27 17:18:53 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "user"=>{"name"=>"asd", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."name" = 'asd') LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "salt", "name", "hashed_password") VALUES ('2011-07-27 09:18:54.000000', '2011-07-27 09:18:54.000000', '370039320.0111024912826846', 'asd', '8ae18c37b590b1bdc83d05837044fc208c3bb81ca338052fb5caff02cfadfd43')
+Redirected to http://localhost:3000/users
+Completed 302 Found in 109ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:18:54 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 219ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/1" for 127.0.0.1 at Wed Jul 27 17:19:44 +0800 2011
+  Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = 1[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 47ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:19:45 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 141ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:19:45 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 62ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:19:49 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:19:49 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:19:51 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 31ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:19:51 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:19:54 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:19:54 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."name" = 'dave') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "users" ("updated_at", "name", "salt", "hashed_password", "created_at") VALUES ('2011-07-27 09:21:02.593750', 'dave', '358177560.0782839906856916', '2db4da4d3652efa03d5b1acb38d6404f90ab9e62fdb892b1fcf3263592627d13', '2011-07-27 09:21:02.593750')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 17:25:50 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:25:50 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:25:52 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 31ms
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 17:25:52 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+Rendered admin/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 266ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:25:56 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name[0m
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/3" for 127.0.0.1 at Wed Jul 27 17:25:59 +0800 2011
+  Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "id"=>"3"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "users" WHERE "users"."id" = 3
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 62ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:25:59 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:25:59 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:26:02 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 78ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:26:02 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:26:05 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:26:05 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:26:08 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 16ms
+
+
+Started GET "/login" for 127.0.0.1 at Wed Jul 27 17:26:08 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Wed Jul 27 17:26:21 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"asd", "commit"=>"Login", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."name" = 'asd' LIMIT 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 31ms
+
+
+Started GET "/admin" for 127.0.0.1 at Wed Jul 27 17:26:21 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "orders"
+Rendered admin/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 188ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:26:24 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/2" for 127.0.0.1 at Wed Jul 27 17:26:27 +0800 2011
+  Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = 2[0m
+  [1m[35mSQL (15.6ms)[0m  SELECT COUNT(*) FROM "users"
+Redirected to http://localhost:3000/users
+Completed 302 Found in 141ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:26:28 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 17:26:32 +0800 2011
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered users/_form.html.erb (250.0ms)
+Rendered users/new.html.erb within layouts/application (281.3ms)
+Completed 200 OK in 328ms (Views: 312.5ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed Jul 27 17:26:37 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "user"=>{"name"=>"dave", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."name" = 'dave') LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "name", "hashed_password", "salt") VALUES ('2011-07-27 09:26:37.765625', '2011-07-27 09:26:37.765625', 'dave', '4ed3c34361b7a09892870d01779f6fd89fcb950756be3874eb483b8e3bfcb7ab', '371047320.0182165412908309')
+Redirected to http://localhost:3000/users
+Completed 302 Found in 47ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:26:37 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (312.5ms)
+Completed 200 OK in 375ms (Views: 359.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:27:21 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 203ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 17:27:26 +0800 2011
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 125ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed Jul 27 17:27:32 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "user"=>{"name"=>"33", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."name" = '33') LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "users" ("updated_at", "name", "hashed_password", "salt", "created_at") VALUES ('2011-07-27 09:27:33.109375', '33', '351f12b565a9226bea7720658db21f385c1bea885e0bf561c677ea675584adeb', '366695160.0710291879735182', '2011-07-27 09:27:33.109375')
+Redirected to http://localhost:3000/users
+Completed 302 Found in 188ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:27:33 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 141ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Wed Jul 27 17:28:45 +0800 2011
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered users/_form.html.erb (281.2ms)
+Rendered users/new.html.erb within layouts/application (296.9ms)
+Completed 200 OK in 359ms (Views: 343.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed Jul 27 17:28:51 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "user"=>{"name"=>"1", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."name" = '1') LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "users" ("salt", "updated_at", "name", "created_at", "hashed_password") VALUES ('371264400.812271463326144', '2011-07-27 09:28:51.515625', '1', '2011-07-27 09:28:51.515625', '892ca1df2845dc354f370feef8a890c7d7f8defcfa203059216071f5ff9254f3')
+Redirected to http://localhost:3000/users
+Completed 302 Found in 47ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:28:51 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (328.1ms)
+Completed 200 OK in 391ms (Views: 359.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/6" for 127.0.0.1 at Wed Jul 27 17:28:57 +0800 2011
+  Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "id"=>"6"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = 6[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+Redirected to http://localhost:3000/users
+Completed 302 Found in 47ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:28:57 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 125ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/5" for 127.0.0.1 at Wed Jul 27 17:29:00 +0800 2011
+  Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = 5[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+Redirected to http://localhost:3000/users
+Completed 302 Found in 47ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:29:00 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 109ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/2/edit" for 127.0.0.1 at Wed Jul 27 17:29:02 +0800 2011
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/edit.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 141ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/2" for 127.0.0.1 at Wed Jul 27 17:29:12 +0800 2011
+  Processing by UsersController#update as HTML
+  Parameters: {"commit"=>"Update User", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "id"=>"2", "user"=>{"name"=>"asd", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."name" = 'asd') AND ("users".id <> 2) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "users" SET "hashed_password" = '92df25efee288c06930d3e6c45a1507d68069577b161261a79f62faa655feef1', "salt" = '366493800.0593406235388754', "updated_at" = '2011-07-27 09:29:12.796875' WHERE "users"."id" = 2
+Redirected to http://localhost:3000/users
+Completed 302 Found in 141ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:29:12 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/4/edit" for 127.0.0.1 at Wed Jul 27 17:29:52 +0800 2011
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered users/_form.html.erb (359.4ms)
+Rendered users/edit.html.erb within layouts/application (359.4ms)
+Completed 200 OK in 453ms (Views: 421.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/4" for 127.0.0.1 at Wed Jul 27 17:30:03 +0800 2011
+  Processing by UsersController#update as HTML
+  Parameters: {"commit"=>"Update User", "authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "utf8"=>"✓", "id"=>"4", "user"=>{"name"=>"dave", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."name" = 'dave') AND ("users".id <> 4) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "users" SET "salt" = '371215200.668649461548108', "hashed_password" = '9ce36743ddec23c42485b441d31267024c9437032404e5fdfa08ba2c57148dca', "updated_at" = '2011-07-27 09:30:03.984375' WHERE "users"."id" = 4
+Redirected to http://localhost:3000/users
+Completed 302 Found in 63ms
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:30:04 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (250.0ms)
+Completed 200 OK in 312ms (Views: 281.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at Wed Jul 27 17:30:13 +0800 2011
+  Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mOrder Load (15.6ms)[0m  SELECT "orders".* FROM "orders" ORDER BY created_at desc LIMIT 10 OFFSET 0
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+Rendered orders/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 188ms (Views: 125.0ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/orders/117" for 127.0.0.1 at Wed Jul 27 17:30:18 +0800 2011
+  Processing by OrdersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e6+4C1U5gKoaw5Pzn3lSXXEKrvtEwRkOeOzE0OIl4h4=", "id"=>"117"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 117 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".order_id = 117)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = 135[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = 136
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "orders" WHERE "orders"."id" = 117[0m
+Redirected to http://localhost:3000/orders
+Completed 302 Found in 141ms
+
+
+Started GET "/orders" for 127.0.0.1 at Wed Jul 27 17:30:19 +0800 2011
+  Processing by OrdersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mOrder Load (15.6ms)[0m  [1mSELECT "orders".* FROM "orders" ORDER BY created_at desc LIMIT 10 OFFSET 0[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "orders"
+Rendered orders/index.html.erb within layouts/application (312.5ms)
+Completed 200 OK in 484ms (Views: 375.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at Wed Jul 27 17:30:23 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered products/index.html.erb within layouts/application (312.5ms)
+Completed 200 OK in 453ms (Views: 406.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:30:26 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:30:28 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed Jul 27 17:30:54 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (15.6ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (62.5ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (46.9ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer DEFAULT 1, "order_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (46.9ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" text, "email" varchar(255), "pay_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (62.5ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (31.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "hashed_password" varchar(255), "salt" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (46.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (46.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (31.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110727062252')[0m
+  [1m[35mSQL (31.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110713074315')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110718071600')[0m
+  [1m[35mSQL (46.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110719081517')
+  [1m[36mSQL (62.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110725022956')[0m
+  [1m[35mSQL (31.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110725024717')
+  [1m[36mSQL (62.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726053553')[0m
+  [1m[35mSQL (78.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110726053745')
+
+
+Started GET "/users/new" for 127.0.0.1 at Thu Jul 28 08:15:34 +0800 2011
+  Processing by UsersController#new as HTML
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 94ms
+
+
+Started GET "/login" for 127.0.0.1 at Thu Jul 28 08:15:37 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Thu Jul 28 08:15:46 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 109ms
+
+
+Started GET "/login" for 127.0.0.1 at Thu Jul 28 08:15:46 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 62ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Thu Jul 28 08:15:54 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 141ms
+
+
+Started GET "/admin" for 127.0.0.1 at Thu Jul 28 08:15:54 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "orders"
+Rendered admin/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 125ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/logout" for 127.0.0.1 at Thu Jul 28 08:17:08 +0800 2011
+  Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms
+
+
+Started GET "/" for 127.0.0.1 at Thu Jul 28 08:17:08 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-07-28 00:17:08.484375', '2011-07-28 00:17:08.484375')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 83)[0m
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (546.9ms)
+Completed 200 OK in 969ms (Views: 593.8ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/login" for 127.0.0.1 at Thu Jul 28 08:17:16 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Thu Jul 28 08:17:20 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 47ms
+
+
+Started GET "/login" for 127.0.0.1 at Thu Jul 28 08:17:21 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Thu Jul 28 08:18:26 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 266ms
+
+
+Started GET "/admin" for 127.0.0.1 at Thu Jul 28 08:18:26 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+Rendered admin/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 297ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 08:18:29 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name[0m
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at Thu Jul 28 08:18:31 +0800 2011
+  Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Rendered users/_form.html.erb (46.9ms)
+Rendered users/new.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 156ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Thu Jul 28 08:18:40 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "user"=>{"name"=>"qq", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."name" = 'qq') LIMIT 1
+Rendered users/_form.html.erb (15.6ms)
+Rendered users/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 500ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Thu Jul 28 08:18:47 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "user"=>{"name"=>"qq", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."name" = 'qq') LIMIT 1
+Rendered users/_form.html.erb (15.6ms)
+Rendered users/new.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Thu Jul 28 08:19:03 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "user"=>{"name"=>"", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."name" = '') LIMIT 1
+Rendered users/_form.html.erb (15.6ms)
+Rendered users/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 219ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Thu Jul 28 08:19:15 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "user"=>{"name"=>"qq", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."name" = 'qq') LIMIT 1
+Rendered users/_form.html.erb (15.6ms)
+Rendered users/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 125ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at Thu Jul 28 08:19:23 +0800 2011
+  Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mOrder Load (0.0ms)[0m  SELECT "orders".* FROM "orders" ORDER BY created_at desc LIMIT 10 OFFSET 0
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+Rendered orders/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 172ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/120" for 127.0.0.1 at Thu Jul 28 08:19:29 +0800 2011
+  Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"120"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 120 LIMIT 1[0m
+Rendered orders/show.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 313ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at Thu Jul 28 08:19:37 +0800 2011
+  Processing by OrdersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" ORDER BY created_at desc LIMIT 10 OFFSET 0[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "orders"
+Rendered orders/index.html.erb within layouts/application (328.1ms)
+Completed 200 OK in 406ms (Views: 359.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at Thu Jul 28 08:19:40 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered products/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 172ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 08:19:42 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 08:23:00 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (140.6ms)
+Completed 200 OK in 203ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 08:23:02 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at Thu Jul 28 08:23:36 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered products/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 141ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 08:23:40 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (234.4ms)
+Completed 200 OK in 281ms (Views: 250.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/orders" for 127.0.0.1 at Thu Jul 28 08:24:10 +0800 2011
+  Processing by OrdersController#index as HTML
+  [1m[36mUser Load (15.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mOrder Load (0.0ms)[0m  SELECT "orders".* FROM "orders" ORDER BY created_at desc LIMIT 10 OFFSET 0
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+Rendered orders/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 219ms (Views: 171.9ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 08:24:13 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name[0m
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/2" for 127.0.0.1 at Thu Jul 28 08:24:17 +0800 2011
+  Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "id"=>"2"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "users" WHERE "users"."id" = 2
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 172ms
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 08:24:17 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name[0m
+Rendered users/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 172ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/4" for 127.0.0.1 at Thu Jul 28 08:24:20 +0800 2011
+  Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "id"=>"4"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "users" WHERE "users"."id" = 4
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 78ms
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 08:24:20 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name[0m
+Rendered users/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 09:07:44 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name[0m
+Rendered users/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at Thu Jul 28 09:07:50 +0800 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (328.1ms)
+Completed 200 OK in 453ms (Views: 359.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at Thu Jul 28 09:07:51 +0800 2011
+  Processing by OrdersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mOrder Load (15.6ms)[0m  [1mSELECT "orders".* FROM "orders" ORDER BY created_at desc LIMIT 10 OFFSET 0[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "orders"
+Rendered orders/index.html.erb within layouts/application (187.5ms)
+Completed 200 OK in 281ms (Views: 234.4ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at Thu Jul 28 09:07:53 +0800 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name
+Rendered users/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 94ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at Thu Jul 28 09:07:59 +0800 2011
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at Thu Jul 28 09:08:04 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "commit"=>"Login", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A=", "utf8"=>"✓", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 109ms
+
+
+Started GET "/admin" for 127.0.0.1 at Thu Jul 28 09:08:04 +0800 2011
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+Rendered admin/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 109ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/logout" for 127.0.0.1 at Thu Jul 28 09:08:09 +0800 2011
+  Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 0ms
+
+
+Started GET "/" for 127.0.0.1 at Thu Jul 28 09:08:09 +0800 2011
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 83 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 83)
+Rendered carts/_cart.html.erb (0.0ms)
+Rendered store/index.html.erb within layouts/application (156.3ms)
+Completed 200 OK in 359ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=19" for 127.0.0.1 at Thu Jul 28 09:08:14 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"19", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 83 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 19 AND ("line_items".cart_id = 83) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("order_id", "created_at", "updated_at", "quantity", "product_id", "cart_id") VALUES (NULL, '2011-07-28 01:08:15.218750', '2011-07-28 01:08:15.218750', 1, 19, 83)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 83)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 83)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 83)
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 531ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=20" for 127.0.0.1 at Thu Jul 28 09:08:18 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"20", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A="}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 83 LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 20 AND ("line_items".cart_id = 83) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("cart_id", "order_id", "product_id", "quantity", "created_at", "updated_at") VALUES (83, NULL, 20, 1, '2011-07-28 01:08:18.718750', '2011-07-28 01:08:18.718750')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 83)[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 83)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (15.6ms)
+Rendered carts/_cart.html.erb (31.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 83)[0m
+Rendered line_items/create.js.rjs (46.9ms)
+Completed 200 OK in 438ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=18" for 127.0.0.1 at Thu Jul 28 09:08:21 +0800 2011
+  Processing by LineItemsController#create as JS
+  Parameters: {"product_id"=>"18", "authenticity_token"=>"kfuCtEDnl1/CbuuhRlYyzEpFGCQJx/A3CxchJijpf3A="}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 83 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 18 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 18 AND ("line_items".cart_id = 83) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("quantity", "cart_id", "order_id", "updated_at", "created_at", "product_id") VALUES (1, 83, NULL, '2011-07-28 01:08:21.406250', '2011-07-28 01:08:21.406250', 18)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 83)
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 83)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 19 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 20 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 18 ORDER BY title LIMIT 1
+Rendered line_items/_line_item.html.erb (62.5ms)
+Rendered carts/_cart.html.erb (109.4ms)
+  [1m[36mSQL (15.6ms)[0m  [1mSELECT SUM("line_items"."quantity") AS sum_id FROM "line_items" WHERE ("line_items".cart_id = 83)[0m
+Rendered line_items/create.js.rjs (140.6ms)
+Completed 200 OK in 297ms (Views: 171.9ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at Thu Jul 28 09:08:25 +0800 2011
+  Processing by OrdersController#new as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 83 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 83)[0m
+Rendered orders/_form.html.erb (171.9ms)
+Rendered orders/new.html.erb within layouts/application (171.9ms)
+Completed 200 OK in 359ms (Views: 218.8ms | ActiveRecord: 0.0ms)
