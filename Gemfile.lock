@@ -71,5 +71,6 @@ PLATFORMS
 
 DEPENDENCIES
   rails (= 3.0.7)
+  mysql
   sqlite3
   will_paginate (>= 3.0.pre)
