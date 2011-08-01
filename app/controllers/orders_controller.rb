@@ -55,14 +55,12 @@ class OrdersController < ApplicationController
   def create
     shop_order_hash = {}
 
-    file = File.new('a.txt','w')
-    
     
     #orders
     current_cart.line_items.each do
     |item|
     
-      file.puts item.product.id
+    
       item.product.sales += item.quantity
       item.product.save
     
@@ -77,8 +75,6 @@ class OrdersController < ApplicationController
       shop_order_hash[item.product.shop].line_items << item
     end
 
-    file.close
-
     success = true
     errors = nil
     shop_order_hash.values.each do
@@ -86,6 +82,7 @@ class OrdersController < ApplicationController
       unless order.save
       success = false
       errors = order.errors
+      @order = order
       break
       end
     end
@@ -96,10 +93,14 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
    
-        #Notifier.order_received(order).deliver
+   
+        shop_order_hash.values.each do
+          |order|
+          Notifier.order_received(order).deliver
+        end
+        
         #Notifier.order_received(@order).deliver
         format.html { redirect_to(store_url, :notice=>'Thank you for your order') }
-      #format.html { redirect_to(@order, :notice => 'Order was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => errors, :status => :unprocessable_entity }
@@ -108,7 +109,7 @@ class OrdersController < ApplicationController
 
   end
 
-  # PUT /orders/1
+  ## PUT /orders/1
   # PUT /orders/1.xml
   def update
     @order = Order.find(params[:id])
