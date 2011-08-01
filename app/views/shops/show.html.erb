@@ -1,10 +1,13 @@
+<div class="depot_form">
 <% if notice %>
 <p id="notice">
 	<%= notice %>
 </p>
 <% end %>
-<p>
-	<h1>Shop management</h1>
+	<fieldset>
+		<legend>
+			Shop management
+		</legend>
 
 	<%= image_tag(@shop.image_url, :class => 'list_image') %>
 	<br/>	
@@ -25,7 +28,7 @@
 	<%= @shop.description %>
 	<br/>
 
-</p>
 
 <%= link_to 'Edit', edit_shop_path(@shop) %>
-
+	</fieldset>
+</div>
