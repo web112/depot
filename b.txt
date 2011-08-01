@@ -1,4 +1,4 @@
-nameMyStringcreated_at2011-08-01 08:25:53 UTCimage_urla.jpgupdated_at2011-08-01 08:25:53 UTCid980190962descriptionnothingtelephone12345678emaila@a.com
-nameMyStringcreated_at2011-08-01 08:25:53 UTCimage_urla.jpgupdated_at2011-08-01 08:25:53 UTCtelephone12345678descriptionnothingemaila@a.com
+nameqwedescriptionwqwewquploaded_image#<ActionDispatch::Http::UploadedFile:0x7a84928>telephone123132email297512481@qq.com
+nameqwecreated_atimage_urluser_files/shop_images/110801171515_rtp.jpgupdated_attelephone123132descriptionwqwewqemail297512481@qq.com
 create shop
 save shop
