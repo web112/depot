@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  telephone: 12345678
+  email: a@a.com
+  image_url: a.jpg
+  description: nothing
+
+two:
+  name: MyString
+  telephone: 12345678
+  email: a@a.com
+  image_url: a.jpg
+  description: nothing

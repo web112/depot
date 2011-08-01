@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
+  
+  before_filter :clerk_authorize
+  before_filter :host_authorize, :only => [:new, :create, :index, :destroy, :edit, :update]
+  
+  @@per_page_item = 5
+  
   # GET /users
   # GET /users.xml
   def index
-    @users = User.order(:name)
+	@users = current_user.shop.users.paginate :page => params[:page], :order=>'created_at desc',
+                             :per_page => @@per_page_item 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,12 +21,16 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-
+	file = File.open("test.txt","w")
+	file.puts @user.attributes
+	file.close
+	
+	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
     end
-  end
+  end 
 
   # GET /users/new
   # GET /users/new.xml
@@ -41,10 +52,16 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
+	
+	if(current_user.role == 'host')
+		@user.role = 'clerk'
+		@user.shop = current_user.shop
+	end
+
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(users_url, :notice => "User #{@user.name} was successfully created.") }
+        format.html { redirect_to(users_url, :notice => "#{@user.role} #{@user.name} was successfully created.") }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -60,7 +77,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(users_url, :notice => "User #{@user.name} was successfully updated.") }
+        format.html { redirect_to(users_url, :notice => "#{@user.role} #{@user.name} was successfully updated.") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -73,12 +90,9 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
-    begin
-    @user.destroy
-    flash[:notice]="User #{@user.name} deleted"
-    rescue Exception=>e
-      flash[:notice]=e.message
-    end
+	unless @user.id.eql? current_user.id
+		@user.destroy
+	end
 
     respond_to do |format|
       format.html { redirect_to(users_url) }

@@ -7,13 +7,13 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:line_items)
+    assert_redirected_to login_url
   end
 
-  test "should get new" do
+  test "should not get new" do
     get :new
-    assert_response :success
+
+    assert_redirected_to login_url
   end
 
   test "should create line_item" do
@@ -21,20 +21,12 @@ class LineItemsControllerTest < ActionController::TestCase
       post :create, :product_id => products(:ruby).id
     end
 
-    assert_redirected_to store_path#(assigns(:line_item).cart)
-  end
-  
-  test "should create line_item via ajax" do
-    assert_difference('LineItem.count') do
-      xhr :post, :create, :product_id=>products(:ruby).id
-    end
-    assert_response :success
-    assert_select 'tr#current_item', /Programming Ruby 1.9/
+    assert_redirected_to carts_url
   end
 
-  test "should show line_item" do
+  test "should not show line_item" do
     get :show, :id => @line_item.to_param
-    assert_response :success
+    assert_redirected_to login_url
   end
 
   test "should get edit" do
@@ -44,7 +36,7 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should update line_item" do
     put :update, :id => @line_item.to_param, :line_item => @line_item.attributes
-    assert_redirected_to line_item_path(assigns(:line_item))
+    assert_redirected_to login_url
   end
 
   test "should destroy line_item" do
@@ -52,6 +44,6 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, :id => @line_item.to_param
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to carts_path
   end
 end

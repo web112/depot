@@ -1,8 +1,16 @@
 class ProductsController < ApplicationController
+
+  before_filter :clerk_authorize,  :only => [:show, :edit, :update, :destroy]
+  before_filter :ensure_your_product,  :only => [:show, :edit, :update, :destroy]
+
+  @@per_page_item = 2
   # GET /products
   # GET /products.xml
   def index
-    @products = Product.all
+
+    @products = current_user.shop.products.paginate :page => params[:page], :order=>'created_at desc',
+    :per_page => @@per_page_item
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
@@ -14,6 +22,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -23,6 +32,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.xml
   def new
+    @shop = current_user.shop
     @product = Product.new
 
     respond_to do |format|
@@ -40,7 +50,7 @@ class ProductsController < ApplicationController
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
-
+    @product.shop = current_user.shop
     respond_to do |format|
       if @product.save
         format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
@@ -79,19 +89,57 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   def who_bought
     @product = Product.find(params[:id])
-    respond_to do |format|
+    respone_to do |format|
       format.atom
-      format.xml { render :xml=>@product}
+      format.xml{ render :xml => @product }
     end
   end
+
+  def show_to_buyers
+    @cart = current_cart
+    @product = Product.find(params[:id])
+
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @product }
+    end
+  end
+
+  def rate_to_product
+    @product = Product.find(params[:id])
+    rate = params[:rate]
+    
+    file = File.new('a.txt','w')
+    file.puts rate
+    file.close
+
+    @product.rating_sum += rate.to_f
+    @product.rating_times += 1
+    
+    if @product.save
+      
+    end
+
+    respond_to do |format|
+      flash[:notice] = 'Rating successfully'
+      format.html { redirect_to(:action=>:show_to_buyers, :id=>@product.id ) }
+      format.js 
+      format.xml  { render :xml => @product }
+    end
+    
+  end
+
+  private
+
+  def ensure_your_product
+    product = Product.find(params[:id])
+    if product.shop.id != current_user.shop.id
+      redirect_to current_user.shop, :notice => "Not your product!"
+    end
+  end
+
 end
-
-
-
-
-
-
-

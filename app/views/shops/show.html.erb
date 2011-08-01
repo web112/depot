@@ -1,0 +1,31 @@
+<% if notice %>
+<p id="notice">
+	<%= notice %>
+</p>
+<% end %>
+<p>
+	<h1>Shop management</h1>
+
+	<%= image_tag(@shop.image_url, :class => 'list_image') %>
+	<br/>	
+
+	<b>Name:</b>
+	<%= @shop.name %>
+	<br/>
+	
+	<b>Email:</b>
+	<%= @shop.email %>
+	<br/>
+
+	<b>Telephone:</b>
+	<%= @shop.telephone %>
+	<br/>
+
+	<b>Description:</b>
+	<%= @shop.description %>
+	<br/>
+
+</p>
+
+<%= link_to 'Edit', edit_shop_path(@shop) %>
+

@@ -1,0 +1,52 @@
+<%= form_for(@shop) do |f| %>
+<% if @shop.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+
+	<ul>
+		<% @shop.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= f.label :name %>
+	<br />
+	<%= f.text_field :name %>
+	<br />
+</div>
+
+
+<div class="field">
+	<%= f.label :email %>
+	<br />
+	<%= f.text_field :email %>
+	<br />
+</div>
+<div class="field">
+	<%= f.label :telephone %>
+	<br />
+	<%= f.text_field :telephone %>
+	<br />
+</div>
+<div class="field">
+	<%= f.label :image_url %>
+	<br />
+	<%= f.text_field :image_url %>
+	<br />
+</div>	
+
+<div class="field">
+	<%= f.label :description %>
+	<br />
+	<%= f.text_area :description %>
+	<br />
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>

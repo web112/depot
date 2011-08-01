@@ -1,25 +1,57 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+	<%= notice %>
+</p>
+<p>
+	<b>Products List:</b>
+	<br/>
+	<table>
+		<% @order.line_items.each do |item| %>
+		<tr>
+			<td>	<%= item.quantity %>&times;</td>
+			<td>	<%= truncate(strip_tags(item.product.title),
+			:length => 80)%></td>
+			<td class = "item_price">
+				<%= number_to_currency(item.total_price) %>
+			</td>
+		</tr>
+		<% end %>
+		<tr class="total_line">
+		<td colspan="2">
+			Total
+		</td>
+		<td class="total_cell">
+			<%= number_to_currency(@order.total_price)%>
+		</td>
+	</tr>
+	</table>
+	
+</p>
+
 
 <p>
-  <b>Name:</b>
-  <%= @order.name %>
+	<b>Name:</b>
+	<%= @order.name %>
 </p>
 
 <p>
-  <b>Address:</b>
-  <%= @order.address %>
+	<b>Address:</b>
+	<%= @order.address %>
 </p>
 
 <p>
-  <b>Email:</b>
-  <%= @order.email %>
+	<b>Email:</b>
+	<%= @order.email %>
 </p>
 
 <p>
-  <b>Pay type:</b>
-  <%= @order.pay_type %>
+	<b>Pay type:</b>
+	<%= @order.pay_type %>
 </p>
 
+<p>
+	<b>State:</b>
+	<%= @order.state %>
+</p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

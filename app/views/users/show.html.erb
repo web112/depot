@@ -16,5 +16,23 @@
 </p>
 
 
+<p>
+  <b>:</b>
+  <%= @user.salt %>
+</p>
+
+
+<%if @user.role == "clerk" or @user.role == "host"%>
+<p>
+  <b>Shop:</b>
+  <%= @user.shop.name %>
+</p>
+<%end%>
+
+<p>
+  <b>role:</b>
+  <%= @user.role %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

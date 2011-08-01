@@ -5,15 +5,14 @@ class CartsControllerTest < ActionController::TestCase
     @cart = carts(:one)
   end
 
-  test "should get index" do
+  test "should not get index" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:carts)
+    assert_redirected_to login_url
   end
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_redirected_to login_url
   end
 
   test "should create cart" do
@@ -24,19 +23,19 @@ class CartsControllerTest < ActionController::TestCase
     assert_redirected_to cart_path(assigns(:cart))
   end
 
-  test "should show cart" do
+  test "should not show cart" do
     get :show, :id => @cart.to_param
-    assert_response :success
+    assert_redirected_to login_url
   end
 
-  test "should get edit" do
+  test "should not get edit" do
     get :edit, :id => @cart.to_param
-    assert_response :success
+    assert_redirected_to login_url
   end
 
-  test "should update cart" do
+  test "should not update cart" do
     put :update, :id => @cart.to_param, :cart => @cart.attributes
-    assert_redirected_to cart_path(assigns(:cart))
+    assert_redirected_to login_url
   end
 
   test "should destroy cart" do

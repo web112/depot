@@ -1,6 +1,12 @@
 <h1>Editing order</h1>
-
-<%= render 'form' %>
+<div class = "depot_form">
+	<fieldset>
+		<legend>
+			Please Enter The Details
+		</legend>
+<%= render 'form_edit' %>
 
 <%= link_to 'Show', @order %> |
 <%= link_to 'Back', orders_path %>
+	</fieldset>
+</div>

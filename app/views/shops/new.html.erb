@@ -1,0 +1,13 @@
+<h1>New shop</h1>
+<%if flash[:notice]%>
+<p id="notice"><%= flash[:notice] %></p>
+<%end%>
+<div class = "depot_form">
+	<fieldset>
+		<legend>
+			Please Enter The Details
+		</legend>
+		<%= render 'form' %>
+		<%= link_to 'Back', store_url %>
+	</fieldset>
+</div>

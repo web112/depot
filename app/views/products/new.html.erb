@@ -1,5 +1,11 @@
-<h1>New product</h1>
+<h1>Editing product</h1>
+<div class = "depot_form">
+	<fieldset>
+		<legend>
+			Please Enter The Details
+		</legend>
+		<%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', products_path %>
+		<%= link_to 'Back', @shop %>
+	</fieldset>
+</div>

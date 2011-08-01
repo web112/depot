@@ -1,7 +1,5 @@
 <h1>Listing carts</h1>
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
+
 <table>
   <tr>
     <th></th>
@@ -21,3 +19,4 @@
 <br />
 
 <%= link_to 'New Cart', new_cart_path %>
+<p><%= will_paginate @carts%></p>

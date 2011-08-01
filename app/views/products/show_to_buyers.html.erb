@@ -1,0 +1,43 @@
+<% if notice %>
+<p id="notice">
+	<%= notice %>
+</p>
+<%end%>
+
+<%= image_tag(@product.image_url) %>
+<h3>
+	<%= @product.title %>
+</h3>
+<%=sanitize @product.description %>
+<div class ="price_line">
+	<span class="price">
+		<%= number_to_currency(@product.price) %>
+	</span>
+			
+	<%= button_to 'Add to Cart', 
+		line_items_path(:product_id => @product),
+		:remote => true
+	%>
+	<%= link_to 'Back', store_url %>
+	<br/>
+	
+	<div id = "sales">
+		sales:
+		<%= @product.sales %>
+	</div>
+	
+	<div id = "rating_sales" >
+		<%= render(@product) %>
+	</div>
+	
+	
+	<br/>
+	
+	<%= link_to "1", {:controller=>"products", :action =>"rate_to_product", :id=>@product, :rate=>'1'}, { :remote=>true} %>
+	<%= link_to "2", {:controller=>"products", :action =>"rate_to_product", :id=>@product, :rate=>'2'}, { :remote=>true} %>
+	<%= link_to "3", {:controller=>"products", :action =>"rate_to_product", :id=>@product, :rate=>'3'}, { :remote=>true} %>
+	<%= link_to "4", {:controller=>"products", :action =>"rate_to_product", :id=>@product, :rate=>'4'}, { :remote=>true} %>
+	<%= link_to "5", {:controller=>"products", :action =>"rate_to_product", :id=>@product, :rate=>'5'}, { :remote=>true} %>
+	 
+</div>
+	

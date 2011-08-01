@@ -1,10 +1,16 @@
 class CartsController < ApplicationController
-  skip_before_filter :authorize,:only=>[:create,:update,:delete]
+
+  before_filter :forbiden_authorize, :only => [:index, :update, :edit, :show, :new]
   
   # GET /carts
   # GET /carts.xml
+  
+  @@per_page_item = 2
+  
   def index
-    @carts = Cart.all
+    @carts = Cart.all.paginate :page => params[:page], :order=>'created_at desc',
+    :per_page => @@per_page_item
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @carts }
@@ -15,17 +21,20 @@ class CartsController < ApplicationController
   # GET /carts/1.xml
   def show
     begin
-      @cart = Cart.find(params[:id])
+    @cart = Cart.find(params[:id])
+    #@cart = current_cart
+
     rescue ActiveRecord::RecordNotFound
-      logger.error "Attempt to access incalid cart #{params[:id]}"
-      redirect_to store_url,:notice=>"Invalid cart"
+      logger.error "Attempt to access invalid cart #{params[:id]}"
+      redirect_to store_url, :notic => 'Invalid cart'
     else
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @cart }
+      respond_to do |format|
+        format.html
+        format.xml { render :xml => @cart }
+      end
     end
-   end
   end
+  
 
   # GET /carts/new
   # GET /carts/new.xml
@@ -80,10 +89,12 @@ class CartsController < ApplicationController
   def destroy
     @cart = Cart.find(params[:id])
     @cart.destroy
+    @cart = Cart.new
     session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to(store_url)}
+      format.html { redirect_to(store_url) }
+      format.js
       format.xml  { head :ok }
     end
   end

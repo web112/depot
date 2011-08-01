@@ -1,13 +1,23 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: Dave Thomas
-  address: MyText
-  email: dave@example.org
+  name: Jane
+  address: SYSU
+  email: jane@gmail.com
   pay_type: Check
+  state: pending
 
 two:
   name: MyString
   address: MyText
   email: MyString
-  pay_type: MyString
+  pay_type: Check
+  state: pending
+  
+order_of_shop_one:
+  name: MyString
+  address: MyText
+  email: MyString
+  pay_type: Check
+  shop: one
+  state: pending

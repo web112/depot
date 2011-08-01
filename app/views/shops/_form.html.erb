@@ -1,0 +1,81 @@
+<%= form_for(@shop) do |f| %>
+<% if @shop.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+
+	<ul>
+		<% @shop.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+<% end %>
+<% if @user.errors.any? %>
+	<ul>
+		<% @user.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+
+
+<div class="field">
+	<label for ="name">
+		Host Name
+	</label><br />
+	<%= text_field_tag :name, params[:name], :size => 40  %>
+</div>
+
+<div class="field">
+	<label for ="password">
+		Password
+	</label><br />
+	<%= password_field_tag :password, params[:password] , :size => 40 %>
+</div>
+
+<div class="field">
+	<label for ="confirm">
+		Confirm
+	</label><br />
+	<%= password_field_tag :confirmation, params[:confirmation] , :size => 40 %>
+</div>
+
+<div class="field">
+	<%= f.label :name %>
+	<br />
+	<%= f.text_field :name , :size => 40 %>
+</div>
+
+<div class="field">
+	<%= f.label :email %>
+	<br />
+	<%= f.text_field :email , :size => 40 %>
+</div>
+
+<div class="field">
+	<%= f.label :telephone %>
+	<br />
+	<%= f.text_field :telephone , :size => 40 %>
+</div>
+
+<div class="field">
+	<%= f.label :image_url %>
+	<br />
+	<%= f.text_field :image_url , :size => 40 %>
+</div>
+
+<div class="field">
+	<%= f.label :description %>
+	<br />
+	<%= f.text_field :description , :size => 40 %>
+</div>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>

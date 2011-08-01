@@ -5,14 +5,16 @@ one:
   description: MyText
   image_url: MyString
   price: 9.99
+  shop: one
 
 two:
   title: MyOthertring
   description: MyText
   image_url: MyString
   price: 9.99
+  shop: two
+  
 #START:ruby
-
 ruby: 
   title:       Programming Ruby 1.9
   description: 
@@ -20,5 +22,6 @@ ruby:
     language out there.  If you need to get working programs
     delivered fast, you should add Ruby to your toolbox.
   price:       49.50
-  image_url:   ruby.png 
+  image_url: ruby.png 
+  shop: one
 #END:ruby

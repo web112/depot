@@ -1,5 +1,11 @@
 # encoding: utf-8
 Product.delete_all
+Cart.delete_all
+Order.delete_all
+LineItem.delete_all
+User.delete_all
+
+
 Product.create(:title => 'Web Design for Developers',
   :description => 
     %{<p>
