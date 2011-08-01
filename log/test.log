@@ -45295,3 +45295,583 @@ Completed 200 OK in 42ms (Views: 35.0ms | ActiveRecord: 2.0ms)
   [1m[36mAREL (2.0ms)[0m  [1mUPDATE "users" SET "name" = 'sam', "updated_at" = '2011-07-31 08:19:01.660914', "hashed_password" = 'dba8e199a855173b74cc497a5249b587642acbf1b77723d0c4d3158c5cca029d', "salt" = '506373960.538419928137482' WHERE "users"."id" = 980190962[0m
 Redirected to http://test.host/users
 Completed 302 Found in 14ms
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "products" WHERE ("products"."title" IS NULL) LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'My Book Title') LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by AdminController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+Rendered admin/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 48ms (Views: 46.0ms | ActiveRecord: 9.0ms)
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "carts"[0m
+  Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{"created_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "updated_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "id"=>980190962}}
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-08-01 04:32:56.000000', '2011-08-01 04:32:56.000000')
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 10ms
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "carts"[0m
+  [1m[35mCart Load (1.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "carts"
+  Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190962 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 980190962)
+  [1m[36mAREL (2.0ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = 298486374[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = 980190962
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 980190962[0m
+Redirected to http://test.host/
+Completed 302 Found in 121ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36mCart Load (1.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by CartsController#new as HTML
+Redirected to http://test.host/login
+Completed 302 Found in 1ms
+  [1m[36mCart Load (1.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+Redirected to http://test.host/login
+Completed 302 Found in 1ms
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by CartsController#index as HTML
+Redirected to http://test.host/login
+Completed 302 Found in 2ms
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+Redirected to http://test.host/login
+Completed 302 Found in 1ms
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{"created_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "updated_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "id"=>980190962}, "id"=>"980190962"}
+Redirected to http://test.host/login
+Completed 302 Found in 1ms
+  [1m[36mLineItem Load (1.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items"[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1
+  Processing by LineItemsController#create as HTML
+  Parameters: {"product_id"=>207281424}
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-08-01 04:32:57.480985', '2011-08-01 04:32:57.480985')[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."product_id" = 207281424 AND ("line_items".cart_id = 980190963) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "line_items" ("quantity", "product_id", "order_id", "updated_at", "created_at", "cart_id") VALUES (1, 207281424, NULL, '2011-08-01 04:32:57.497986', '2011-08-01 04:32:57.497986', 980190963)
+Redirected to http://test.host/carts
+Completed 302 Found in 22ms
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "line_items"[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items"
+  Processing by LineItemsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1[0m
+  [1m[35mAREL (3.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = 980190962
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-08-01 04:32:57.527988', '2011-08-01 04:32:57.527988')[0m
+Redirected to http://test.host/carts
+Completed 302 Found in 15ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items"
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by LineItemsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1[0m
+Rendered line_items/_form.html.erb (15.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+Completed 200 OK in 62ms (Views: 60.0ms | ActiveRecord: 17.0ms)
+  [1m[36mLineItem Load (1.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by LineItemsController#index as HTML
+Redirected to http://test.host/login
+Completed 302 Found in 2ms
+  [1m[36mLineItem Load (1.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by LineItemsController#new as HTML
+Redirected to http://test.host/login
+Completed 302 Found in 1ms
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by LineItemsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+Redirected to http://test.host/login
+Completed 302 Found in 2ms
+  [1m[36mLineItem Load (1.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by LineItemsController#update as HTML
+  Parameters: {"id"=>"980190962", "line_item"=>{"created_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "quantity"=>1, "product_id"=>207281424, "updated_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "order_id"=>nil, "id"=>980190962, "cart_id"=>980190962}}
+Redirected to http://test.host/login
+Completed 302 Found in 2ms
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by OrdersController#new as HTML
+  [1m[36mAREL (3.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-08-01 04:32:57.715998', '2011-08-01 04:32:57.715998')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 980190963)
+Redirected to http://test.host/
+Completed 302 Found in 10ms
+  [1m[36mOrder Load (1.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-08-01 04:32:57.734999', '2011-08-01 04:32:57.734999')[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "line_items" ("quantity", "product_id", "order_id", "updated_at", "created_at", "cart_id") VALUES (1, 207281424, NULL, '2011-08-01 04:32:57.747000', '2011-08-01 04:32:57.747000', 980190963)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "orders"
+  Processing by OrdersController#create as HTML
+  Parameters: {"order"=>{"name"=>"Jane", "address"=>"SYSU", "created_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "updated_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "shop_id"=>nil, "pay_type"=>"Check", "id"=>980190962, "state"=>"pending", "email"=>"jane@gmail.com"}}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190963 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 980190963)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'Programming Ruby 1.9') AND ("products".id <> 207281424) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "products" SET "sales" = 1, "updated_at" = '2011-08-01 04:32:57.805003' WHERE "products"."id" = 207281424[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+WARNING: Can't mass-assign protected attributes: id
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "orders" ("state", "shop_id", "email", "created_at", "address", "pay_type", "updated_at", "name") VALUES ('pending', 980190962, 'jane@gmail.com', '2011-08-01 04:32:56.000000', 'SYSU', 'Check', '2011-08-01 04:32:56.000000', 'Jane')[0m
+  [1m[35mAREL (1.0ms)[0m  UPDATE "line_items" SET "order_id" = 980190963, "updated_at" = '2011-08-01 04:32:57.837005', "cart_id" = NULL WHERE "line_items"."id" = 980190963
+  [1m[36mCart Load (1.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190963 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 980190963)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 980190963[0m
+Rendered line_items/_line_item.text.erb (0.0ms)
+
+Sent mail to jane@gmail.com (87ms)
+Date: Mon, 01 Aug 2011 12:32:58 +0800
+From: from@example.com
+To: jane@gmail.com
+Message-ID: <4e362c7afa12_101418330e4966ae@zoller-THINK.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear Jane
+
+Thank you for your recent order from The Pragmatic Store.
+
+You ordered the following items:
+ 1 x Programming Ruby 1.9
+
+We'll send you a separate e-mail when your order ships.
+Redirected to http://test.host/
+Completed 302 Found in 325ms
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "orders"
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mOrder Load (1.0ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+  Processing by OrdersController#destroy as HTML
+  Parameters: {"id"=>"247390115"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".order_id = 247390115)
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "orders" WHERE "orders"."id" = 247390115[0m
+Redirected to http://test.host/orders
+Completed 302 Found in 18ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "orders"
+  [1m[36mOrder Load (1.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mOrder Load (0.0ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1
+  Processing by OrdersController#edit as HTML
+  Parameters: {"id"=>"247390115"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mOrder Load (0.0ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mOrder Load (1.0ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1
+Rendered orders/_form_edit.html.erb (7.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 78ms (Views: 69.0ms | ActiveRecord: 20.0ms)
+  [1m[35mOrder Load (0.0ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mOrder Load (1.0ms)[0m  SELECT "orders".* FROM "orders" WHERE ("orders".shop_id = 980190962) ORDER BY created_at desc LIMIT 2 OFFSET 0
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 76ms (Views: 64.0ms | ActiveRecord: 2.0ms)
+  [1m[35mOrder Load (0.0ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mAREL (5.0ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-08-01 04:32:58.460041', '2011-08-01 04:32:58.460041')
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "line_items" ("quantity", "product_id", "order_id", "updated_at", "created_at", "cart_id") VALUES (1, 207281424, NULL, '2011-08-01 04:32:58.470042', '2011-08-01 04:32:58.470042', 980190963)
+  Processing by OrdersController#new as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 980190963 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 980190963)
+Rendered orders/_form_new.html.erb (10.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 95ms (Views: 91.0ms | ActiveRecord: 6.0ms)
+  [1m[35mOrder Load (1.0ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1[0m
+  Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"247390115"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mOrder Load (1.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1[0m
+  [1m[35mLineItem Load (1.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".order_id = 247390115)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 48ms (Views: 35.0ms | ActiveRecord: 6.0ms)
+  [1m[35mOrder Load (0.0ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mOrder Load (1.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1[0m
+  Processing by OrdersController#update as HTML
+  Parameters: {"order"=>{"name"=>"MyString", "address"=>"MyText", "created_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "updated_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "shop_id"=>980190962, "pay_type"=>"Check", "id"=>247390115, "state"=>"pending", "email"=>"MyString"}, "id"=>"247390115"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1[0m
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mOrder Load (0.0ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."id" = 247390115 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/orders/247390115
+Completed 302 Found in 18ms
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'Programming Ruby 1.9') LIMIT 1
+  [1m[36mProduct Load (23.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "products"
+  Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"price"=>19.95, "title"=>"Lorem Ipsum", "image_url"=>"lorem.jpg", "description"=>"Wibbles are fun!"}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT 1 FROM "products" WHERE ("products"."title" = 'Lorem Ipsum') LIMIT 1[0m
+  [1m[35mAREL (3.0ms)[0m  INSERT INTO "products" ("sales", "title", "shop_id", "rating_times", "created_at", "rating_sum", "image_url", "description", "updated_at", "price") VALUES (0, 'Lorem Ipsum', 980190962, 0, '2011-08-01 04:32:58.757058', 0, 'lorem.jpg', 'Wibbles are fun!', '2011-08-01 04:32:58.757058', 19.95)
+Redirected to http://test.host/products/980190963
+Completed 302 Found in 16ms
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"207281424"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".product_id = 207281424)
+  [1m[36mAREL (2.0ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = 298486374[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = 980190962
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "products" WHERE "products"."id" = 207281424[0m
+Redirected to http://test.host/products
+Completed 302 Found in 23ms
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"207281424"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+Rendered products/_form.html.erb (52.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+Completed 200 OK in 218ms (Views: 208.0ms | ActiveRecord: 44.0ms)
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by ProductsController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products" WHERE ("products".shop_id = 980190962) ORDER BY title, created_at desc LIMIT 2 OFFSET 0
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "products" WHERE ("products".shop_id = 980190962)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+Completed 200 OK in 113ms (Views: 100.0ms | ActiveRecord: 3.0ms)
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by ProductsController#new as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+Rendered products/_form.html.erb (10.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+Completed 200 OK in 49ms (Views: 45.0ms | ActiveRecord: 2.0ms)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"207281424"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+Completed 200 OK in 59ms (Views: 44.0ms | ActiveRecord: 5.0ms)
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by ProductsController#update as HTML
+  Parameters: {"id"=>"207281424", "product"=>{"price"=>19.95, "title"=>"Lorem Ipsum", "image_url"=>"lorem.jpg", "description"=>"Wibbles are fun!"}}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (2.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 207281424 ORDER BY title LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "products" WHERE ("products"."title" = 'Lorem Ipsum') AND ("products".id <> 207281424) LIMIT 1
+  [1m[36mAREL (3.0ms)[0m  [1mUPDATE "products" SET "title" = 'Lorem Ipsum', "image_url" = 'lorem.jpg', "description" = 'Wibbles are fun!', "updated_at" = '2011-08-01 04:32:59.513101', "price" = 19.95 WHERE "products"."id" = 207281424[0m
+Redirected to http://test.host/products/207281424
+Completed 302 Found in 51ms
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://test.host/login
+Completed 302 Found in 3ms
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by SessionsController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 40ms (Views: 39.0ms | ActiveRecord: 13.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by SessionsController#create as HTML
+  Parameters: {"name"=>"dave", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'dave' LIMIT 1[0m
+Redirected to http://test.host/admin
+Completed 302 Found in 4ms
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by SessionsController#destroy as HTML
+Redirected to http://test.host/
+Completed 302 Found in 2ms
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "shops"[0m
+  Processing by ShopsController#create as HTML
+  Parameters: {"name"=>"hostname", "shop"=>{"name"=>"MyString", "created_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "image_url"=>"a.jpg", "updated_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "id"=>980190962, "telephone"=>"12345678", "description"=>"nothing", "email"=>"a@a.com"}, "confirmation"=>"password", "password"=>"[FILTERED]"}
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."name" = 'hostname') LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "shops" ("created_at", "telephone", "name", "email", "image_url", "description", "updated_at") VALUES ('2011-08-01 04:32:56.000000', '12345678', 'MyString', 'a@a.com', 'a.jpg', 'nothing', '2011-08-01 04:32:56.000000')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."name" = 'hostname') LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "users" ("hashed_password", "role", "salt", "shop_id", "created_at", "name", "updated_at") VALUES ('9596928c654e8fe2da9ecf9d5c093bff553dfa26568163f0884cff164a1117f8', 'host', '416739360.957137017741962', 980190963, '2011-08-01 04:32:59.746115', 'hostname', '2011-08-01 04:32:59.746115')[0m
+Redirected to http://test.host/shops/980190963
+Completed 302 Found in 70ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "shops"
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by ShopsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+Rendered shops/_edit_form.html.erb (16.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 212ms (Views: 201.0ms | ActiveRecord: 7.0ms)
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 417269330 LIMIT 1
+  Processing by ShopsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 417269330 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 417269330 LIMIT 1[0m
+Completed 200 OK in 41ms (Views: 35.0ms | ActiveRecord: 3.0ms)
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  Processing by ShopsController#new as HTML
+Rendered shops/_form.html.erb (14.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 1.0ms)
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "shops"
+  Processing by ShopsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users".shop_id = 980190962)
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = 417269330[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "users" WHERE "users"."id" = 742793022
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = 980190962[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE ("products".shop_id = 980190962) ORDER BY title
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".product_id = 980190962)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "products" WHERE "products"."id" = 980190962
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".product_id = 207281424)[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = 298486374
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = 980190962[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "products" WHERE "products"."id" = 207281424
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE ("orders".shop_id = 980190962)[0m
+Redirected to http://test.host/shops
+Completed 302 Found in 38ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "shops"
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by ShopsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 42ms (Views: 34.0ms | ActiveRecord: 6.0ms)
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  Processing by ShopsController#update as HTML
+  Parameters: {"shop"=>{"name"=>"MyString", "created_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "image_url"=>"a.jpg", "updated_at"=>Mon, 01 Aug 2011 04:32:56 UTC +00:00, "id"=>980190962, "telephone"=>"12345678", "description"=>"nothing", "email"=>"a@a.com"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (1.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/shops/980190962
+Completed 302 Found in 14ms
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  [1m[36mAREL (3.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-08-01 04:33:00.282145', '2011-08-01 04:33:00.282145')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "line_items" WHERE ("line_items".cart_id = 980190963)
+Rendered carts/_cart.html.erb (2.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 76ms (Views: 66.0ms | ActiveRecord: 9.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"sam", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."name" = 'sam') LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mINSERT INTO "users" ("hashed_password", "role", "salt", "shop_id", "created_at", "name", "updated_at") VALUES ('a9b56bcbc9e60d05422e95b09246cbce0c5298141c1efecc8e3f97bb7cd749f3', 'clerk', '508375440.747923400787482', 980190962, '2011-08-01 04:33:00.626165', 'sam', '2011-08-01 04:33:00.626165')[0m
+Redirected to http://test.host/users
+Completed 302 Found in 23ms
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mAREL (2.0ms)[0m  DELETE FROM "users" WHERE "users"."id" = 980190962
+Redirected to http://test.host/users
+Completed 302 Found in 14ms
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+Rendered users/_form.html.erb (8.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 73ms (Views: 64.0ms | ActiveRecord: 14.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users".shop_id = 980190962) ORDER BY created_at desc LIMIT 5 OFFSET 0
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mShop Load (0.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 64ms (Views: 51.0ms | ActiveRecord: 4.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+Rendered users/_form.html.erb (23.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+Completed 200 OK in 62ms (Views: 57.0ms | ActiveRecord: 3.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mShop Load (1.0ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mShop Load (0.0ms)[0m  SELECT "shops".* FROM "shops" WHERE "shops"."id" = 980190962 LIMIT 1
+Completed 200 OK in 48ms (Views: 39.0ms | ActiveRecord: 4.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  Processing by UsersController#update as HTML
+  Parameters: {"id"=>"980190962", "user"=>{"name"=>"sam", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 742793022 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."name" = 'sam') AND ("users".id <> 980190962) LIMIT 1
+  [1m[36mAREL (2.0ms)[0m  [1mUPDATE "users" SET "hashed_password" = 'abb66ff0b73cf3684e0f2f3d7f31cf673660d7fa414ea4d39eda3c766532647b', "salt" = '412361040.103953712448087', "name" = 'sam', "updated_at" = '2011-08-01 04:33:01.175196' WHERE "users"."id" = 980190962[0m
+Redirected to http://test.host/users
+Completed 302 Found in 18ms

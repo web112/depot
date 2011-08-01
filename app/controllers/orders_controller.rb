@@ -109,7 +109,7 @@ class OrdersController < ApplicationController
 
   end
 
-  # PUT /orders/1
+  ## PUT /orders/1
   # PUT /orders/1.xml
   def update
     @order = Order.find(params[:id])

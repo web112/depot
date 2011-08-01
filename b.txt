@@ -1,0 +1,4 @@
+nameMyStringcreated_at2011-08-01 04:32:56 UTCimage_urla.jpgupdated_at2011-08-01 04:32:56 UTCid980190962descriptionnothingtelephone12345678emaila@a.com
+nameMyStringcreated_at2011-08-01 04:32:56 UTCimage_urla.jpgupdated_at2011-08-01 04:32:56 UTCtelephone12345678descriptionnothingemaila@a.com
+create shop
+save shop
