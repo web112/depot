@@ -1,5 +1,7 @@
 Depot::Application.routes.draw do
 
+  resources :book_types
+
   resources :shops
 
   get 'admin' => 'admin#index'

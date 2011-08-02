@@ -32,6 +32,23 @@ String
 	<br />
 	<%= f.text_field :price , :size => 40 %>
 </div>
+	<div class="field">
+		<label for ="type_name">
+			Typename:
+		</label>
+	<br />
+	<%unless @product && @product.book_types%>
+		<%= text_field_tag :type_name, params[:type_name], :size => 40 %>
+	<%else%>
+		<%
+		type_string = ""
+		@product.book_types.each do |type|
+			type_string+="|"+type.name
+		end
+		%>
+		<%= text_field_tag :type_name, params[:type_name],:value => type_string,:size => 40 %>
+	<%end%>
+</div>
 <div class="actions">
 	<%= f.submit %>
 </div>

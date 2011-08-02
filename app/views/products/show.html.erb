@@ -22,5 +22,9 @@
   <%= @product.price %>
 </p>
 
+<%@product.book_types.each do |type|%>
+	<%=type.name%><br />
+<%end%>
+
 <%= link_to 'Edit', edit_product_path(@product)%>
 <%= link_to 'Back', products_url %>

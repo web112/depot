@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -44,12 +43,24 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @types = @product.book_types
   end
 
   # POST /products
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
+
+    unless params[:type_name].nil?
+      types = params[:type_name].split "|"
+      types.each do |type|
+        type = BookType.find_by_name(type)
+        if type
+        @product.book_types << type
+        end
+      end
+    end
+
     @product.shop = current_user.shop
     respond_to do |format|
       if @product.save
@@ -67,6 +78,17 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
 
+    unless params[:type_name].nil?
+      @product.book_types.clear;
+      types = params[:type_name].split "|"
+      types.each do |type|
+        type = BookType.find_by_name(type)
+        if type
+        @product.book_types << type
+        end
+      end
+    end
+    
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to(@product, :notice => 'Product was successfully updated.') }
@@ -102,7 +124,6 @@ class ProductsController < ApplicationController
     @cart = current_cart
     @product = Product.find(params[:id])
 
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -112,25 +133,25 @@ class ProductsController < ApplicationController
   def rate_to_product
     @product = Product.find(params[:id])
     rate = params[:rate]
-    
+
     file = File.new('a.txt','w')
     file.puts rate
     file.close
 
     @product.rating_sum += rate.to_f
     @product.rating_times += 1
-    
+
     if @product.save
-      
+
     end
 
     respond_to do |format|
       flash[:notice] = 'Rating successfully'
       format.html { redirect_to(:action=>:show_to_buyers, :id=>@product.id ) }
-      format.js 
+      format.js
       format.xml  { render :xml => @product }
     end
-    
+
   end
 
   private
