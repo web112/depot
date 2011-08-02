@@ -11,6 +11,7 @@
 #store_main{
 	margin: auto;
 	width: 1200px;
+	overflow:hidden;
 }
 
 
@@ -127,20 +128,17 @@
   margin-left: 16em;
   padding-top: 0ex;
   padding-left: 2em;
-  height: 1000px;
   background-color:white;
 }
 
 .home_page_left{
 	width:  750px;
-	height: 1000px;
 	margin-top:10px;
 	float: left;	
 }
 
 .home_page_right{
 	width:  180px;
-	height: 980px;
 	background-color:#EEFFEE;
 	float: right;
 	border-left-color:#99CC99;
@@ -156,7 +154,9 @@
   	border-bottom-right-radius: 30px;
   	padding-top: 1em;
   	padding-right: 1em;
-  	padding-left: 1em; 	
+  	padding-left: 1em; 
+  	padding-bottom: 32767px;
+  	margin-bottom:-32767px;	
 }
 
 .right_title
@@ -243,7 +243,8 @@
   float: left;
   padding-top: 1em;
   padding-left: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 32767px;
+  margin-bottom:-32767px;
   width: 15em;
   background: #141;
  
@@ -256,6 +257,8 @@
 	width: 25px;
 	height: 25px;
 	vertical-align:middle;
+	float:left;
+	margin-right:5px;
 }
 
 #side .side_module{
@@ -270,9 +273,18 @@
 
 #side .tip a{
   color: #bfb;
-  font-size:small;
+  font-size:12px;
+  display: block;
+  float:left;
+  width:95px;
+  text-decoration:none;
+  border:solid 5px #141;
 }
-
+#side .tip a:hover{
+	color:white;
+	border-color:#9c9 #141;
+	background-color:#228822;
+}
 /* An entry in the store catalog */
 #store .entry form, #store .entry form div {
 	display: inline;
@@ -536,7 +548,7 @@
 }
 
 a:hover{
-	color:green;
+	color:white;
 	background-color:#9c9;
 }
 .orders_table table{
@@ -560,4 +572,22 @@ a:hover{
 	font-size: 18px;
 	color: white;
 	
+}
+.depot_form #shop_form fieldset{
+	width:700px;
+}
+.depot_form #shop_form fieldset img{
+	float:left;
+	width:120px;
+	height:150px;
+	margin-right:5px;
+}
+.depot_form #shop_form fieldset #shop_goods{
+	float:right;
+	width:550px;
+	margin-right:5px;
+}
+.depot_form #shop_form fieldset a{
+	float:right;
+	margin-right:10px;
 }

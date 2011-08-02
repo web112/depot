@@ -4,6 +4,7 @@
 	<%= notice %>
 </p>
 <% end %>
+<div id="shop_form">
 	<fieldset>
 		<legend>
 			Shop management
@@ -11,7 +12,7 @@
 
 	<%= image_tag(@shop.image_url, :class => 'list_image') %>
 	<br/>	
-
+	<div id="shop_goods">
 	<b>Name:</b>
 	<%= @shop.name %>
 	<br/>
@@ -27,8 +28,9 @@
 	<b>Description:</b>
 	<%= @shop.description %>
 	<br/>
-
+	</div>
 
 <%= link_to 'Edit', edit_shop_path(@shop) %>
 	</fieldset>
+	</div>
 </div>
