@@ -51,5 +51,22 @@ class Product < ActiveRecord::Base
     filename
   end
 
+  def search(keyStr)
+    keyArr = keyStr.split(" ")
+    #key 1
+    if(keyArr.length == 1)
+      search_items = Product.find(:all, :conditions => "title like '%#{keyArr[0]}%'")
+    elsif(keyArr.length > 1)
+      sql="%"+keyArr.join("%")+"%"
+      search_items = Product.find(:all, :conditions => "title like '#{sql}'")
+      
+      sql2="title like '%"+keyArr.join("%' or title like '%")+"%'"
+      search_items2 = Product.find(:all,:conditions => "#{sql2}") - search_items
+      
+      search_items = search_items + search_items2
+    end
+    search_items
+  end
+  
 end
 

@@ -1,0 +1,7 @@
+<table id="searchAjaxTable">
+<%if @products != nil %>
+  <% @products.each do |search_item| %>
+  <tr><td onclick="chooseItem(this)"><%= search_item.title %></td></tr>
+  <%end%>
+<%end%>
+</table>

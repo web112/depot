@@ -239,6 +239,10 @@
 
 }
 
+#search_bar .search_button:hover{
+	cursor: pointer;
+}
+
 #side {
   float: left;
   padding-top: 1em;
@@ -590,4 +594,62 @@ a:hover{
 .depot_form #shop_form fieldset a{
 	float:right;
 	margin-right:10px;
+}
+
+#search{
+	display: inline-block;
+}
+#searchAjax{
+	background-color:white;
+	position: absolute;
+	width: 403px;
+}
+
+#searchAjax table{
+	table-layout: fixed;
+	width:403px;
+	border:1px solid black;
+}
+#searchAjax table td{
+	overflow:hidden;
+    white-space:nowrap;
+    text-align: left;
+}
+
+#searchAjax table td:hover{
+	background-color: RGB(209,221,253);
+	cursor: pointer;
+}
+.selectedRow{
+	background-color:RGB(209,221,253);
+}
+
+#search_sorry{
+	line-height: 14px;
+	font-size:12px;	
+}
+
+#search_sorry div{
+	display: inline-block;
+	width:588px;
+}
+
+#search_sorry span{
+	font-weight: 800;
+	font-size: 14px;
+}
+
+#search_sorry .search_product,.search_product{
+	color:RGB(255,128,0);
+	font-weight: 800;
+}
+#search_sorry a{
+	color:#0063DC;
+	margin-right:15px;
+}
+#search_sorry a:hover{
+	color:RGB(255,128,0);
+	cursor: pointer;
+	background-color:white;
+	text-decoration: underline;
 }

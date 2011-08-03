@@ -8,7 +8,7 @@
 		<%= stylesheet_link_tag "scaffold" %>
 		<%= stylesheet_link_tag "depot", :media => "all" %><!-- <label id ="code.sit"/> -->
 		<!-- END_HIGHLIGHT -->
-		<%= javascript_include_tag :defaults %>
+		<%= javascript_include_tag :all %>
 		<%= csrf_meta_tag %><!-- <label id="code.csrf"/> -->
 	</head>
 	<!-- END:head -->
@@ -20,7 +20,14 @@
 				<%= @page_title || "pragmatic Bookshelf"%><!-- <label id="code.depot.e.title"/> -->
 			</div>
 			<div id="search_bar">
-				<%= form_tag do %><%= image_tag("search.jpg") %><%= text_field_tag :name, params[:name], :class=>"search_field" %><%= submit_tag "Search", :class => "search_button" %><%end%>
+				<%= form_for :search,:url=>{:controller => "store",:action=>"show_products"},:html=>{:method=>"get",:id=>"search_form",:onsubmit =>"return false"} do%>
+				<%= image_tag("search.jpg") %>
+				<div id="search">
+				<%= text_field_tag :name,params[:name],:autocomplete=>"off",:class=>"search_field",:onkeydown =>"keypress(event)"%><%= submit_tag "search",:class => "search_button",:onclick=>"form_submit()" %>
+				<div id="searchAjax"></div>
+				</div>
+				<%= observe_field :name,:frequency=>0.5,:update=>'searchAjax',:url=>{:controller => "store",:action=>"ajax_show_products"},:with => "'name='+encodeURIComponent(value)"%>
+				<%end%>
 			</div>
 			<div id="columns">
 				<div id="side">

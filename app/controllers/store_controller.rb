@@ -13,16 +13,32 @@ class StoreController < ApplicationController
   end
   
   def show_products
-    products = Product.all;
+    products = Product.all
     if params[:order] == "recommend"
       products.sort!{|p1, p2| p2.rating_sum/(p2.rating_times+0.001) <=> p1.rating_sum/(p1.rating_times+0.001) }
     elsif params[:order] == "hottest" 
       products.sort!{|p1, p2| p2.sales<=> p1.sales }
     end
     
-    @products = products.paginate :page => params[:page], :order=>'created_at desc',
-                             :per_page => @@per_page_item 
+    if params[:name] == ""
+      @products_all_num = products.size
+      @products = products.paginate :page => params[:page], :order=>'created_at desc',
+                             :per_page => @@per_page_item
+    else
+      @product = Product.new
+      @products = @product.search(params[:name])
+      @products_all_num = @products.size
+      if @products.size != 0
+        @products = @products.paginate :page => params[:page],:order=>'created_at desc',:per_page => @@per_page_item
+      end
+    end  
     @cart = current_cart
+  end
+  
+  def ajax_show_products
+    @product = Product.new
+    @products = @product.search(params[:name])
+    render :layout => false
   end
   
 

@@ -25,6 +25,8 @@ Depot::Application.routes.draw do
   
   get "store/index"
   
+  post "store/ajax_show_products"
+  
   resources :products do
     get :who_bought, :on => :member
   end

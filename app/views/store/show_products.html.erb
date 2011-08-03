@@ -5,7 +5,28 @@
 <%end%>
 
 <h1>Your Pragmatic Catalog</h1>
+<% if @products.size==0 %>
+<div id="search_sorry">
+<img src="images/sorry.gif"/>
+<div>
+	<span>很抱歉，没有找到与"<span class="search_product"><%=params[:name]%></span>"相关的宝贝</span>
 
+	<p>建议您:<br />
+    	1. 看看输入的文字是否有误<br />
+    	2. 去掉可能不必要的字词，如“的”、“什么”等<br />
+    	3. 调整关键字，如“兰蔻再生青春眼霜”改成“兰蔻 再生青春眼霜”或“兰蔻 眼霜”<br />
+	</p>
+		你是不是想找:
+		<p>
+			<a onclick="search_recommend(this)">Programming abc</a>
+			<a onclick="search_recommend(this)">Ruby on Rails</a>
+			<a onclick="search_recommend(this)">ABC learning</a>
+			<a onclick="search_recommend(this)">English learning</a>
+    	</p>
+    </div>
+</div>
+<%else%>
+<p>找到相关书籍：<span class="search_product"><%=@products_all_num%></span> 本</p>
 <% @products.each do |product| %>
 <div class="entry">
 	<table>
@@ -44,4 +65,4 @@
 <p>
 	<%= will_paginate @products%>
 </p>
-
+<%end%>
