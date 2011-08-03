@@ -1,19 +1,4 @@
-namedescriptiontelephoneemail
-namecreated_atimage_urlupdated_attelephonedescriptionemail
+name而过特瑞特 description哦阿斯顿佛啊上帝哦福建阿斯哦对房价阿斯顿佛寺的撒的发生uploaded_image#<ActionDispatch::Http::UploadedFile:0x46625e8>telephone撒旦法email 撒旦法
+name而过特瑞特 created_atimage_urluser_files/shop_images/110803164226_b14.GIFupdated_attelephone撒旦法description哦阿斯顿佛啊上帝哦福建阿斯哦对房价阿斯顿佛寺的撒的发生email 撒旦法
 create shop
-users
-is invalid
-name
-can't be blank
-name
-can't be blank
-email
-can't be blank
-telephone
-can't be blank
-image_url
-can't be blank
-image_url
-must be a URL for GIF, JPC or PNG image.
-description
-can't be blank
+save shop

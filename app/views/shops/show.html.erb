@@ -1,18 +1,15 @@
-<div class="depot_form">
 <% if notice %>
 <p id="notice">
 	<%= notice %>
 </p>
 <% end %>
-<div id="shop_form">
-	<fieldset>
-		<legend>
-			Shop management
-		</legend>
-
-	<%= image_tag(@shop.image_url, :class => 'list_image') %>
-	<br/>	
-	<div id="shop_goods">
+<div class="show_details">
+<div id="up">
+	<div class="up_left">
+	<h1>Shop management</h1>
+	<%= image_tag(@shop.image_url, :class => 'list_image') %>	
+	</div>
+	<div class="up_right">
 	<b>Name:</b>
 	<%= @shop.name %>
 	<br/>
@@ -24,13 +21,13 @@
 	<b>Telephone:</b>
 	<%= @shop.telephone %>
 	<br/>
-
+	</div>
+</div>	
+	<div class="description">
 	<b>Description:</b>
 	<%= @shop.description %>
 	<br/>
-	</div>
 
 <%= link_to 'Edit', edit_shop_path(@shop) %>
-	</fieldset>
 	</div>
 </div>
