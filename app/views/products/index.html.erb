@@ -26,6 +26,8 @@
 			<div class ="price_line">
 				<span class="price"><%= number_to_currency(product.price) %></span>
 			</div>
+			<div>Type:<%product.book_types.each do |type|%>
+				<%=type.name%><%end%>	</div>
 			</td>
 			<td>
 			<%= link_to 'Show', product %>&nbsp;

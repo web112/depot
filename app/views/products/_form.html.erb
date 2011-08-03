@@ -1,4 +1,4 @@
-<%= form_for @product, :html => {:multipart => true} do |f| %>
+<%= form_for @product,:html => {:multipart => true,:onsubmit=>"return checkCheckBox()"} do |f| %>
 <% if @product.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -37,20 +37,20 @@ String
 			Typename:
 		</label>
 	<br />
-	<%unless @product && @product.book_types%>
-		<%= text_field_tag :type_name, params[:type_name], :size => 40 %>
-	<%else%>
-		<%
-		type_string = ""
-		@product.book_types.each do |type|
-			type_string+="|"+type.name
-		end
-		%>
-		<%= text_field_tag :type_name, params[:type_name],:value => type_string,:size => 40 %>
-	<%end%>
+		<%@product_types.each do |type|%>
+		<%checked=false%>
+			<%@types.each do |choosenType|%>
+			<%
+			if choosenType.name==type.name 
+				checked=true%>
+			<%break%>
+			<%end%>
+			<%end%>
+		<%= check_box_tag 'type_name[]',type.name,checked,:class=>"checkbox" %><%=type.name%>
+		<%end%>
 </div>
 <div class="actions">
-	<%= f.submit %>
+	<%= f.submit%>
 </div>
 
 <% end %>

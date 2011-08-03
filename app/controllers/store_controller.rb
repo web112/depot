@@ -20,10 +20,10 @@ class StoreController < ApplicationController
       products.sort!{|p1, p2| p2.sales<=> p1.sales }
     end
     
-    if params[:name] == ""
-      @products_all_num = products.size
+    if params[:name] == "" || params[:name]== nil
       @products = products.paginate :page => params[:page], :order=>'created_at desc',
                              :per_page => @@per_page_item
+      @products_all_num = products.size
     else
       @product = Product.new
       @products = @product.search(params[:name])

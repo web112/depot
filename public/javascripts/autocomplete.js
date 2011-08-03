@@ -66,15 +66,40 @@ function search_recommend(ele){
 	document.getElementById("search_form").submit();
 }
 
-function search_highlight(){alert("reg");
+function search_highlight(){
 	var keyStr = document.getElementById("name").value;
-	var keyArr = keyStr.split(" ");alert("reg");
-	var reg = new RegExp(keyArr[0]+"(?=[^<>]*<)","ig");
-	alert(reg);
+	var keyArr = keyStr.split(" ");
 	var titles = document.getElementsByClassName("product_title");
 	for(j=0;j<titles.length;j++){
-		titles[j].getElementsByTagName("a")[0].innerHTML=titles[j].getElementsByTagName("a")[0].innerHTML.replace(reg,"xx");
+		for(i=0;i<keyArr.length;i++){
+			var reg = new RegExp(keyArr[i],"ig");
+			//titles[j].getElementsByTagName("a")[0].textContent=titles[j].getElementsByTagName("a")[0].textContent.replace(/&lt;/g,"<");
+			//titles[j].getElementsByTagName("a")[0].textContent=titles[j].getElementsByTagName("a")[0].textContent.replace(/&gt;/g,">");
+			document.getElementById("tem").innerHTML = titles[j].getElementsByTagName("a")[0].innerHTML;
+			//alert(document.getElementById("tem").textContent);
+			//alert(document.getElementById("tem").textContent);
+			document.getElementById("tem").textContent =document.getElementById("tem").textContent.replace(reg,'<span class="highlight">'+keyArr[i]+ '</span>' );
+			//alert(document.getElementById("tem").innerHTML);
+			titles[j].getElementsByTagName("a")[0].innerHTML = document.getElementById("tem").innerHTML.replace(/&lt;/g,"<").replace(/&gt;/g,">");
+			//alert(titles[j].getElementsByTagName("a")[0].innerHTML);
+		}
+	//	titles[j].getElementsByTagName("a")[0].innerHTML=titles[j].getElementsByTagName("a")[0].textContent.replace(/&lt;/g,"<").replace(/&gt;/g,">");
 	}
 }
 
 window.onload = search_highlight;
+
+function checkCheckBox(){
+	var checkBoxs = document.getElementsByClassName("checkbox");
+	var checked = 0;
+	for(i=0;i<checkBoxs.length;i++){
+		if(checkBoxs[i].checked==true)
+			checked++;
+	}
+	if(checked>3||checked<1){
+		alert("Type nums should be 1,2 or 3!");
+		return false;
+		}
+	else
+		return true;
+}

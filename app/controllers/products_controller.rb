@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_filter :clerk_authorize,  :only => [:show, :edit, :update, :destroy]
   before_filter :ensure_your_product,  :only => [:show, :edit, :update, :destroy]
 
-  @@per_page_item = 2
+  @@per_page_item = 10
   # GET /products
   # GET /products.xml
   def index
@@ -33,33 +33,30 @@ class ProductsController < ApplicationController
   def new
     @shop = current_user.shop
     @product = Product.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @product }
-    end
+    @product_types= BookType.all
+    @types = @product.book_types
   end
 
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
     @types = @product.book_types
+    @product_types= BookType.all
   end
 
   # POST /products
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
-
-    unless params[:type_name].nil?
-      types = params[:type_name].split "|"
+    @product_types= BookType.all
+    types = params[:type_name];
       types.each do |type|
         type = BookType.find_by_name(type)
         if type
         @product.book_types << type
         end
       end
-    end
+    
 
     @product.shop = current_user.shop
     respond_to do |format|
@@ -77,16 +74,14 @@ class ProductsController < ApplicationController
   # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
-
-    unless params[:type_name].nil?
-      @product.book_types.clear;
-      types = params[:type_name].split "|"
-      types.each do |type|
+    @product.book_types = []
+    types = params[:type_name];
+   
+    types.each do |type|
         type = BookType.find_by_name(type)
         if type
         @product.book_types << type
         end
-      end
     end
     
     respond_to do |format|

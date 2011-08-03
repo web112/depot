@@ -1,4 +1,19 @@
-nameMyStringcreated_at2011-08-02 02:05:12 UTCimage_urla.jpgupdated_at2011-08-02 02:05:12 UTCid980190962descriptionnothingtelephone12345678emaila@a.com
-nameMyStringcreated_at2011-08-02 02:05:12 UTCimage_urla.jpgupdated_at2011-08-02 02:05:12 UTCtelephone12345678descriptionnothingemaila@a.com
+namedescriptiontelephoneemail
+namecreated_atimage_urlupdated_attelephonedescriptionemail
 create shop
-save shop
+users
+is invalid
+name
+can't be blank
+name
+can't be blank
+email
+can't be blank
+telephone
+can't be blank
+image_url
+can't be blank
+image_url
+must be a URL for GIF, JPC or PNG image.
+description
+can't be blank
