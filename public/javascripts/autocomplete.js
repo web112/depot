@@ -66,13 +66,14 @@ function search_recommend(ele){
 	document.getElementById("search_form").submit();
 }
 
-function search_highlight(){
+function search_highlight(){alert("reg");
 	var keyStr = document.getElementById("name").value;
-	var keyArr = keyStr.split(" ");
+	var keyArr = keyStr.split(" ");alert("reg");
+	var reg = new RegExp(keyArr[0]+"(?=[^<>]*<)","ig");
+	alert(reg);
 	var titles = document.getElementsByClassName("product_title");
 	for(j=0;j<titles.length;j++){
-		alert(titles[j].getElementsByTagName("a")[0].innerHTML.indexOf(keyArr[0]));
-		titles[j].getElementsByTagName("a")[0].innerHTML=titles[j].getElementsByTagName("a")[0].innerHTML.replace(/a/,"xx");
+		titles[j].getElementsByTagName("a")[0].innerHTML=titles[j].getElementsByTagName("a")[0].innerHTML.replace(reg,"xx");
 	}
 }
 
