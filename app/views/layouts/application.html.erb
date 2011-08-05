@@ -14,16 +14,22 @@
 	<!-- END:head -->
 
 	<body id="store">
+		
+				
+		<%= form_tag '', :method => 'GET' do %>
+		<%= select_tag 'locale', options_for_select(LANGUAGES, I18n.locale),
+		:onchange => 'this.form.submit()' %>
+		<% end %>
+		
 		<div id="store_main">
 			<div id="banner">
 				<%= image_tag("logo.png") %>
-				<%= @page_title || "pragmatic Bookshelf"%><!-- <label id="code.depot.e.title"/> -->
+				<%= @page_title || t('.title')%><!-- <label id="code.depot.e.title"/> -->
 			</div>
 			<div id="search_bar">
 				<%= form_for :search,:url=>{:controller => "store",:action=>"show_products"},:html=>{:method=>"get",:id=>"search_form",:onsubmit =>"return false"} do%>
-				<%= image_tag("search.jpg") %>
-				<div id="search">
-				<%= text_field_tag :name,params[:name],:autocomplete=>"off",:class=>"search_field",:onkeydown =>"keypress(event)"%><%= submit_tag "search",:class => "search_button",:onclick=>"form_submit()" %>
+				<%= image_tag("search.jpg") %><div id="search">
+				<%= text_field_tag :name,params[:name],:autocomplete=>"off",:class=>"search_field",:onkeydown =>"keypress(event)"%><%= submit_tag t('.search'),:class => "search_button",:onclick=>"form_submit()" %>
 				<div id="searchAjax"></div>
 				</div>
 				<%= observe_field :name,:frequency=>0.5,:update=>'searchAjax',:url=>{:controller => "store",:action=>"ajax_show_products"},:with => "'name='+encodeURIComponent(value)"%>
@@ -35,69 +41,67 @@
 					<div class = "side_module">
 						<div id="cart">
 							<% if @cart %>
-							<!--<%= hidden_div_if (@cart.line_items.empty?, :id => "cart" ) do %>-->
 							<%= render @cart %>
-							<!--<% end %>-->
 							<% end %>
 						</div>
 					</div>
 					<div class = "side_module">
 						<div class="side_title">
-							<%= image_tag("bullet.gif") %>&nbsp Navigation bar
+							<%= image_tag("bullet.gif") %>&nbsp<%=t('.nav')%>
 						</div>
 						<div class="tip">
 							<%= image_tag("home.png") %>
-							<a href="/">&nbspHome</a>
+							<a href="/">&nbsp<%=t('.home')%></a>
 						</div>
 						<div class="tip">
 							<%= image_tag("question.png") %>
-							<a href="http://www..../frq">&nbsp<span style="cursor:help">Questions</span></a>
+							<a href="http://www..../frq">&nbsp<%=t('.question')%></a>
 						</div>
 						<div class="tip">
 							<%= image_tag("news.png") %>
-							<a href="http://www..../news">&nbspNews</a>
+							<a href="http://www..../news">&nbsp<%=t('.news')%></a>
 						</div>
 						<div class="tip">
 							<%= image_tag("contact.png") %>
-							<a href="http://www..../contact">&nbspContact</a>
+							<a href="http://www..../contact">&nbsp<%=t('.contact')%></a>
 						</div>
 					</div>
-					<% if session[:user_id] && User.find(session[:user_id]).role == "host" %>
+					<% if session[:user_id] && (User.find(session[:user_id]).role == "host" || "clerk")%>
 					<% user = User.find(session[:user_id]) %>
 					<div class = "side_module">
 						<div class="side_title">
-							<%= image_tag("account.png") %>&nbsp Account
+							<%= image_tag("account.png") %>&nbsp <%=t('.account')%>
 						</div>
 						<div class="tip">
 							<%= image_tag("shop.png") %>
-							<%= link_to 'My Shop', user.shop %>
+							<%= link_to t('.myshop'), user.shop %>
 						</div>
 						<div class="tip">
 							<%= image_tag("book.png") %>
-							<%= link_to 'My Products', products_url %>
+							<%= link_to t('.myproducts'), products_url %>
 						</div>
 						<div class="tip">
 							<%= image_tag("order.png") %>
-							<%= link_to 'My Orders', orders_path %>
+							<%= link_to t('.myorders'), orders_path %>
 						</div>
 						<div class="tip">
 							<%= image_tag("colleague.png") %>
-							<%= link_to 'My Colleague', users_path %>
+							<%= link_to t('.mycolleague'), users_path %>
 						</div>
 
-						<%= button_to 'Logout', logout_path, :method => :delete %>
+						<%= button_to t('.logout'), logout_path, :method => :delete %>
 					</div>
 					<%else%>
 					<div class="side_title">
-						<%= image_tag("account.png") %>&nbsp Account
+						<%= image_tag("account.png") %>&nbsp<%=t('.account')%>
 					</div>
 					<div class="tip">
 						<%= image_tag("colleague.png") %>
-						<%= link_to 'Sign In', login_url %>
+						<%= link_to t('.signin'), login_url %>
 					</div>
 					<div class="tip">
 						<%= image_tag("colleague.png") %>
-						<%= link_to 'New Shop', new_shop_url %>
+						<%= link_to t('.newshop'), new_shop_url %>
 					</div>
 					<% end %>
 				</div>
@@ -107,18 +111,23 @@
 					</div>
 					<div class="home_page_right">
 						<div class="right_title">
-							Index
-						</div>
-						<h2>literature</h2>
-						<h2>Sicience</h2>
-						<h2>……</h2>
-						<div class="right_title">
 							Categorises
 						</div>
+						
 						<div id="categorises">
 							<h2>literature</h2>
 							<h2>Sicience</h2>
 							<h2>……</h2>
+							</ br>
+						</div>
+						<div class="right_title">
+							Index
+						</div>
+						
+						<div id="categorises">
+							</ br>
+							<h2><a href="/htmls/buyer.html">Customer Guide</a></h2>
+							<h2><a href="/htmls/saler.html">Salespeople Guide</a></h2>
 						</div>
 					</div>
 				</div>

@@ -1,4 +1,4 @@
-name而过特瑞特 description哦阿斯顿佛啊上帝哦福建阿斯哦对房价阿斯顿佛寺的撒的发生uploaded_image#<ActionDispatch::Http::UploadedFile:0x46625e8>telephone撒旦法email 撒旦法
-name而过特瑞特 created_atimage_urluser_files/shop_images/110803164226_b14.GIFupdated_attelephone撒旦法description哦阿斯顿佛啊上帝哦福建阿斯哦对房价阿斯顿佛寺的撒的发生email 撒旦法
+nameMyStringcreated_at2011-08-05 06:23:58 UTCimage_urla.jpgupdated_at2011-08-05 06:23:58 UTCid980190962descriptionnothingtelephone12345678emaila@a.com
+nameMyStringcreated_at2011-08-05 06:23:58 UTCimage_urla.jpgupdated_at2011-08-05 06:23:58 UTCtelephone12345678descriptionnothingemaila@a.com
 create shop
 save shop

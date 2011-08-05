@@ -1,12 +1,12 @@
 <div class="orders_table">
-<h1>Listing orders</h1>
+<h1><%= t('.orderlist')%></h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Pay type</th>
-    <th>State</th>
+    <th><%= t('.name')%></th>
+    <th><%= t('.email')%></th>
+    <th><%= t('.paytype')%></th>
+    <th><%= t('.state')%></th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,9 +18,9 @@
     <td><%= order.email %></td>
     <td><%= order.pay_type %></td>
     <td><%= order.state%></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('.show'), order %></td>
+    <td><%= link_to t('.edit'), edit_order_path(order) %></td>
+    <td><%= link_to t('.destroy'), order, :confirm => t('.areyousure'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -9,15 +9,15 @@ class Product < ActiveRecord::Base
 
   validates :title, :description, :image_url, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
-  validates :title, :uniqueness => true
   validates :image_url, :format =>
   {
     :with => %r{\.(gif|jpg|png)$}i,
-    :message => 'must be a URL for GIF, JPC or PNG image.'
+    :message => I18n.t('image_url')
   }
+  
+ 
 
   before_destroy :ensure_not_referenced_by_any_line_item_in_orders
-
   def ensure_not_referenced_by_any_line_item_in_orders
 
     line_items.each do
@@ -29,8 +29,8 @@ class Product < ActiveRecord::Base
 
     return true;
   end
-  
-    def uploaded_image= (file_field)
+
+  def uploaded_image= (file_field)
     now = Time.now
     @file_name =  now.strftime("%y%m%d%H%M%S") + '_' + sanitize_filename(file_field.original_filename)
 
@@ -59,14 +59,14 @@ class Product < ActiveRecord::Base
     elsif(keyArr.length > 1)
       sql="%"+keyArr.join("%")+"%"
       search_items = Product.find(:all, :conditions => "title like '#{sql}'")
-      
+
       sql2="title like '%"+keyArr.join("%' or title like '%")+"%'"
       search_items2 = Product.find(:all,:conditions => "#{sql2}") - search_items
-      
-      search_items = search_items + search_items2
+
+    search_items = search_items + search_items2
     end
     search_items
   end
-  
+
 end
 

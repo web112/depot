@@ -1,5 +1,5 @@
 <div class="orders_table">
-<h1>Listing users</h1>
+<h1><%= t('.listuser') %></h1>
 
 <% if notice %>
 <p id="notice">
@@ -8,9 +8,8 @@
 <%end%>
 <table>
   <tr>
-    <th>Name</th>
-    <th>Role</th>
-    <th></th>
+    <th><%= t('.name') %></th>
+    <th><%= t('.role') %></th>
     <th></th>
     <th></th>
   </tr>
@@ -19,14 +18,14 @@
   <tr>
     <td><%= user.name %></td>
     <td><%= user.role %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <!--<td><%= link_to 'Show', user %></td>-->
+    <td><%= link_to t('.edit'), edit_user_path(user) %></td>
+    <td><%= link_to t('.destroy'), user, :confirm => t('.areyousure'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 </div>
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to t('.newuser'), new_user_path %>
 <p><%= will_paginate @users%></p>

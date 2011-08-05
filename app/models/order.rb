@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  
   PAYMENT_TYPES = ["Check", "Credit Card", "Purchase Order"]
   STATE_TYPES = ["pending","accept","discard"]
 

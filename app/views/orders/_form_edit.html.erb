@@ -1,7 +1,10 @@
 <%= form_for(@order) do |f| %>
 <% if @order.errors.any? %>
 <div id="error_explanation">
-	<h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+	<!--<h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>-->
+	<h2>
+	<%= t('errors.template.header', :count=>@order.errors.size, :model=>t('activerecord.models.order'))%>
+</h2>
 
 	<ul>
 		<% @order.errors.full_messages.each do |msg| %>
@@ -13,44 +16,40 @@
 </div>
 <% end %>
 
-<div class="field">
-	<%= f.label :name, "Name:" %>
-	<br />
-	<%= f.text_field :name, :size => 40 %>
-</div>
+  <div class="field">
+    <%= f.label :name, t('.name')+":" %><br />
+    <%= f.text_field :name, :size => 40 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :address, t('.address')+":" %><br />
+    <%= f.text_field :address, :size =>40 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :email, t('.email')+":" %><br />
+    <%= f.text_field :email, :size => 40 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :pay_type, t('.paytype')+":" %><br />
+    <%= f.select :pay_type,
+    	Order::PAYMENT_TYPES,
+    	:prompt => t('.selectpaytype')
+     %>
+  </div>
 
 <div class="field">
-	<%= f.label :address, "Address:" %>
-	<br />
-	<%= f.text_area :address, :row =>3, :cols =>40 %>
-</div>
-
-<div class="field">
-	<%= f.label :email, "E-Mail:" %>
-	<br />
-	<%= f.text_field :email, :size => 40 %>
-</div>
-
-<div class="field">
-	<%= f.label :pay_type, "Pay with:" %>
-	<br />
-	<%= f.select :pay_type,
-    Order::PAYMENT_TYPES,
-    :prompt => "Select a payment method"
-%>
-</div>
-
-<div class="field">
-	<%= f.label :state, "State:" %>
+	<%= f.label :state, t('.state')+":" %>
 	<br />
 	<%= f.select :state,
     Order::STATE_TYPES,
-    :prompt => "Select a state"
+    :prompt => t('.selectstate')
 %>
 </div>
 
 <div class="actions">
-	<%= f.submit "Place Order" %>
+	<%= f.submit t('.submit') %>
 </div>
 
 <% end %>

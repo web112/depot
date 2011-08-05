@@ -1,15 +1,21 @@
-<h1>Welcome back</h1>
+<%if flash[:notice]%>
+<p id="notice">
+	<%= notice %>
+</p>
+<%end%>
+
+<h1><%=t('.welcomeback')%></h1>
 <div class = "depot_form">
 	<%= form_tag do %>
 	<fieldset>
 		<legend>
-			Please Log In
+			<%=t('.login')%>
 		</legend>
 		<table>
 			<tr>
 				<td>
 				<label for ="name">
-					Username:
+					<%=t('.username')%>
 				</label>
 				</td>
 				<td><%= text_field_tag :name, params[:name] %></td>
@@ -17,7 +23,7 @@
 			<tr>
 				<td>
 				<label for ="password">
-					Password:
+					<%=t('.pwd')%>
 				</label>
 				</td>
 				<td><%= password_field_tag :password, params[:password] %></td>
@@ -26,7 +32,7 @@
 				<td>
 
 				</td>
-				<td><%= submit_tag "Login", :class=>"button"%></td>
+				<td><%= submit_tag t('.log'), :class=>"button"%></td>
 			</tr>
 		</table>
 
