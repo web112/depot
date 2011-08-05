@@ -3,67 +3,76 @@
 	<%= notice %>
 </p>
 <% end %>
-<p>
-	<h1>Welcome to <%= @shop.name %></h1>
-	<br />
 
-	<%= image_tag(@shop.image_url, :class => 'list_image') %>
-	<br/>	
+<h1>Welcome to my Shop</h1>
+<div class="show_details">
+	<div id="up">
+		<div class="up_left">
+			<%= image_tag(@shop.image_url) %>
+		</div>
+		<div class="up_right">
 
-	<b>Name:</b>
-	<%= @shop.name %>
-	<br/>
-	
-	<b>Email:</b>
-	<%= @shop.email %>
-	<br/>
+			<b><%= t('.name')%>:</b>
+			<%= @shop.name %>
+			<br/>
 
-	<b>Telephone:</b>
-	<%= @shop.telephone %>
-	<br/>
+			<b><%= t('.email')%>:</b>
+			<%= @shop.email %>
+			<br/>
 
-	<b>Description:</b>
-	<%= @shop.description %>
-	<br/>
-
-</p>
-
+			<b><%= t('.telephone')%>:</b>
+			<%= @shop.telephone %>
+			<br/>
+		</div>
+	</div>
+	<div class="description">
+		<b><%= t('.description')%>:</b>
+		<%= @shop.description %>
+		<br/>
+	</div>
+</div>
 <h1>Product List</h1>
 <% @products.each do |product| %>
 <div class="entry">
 	<table>
 		<tr>
-			<td rowspan="3">	<%= image_tag(product.image_url, :class=>"product_logo ") %></td>
-			<td class="product_title">
-					<%= link_to product.title.length>30?product.title[0,30]+"...": product.title, 
-					:controller=>"products", 
-					:action =>"show_to_buyers", 
-					:id=>product	 %>
-					&nbsp;
-					<% (product.rating_sum/(product.rating_times+0.001)).round.times do%>
-						<%= image_tag("rating_start.png", :class => "star") %>
-					<%end%>
-			</td>
+			<td rowspan="4">	<%= image_tag(product.image_url, :class=>"product_logo ") %></td>
+			<td class="product_title">	<%= link_to product.title.length>30?product.title[0,30]+"...": product.title,
+			:controller=>"products",
+			:action =>"show_to_buyers",
+			:id=>product	 %>
+			&nbsp;
+			<% (product.rating_sum/(product.rating_times+0.001)).round.times do%>
+			<%= image_tag("rating_start.png", :class => "star") %>
+			<%end%></td>
 		</tr>
 		<tr class="product_line">
-			<td>(Author)</td>
+			<td><%= t('.author')%></td>
+		</tr>
+		<tr class="product_line">
+			<td><%= t('.type')%>:<%product.book_types.each do |type|%><%= type.name+" "%><%end%></td>
 		</tr>
 		<tr>
 			<td><%= sanitize product.description %></td>
 		</tr>
+
 		<tr>
 			<td>
 			<div class ="price_line">
 				<span class="price"><%= number_to_currency(product.price) %></span>
 			</div>
+
 			</td>
-			<td>	<%= button_to 'Add to Cart',
+			<td>	<%= button_to t('.add'),
 			line_items_path(:product_id => product),
 			:remote => true%></td>
+
 		</tr>
 	</table>
 </div>
 <%end%>
 
-<p><%= will_paginate @products%></p>
+<p>
+	<%= will_paginate @products%>
+</p>
 

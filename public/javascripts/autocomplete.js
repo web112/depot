@@ -70,24 +70,19 @@ function search_highlight(){
 	var keyStr = document.getElementById("name").value;
 	var keyArr = keyStr.split(" ");
 	var titles = document.getElementsByClassName("product_title");
+	var regString="("+keyArr[0]+")";
+	var keyString="";
+	for(i=1;i<keyArr.length;i++){
+		regString = regString+"|("+keyArr[i]+")";
+	}
+	for(i=1;i<keyArr.length+1;i++){
+		keyString=keyString+"<span class='highlight'>$"+[i]+"</span>";
+	}
 	for(j=0;j<titles.length;j++){
-		for(i=0;i<keyArr.length;i++){
-			var reg = new RegExp(keyArr[i],"ig");
-			//titles[j].getElementsByTagName("a")[0].textContent=titles[j].getElementsByTagName("a")[0].textContent.replace(/&lt;/g,"<");
-			//titles[j].getElementsByTagName("a")[0].textContent=titles[j].getElementsByTagName("a")[0].textContent.replace(/&gt;/g,">");
-			document.getElementById("tem").innerHTML = titles[j].getElementsByTagName("a")[0].innerHTML;
-			//alert(document.getElementById("tem").textContent);
-			//alert(document.getElementById("tem").textContent);
-			document.getElementById("tem").textContent =document.getElementById("tem").textContent.replace(reg,'<span class="highlight">'+keyArr[i]+ '</span>' );
-			//alert(document.getElementById("tem").innerHTML);
-			titles[j].getElementsByTagName("a")[0].innerHTML = document.getElementById("tem").innerHTML.replace(/&lt;/g,"<").replace(/&gt;/g,">");
-			//alert(titles[j].getElementsByTagName("a")[0].innerHTML);
-		}
-	//	titles[j].getElementsByTagName("a")[0].innerHTML=titles[j].getElementsByTagName("a")[0].textContent.replace(/&lt;/g,"<").replace(/&gt;/g,">");
+		var reg = eval("/"+regString+"/ig");
+		titles[j].getElementsByTagName("a")[0].innerHTML=titles[j].getElementsByTagName("a")[0].innerHTML.replace(reg,keyString);
 	}
 }
-
-window.onload = search_highlight;
 
 function checkCheckBox(){
 	var checkBoxs = document.getElementsByClassName("checkbox");
@@ -103,3 +98,5 @@ function checkCheckBox(){
 	else
 		return true;
 }
+
+window.onload = search_highlight;

@@ -4,40 +4,40 @@
 </p>
 <%end%>
 
-<h1>	Pragmatic News</h1>
+<h1>	<%=t('.pnews')%></h1>
 <div id="news">
 	<%= image_tag("blue.jpg") %>
 	<table>
 		<tr >
-			<th class="news_title">Lastest News</th>
+			<th class="news_title"><%=t('.latestnews')%></th>
 		</tr>
 		<tr>
-			<td>Welcome</td>
+			<td><%=t('.welcome')%></td>
 		</tr>
 		<tr>
-			<td>GO open your new shop</td>
+			<td><%=t('.openshop')%></td>
 		</tr>
 		<tr>
-			<td>millions of books are set</td>
+			<td><%=t('.bookset')%></td>
 		</tr>
 		<tr>
-			<td>famous authors recommend us</td>
+			<td><%=t('.authors')%></td>
 		</tr>
 		<tr>
-			<td>Introduce Bookshelf</td>
+			<td><%=t('.introduce')%></td>
 		</tr>
 		<tr>
-			<td>We Promise!</td>
+			<td><%=t('.promise')%></td>
 		</tr>
 		<tr>
-			<td>Hello Guys!</td>
+			<td><%=t('.hello')%></td>
 		</tr>
 	</table>
 </div>
 <div>
 	<%= image_tag("ad.png", :class=>"ad") %>
 </div>
-<h1>Pragmatic Hottest</h1>
+<h1><%=t('.hot')%></h1>
 
 <div id="recommendation">
 	<% @recommend_products.each do |product| %>
@@ -52,7 +52,7 @@
 	<%end%>
 	<a href = "/show_products?order=recommend"><%= image_tag("list_right.png", :class=>"img_next") %></a>
 </div>
-<h1>Pragmatic Recommendations</h1>
+<h1><%=t('.recommend')%></h1>
 <div id="recommendation">
 	<% @hot_products.each do |product| %>
 	<div class="item">

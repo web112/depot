@@ -1,5 +1,268 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  hello: "Hello world"
+en: 
+  admin:
+    index:
+      welcome: "Welcome"
+      now: "It's"
+      wehave: "We have"
+      order: "Order(s)"
+  layouts: 
+    application: 
+      title: "Pragmatic Bookshelf"
+      search: "Search"
+      nav: "Navigation Bar"
+      home: "Home"
+      question: "Question"
+      contact: "Contact"
+      news: "News"
+      account: "Account"
+      myshop: "My Shop"
+      myproducts: "My Product"
+      myorders: "My Order"
+      mycolleague: "My Colleague"
+      signin: "Sign In"
+      logout: "Logout"
+      newshop: "New Shop"
+  store: 
+    index: 
+      pnews: "Pragmatic News"
+      latestnews: "Lastest News"
+      welcome: "Welcome"
+      openshop: "GO open your new shop"
+      authors: "millions of books are set"
+      bookset: "famous authors recommend us"
+      introduce: "Introduce Bookshelf"
+      hello: "Hello Guys!"
+      promise: "We Promise!"
+      hot:  "Pragmatic Hottest"
+      recommend: "Pragmatic Recommendations"
+    show_products: 
+      category: "Your Pragmatic Category"
+      author: "Author"
+      add: "add to cart"
+      find: "Find"
+      relatedbook: "related book(s)"
+      yoursearch: "Sorry, Your search"
+      cannotfind: "did not match any products"
+      suggest: "Suggest you:"
+      suggesta: "1. Check weather you enter right key word"
+      suggestb: "2. delete unnecessary key word"
+      suggestc: "3. adjust your key word"
+      type: "Type"
+      
+  products: 
+    show_to_buyers: 
+      back: "back"
+      add: "Add To Cart"
+      grade: "Please select a grade"
+      sales: "sales:"
+      type: "Type"
+    form:
+      title: "Title"
+      description: "Description"
+      price: "Price"
+      image: "Image_url"
+      typename: "Typename"
+      submit: "Submit"
+      type: "Type"
+      newproduct: "New Product"
+    index:
+      productlist: "Product List"
+      author: "Author"
+      type: "Type"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      sure: "Are You Sure"
+      newproduct: "New Product"
+    edit:
+      editproduct: "Edit Product"
+      legend: "Please Enter The Details"
+      show: "Show"
+      back: "Back"
+    new:
+      editproduct: "Edit Product"
+      legend: "Please Enter The Details"
+      back: "Back"
+    show: 
+      title: "Title"
+      description: "Description"
+      price: "Price"
+      image: "Image_url"
+      type: "Type"
+      edit: "Edit"
+      back: "Back"
+    product:
+      rating: "Rating"
+      rating_times: "Rating Times"
+  sessions:
+    new:
+      login: "Please Login"
+      username: "Username"
+      pwd: "Password"
+      log: "Login"
+      welcomeback: "Welcome Back"
+  shops:
+    new:
+      newshop: "New Shop"
+      details: "Please Enter The Details"
+      back: "Back"
+    form:
+      host: "Host name"
+      pwd: "Password"
+      confirm: "Confirm"
+      name: "Name"
+      email: "Email"
+      telephone: "Telephone"
+      image: "Image"
+      description: "Description"
+      submit: "Submit"
+    edit_form:
+      host: "Host name"
+      pwd: "Password"
+      confirm: "Confirm"
+      name: "Name"
+      email: "Email"
+      telephone: "Telephone"
+      image: "Image"
+      description: "Description"
+      submit: "Submit"
+      back: "Back"
+    edit:
+      editshop: "Editing shop"
+      details: "Please Enter The Details"
+    show:
+      name: "Name"
+      email: "E-mail"
+      telephone: "Telephone"
+      description: "Description"
+      edit: "Edit"
+  orders:
+    index:
+      name: "User Name"
+      email: "Email"
+      paytype: "Pay Type"
+      state: "State"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      orderlist: "Listing Orders"
+      areyousure: "Are you sure?"
+    form_new:
+      name: "User Name"
+      email: "Email"
+      paytype: "Pay Type"
+      address: "Address"
+      neworder: "New Order"
+      selectpaytype: "Please Select a Paytype"
+      submit: "Create Order"
+    new:
+      neworder: "New Order"
+      enterorder: "Please Enter Your Details"
+    form_edit:
+      name: "User Name"
+      email: "Email"
+      paytype: "Pay Type"
+      address: "Address"
+      neworder: "Edit Order"
+      selectpaytype: "Please Select a Paytype"
+      selectstate: "Please Select a State"
+      submit: "Create Order"
+      state: "State"
+    edit:
+      editrder: "Edit Order"
+      enterorder: "Please Enter Your Details"
+      show: "Show"
+      back: "Back"
+    show:
+      productlist: "Product List"
+      total: "Total"
+      name: "Name"
+      email: "Email"
+      paytype: "Pay Type"
+      address: "Address"
+      state: "State"
+      edit: "Edit"
+      back: "Back"
+  users:
+    form:
+      name: "User Name"
+      password: "Password"
+      password_confirm: "Password Confirmation"
+      submit: "Submit"
+    index:
+      name: "Name"
+      role: "Role"
+      edit: "Edit"
+      destroy: "Destroy"
+      newuser: "New User"
+      listuser: "Listing Users"
+      areyousure: "Are you sure?"
+  	edit:
+      back: "Back"
+      enteruser: "Please Enter The Details"
+      edituser: "Edit User"
+  	new:
+      back: "Back"
+      enteruser: "Please Enter The Details"
+      newuser: "New User"
+  carts:
+    cart:
+      yourcart: "Your Cart"
+      total: "Total"
+      emptycart: "Empty cart"
+      checkout: "Check Out"
+      areyousure: "Are you sure?"
+  line_items:
+    line_item:
+      areyousure: "Are you sure?"
+  activerecord:
+    errors:
+      messages:
+        inclusion: "is not include in the list"
+        blank: "can't be blank"
+        password: "missiong"
+      models:
+        product:
+          attributes:
+            price:
+              not_a_number: "Not a Number"
+        user:
+          attributes:
+            password:
+              password: "missing"
+              confirmation: "lack confirmation"
+    models:
+      order: "order"
+      product: "product"
+      shop: "shop"
+      missing: "Missing"
+    attributes:
+      order:
+        address: "Address"
+        name: "Name"
+        email: "E-mail"
+        pay_type: "PayType"
+        state: "State"
+      product:
+        title: "Title"
+        price: "Price"
+        imageurl: "Image url"
+        description: "Description"
+      shop:
+        name: "Name"
+        email: "E-mail"
+        telephone: "Telephone"
+        description: "Description"
+        image_url: "Image url"
+      user:
+        name: "Name"
+        password: "Password"
+  errors:
+    template: 
+      body: "There are problems with the following fields."
+      header:
+        one: "1 error prohibited this order from being saved"
+        other: "%(count) errors prohibited this order from being saved"

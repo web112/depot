@@ -1,12 +1,12 @@
-<h1>Editing order</h1>
+<h1><%= t('.editorder') %></h1>
 <div class = "depot_form">
 	<fieldset>
 		<legend>
-			Please Enter The Details
+			<%= t('.enterorder') %>
 		</legend>
 <%= render 'form_edit' %>
 
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to t('.show'), @order %> |
+<%= link_to t('.back'), orders_path %>
 	</fieldset>
 </div>

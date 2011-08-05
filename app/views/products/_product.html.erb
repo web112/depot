@@ -1,7 +1,17 @@
+<!--
 rating_sum:
 <%= @product.rating_sum %>
 		
 rating_times:
 <%= @product.rating_times %>
+-->
 
+<%= t('.rating')+":" %><% (product.rating_sum/(product.rating_times+0.001)).round.times do%>
+						<%= image_tag("rating_start.png", :class => "star") %>
+					<%end%>
+
+<br/>
+
+<%= t('.rating_times') %>
+<%= @product.rating_times %>
 

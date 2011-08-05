@@ -1,0 +1,266 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+
+zh:
+  admin:
+    index:
+      welcome: "欢迎回来"
+      now: "现在时间是"
+      wehave: "我们有"
+      order: "订单" 
+  layouts: 
+    application: 
+      title: "网上书城"
+      search: "搜索"
+      nav: "导航"
+      home: "主页"
+      question: "问题"
+      contact: "联系"
+      news: "新闻"
+      account: "账户"
+      myshop: "我的店铺"
+      myproducts: "我的货物"
+      myorders: "我的订单"
+      mycolleague: "我的同事"
+      signin: "登录"
+      logout: "退出"
+      newshop: "开店"
+  store: 
+    index: 
+      pnews: "书籍信息"
+      latestnews: "最新消息"
+      welcome: "欢迎光临"
+      openshop: "自己开家店吧"
+      authors: "权威的认可"
+      bookset: "百万册书等你拿"
+      introduce: "书城介绍"
+      hello: "欢迎你们"
+      promise: "我们的承诺"
+      hot: "热销书籍"
+      recommend: "推荐书籍"
+    show_products: 
+      category: "书籍分类"
+      author: "作者"
+      add: "加入购物车"
+      find: "找到"
+      relatedbook: "本相关的书"
+      yoursearch: "很抱歉，没有找到与"
+      cannotfind: "相关的产品"
+      suggest: "建议您:"
+      suggesta: "1. 看看输入的文字是否有误"
+      suggestb: "2. 去掉可能不必要的字词"
+      suggestc: "3. 调整关键字"
+      type: "分类"
+      
+  products: 
+    show_to_buyers: 
+      back: "返回"
+      add: "加入购物车"
+      grade: "请评分"
+      sales: "销量："
+      type: "分类"
+    index:
+      productlist: "书籍列表"
+      author: "作者"
+      type: "分类"
+      show: "查看"
+      edit: "编辑"
+      destroy: "删除"
+      sure: "你确定删除产品吗？"
+      newproduct: "添加产品"
+    form:
+      title: "标题"
+      description: "介绍"
+      price: "价格"
+      image: "图片"
+      typename: "类型"
+      submit: "提交"
+      type: "类型"
+      newproduct: "添加产品"
+      
+    edit:
+      editproduct: "编辑商品"
+      legend: "请加入介绍"
+      show: "显示"
+      back: "返回"
+    new: 
+      editproduct: "编辑商品"
+      legend: "请加入介绍"
+      back: "返回"
+    show:
+      title: "标题"
+      description: "介绍"
+      price: "价格"
+      image: "图片"
+      type: "类型"
+      edit: "编辑"
+      back: "返回"
+    product:
+      rating: "平均分"
+      rating_times: "评分次数"
+  sessions:
+    new:
+      login: "请登录"
+      username: "用户名："
+      pwd: "密码："
+      log: "登录"
+      welcomeback: "欢迎回来"
+  shops:
+    new: 
+      newshop: "新建商铺"
+      details: "请输入详细信息"
+      back: "返回"
+    form:
+      host: "店主"
+      pwd: "密码"
+      confirm: "确认密码"
+      name: "店名"
+      email: "邮箱"
+      telephone: "电话"
+      image: "图片"
+      description: "介绍"
+      submit: "提交"
+    edit_form:
+      name: "店名"
+      email: "邮箱"
+      telephone: "电话"
+      image: "图片"
+      description: "介绍"
+      submit: "提交"
+    edit:
+      details: "请输入详细信息"
+      editshop: "编辑商店"
+      back: "返回"
+    show:
+      name: "店名"
+      email: "邮箱"
+      telephone: "电话"
+      description: "描述"
+      edit: "编辑"
+  orders:
+    index:
+      name: "用户名"
+      email: "邮箱"
+      paytype: "付款类型"
+      state: "状态"
+      show: "显示"
+      edit: "编辑"
+      destroy: "删除"
+      orderlist: "显示订单"
+      areyousure: "确定删除订单？"
+    form_new:
+      name: "用户名"
+      email: "邮箱"
+      paytype: "付款方式"
+      address: "地址"
+      neworder: "新订单"
+      selectpaytype: "请选择一种付款方式"
+      submit: "提交订单"
+    new:
+      neworder: "新订单"
+      enterorder: "请填写账单内容"
+    form_edit:
+      name: "用户名"
+      email: "邮箱"
+      paytype: "付款方式"
+      address: "地址"
+      neworder: "新订单"
+      selectpaytype: "请选择一种付款方式"
+      selectstate: "请选择一种状态"
+      submit: "提交订单"
+      state: "状态"
+    edit:
+      neworder: "新订单"
+      enterorder: "请填写账单内容"
+      show: "显示"
+      back: "返回"
+    show:
+      productlist: "产品列表"
+      total: "总共"
+      name: "名字"
+      email: "邮箱"
+      paytype: "付款方式"
+      address: "地址"
+      state: "状态"
+      edit: "编辑"
+      back: "返回"
+  users:
+    form:
+      name: "用户名"
+      password: "密码"
+      password_confirm: "密码确认"
+      submit: "提交"
+    index:
+      name: "员工名"
+      role: "角色"
+      edit: "编辑"
+      destroy: "删除"
+      newuser: "添加员工"
+      listuser: "员工列表"
+      areyousure: "确定删除员工？"
+    edit:
+      back: "返回"
+      enteruser: "请输入相关信息"
+      edituser: "编辑员工信息"
+    new:
+      back: "返回"
+      enteruser: "请输入相关信息"
+      newuser: "添加员工"
+  carts:
+    cart:
+      yourcart: "购物车"
+      total: "总共"
+      emptycart: "清空购物车"
+      checkout: "结账"
+      areyousure: "确定清空购物车？"
+  line_items:
+    line_item:
+      areyousure: "确定删除产品？"
+  activerecord:
+    errors:
+      messages:
+        inclusion: "必须从列表中选择1个"
+        blank: "不能为空"
+        password: "缺失"
+      models:
+        product:
+          attributes:
+            price:
+              not_a_number: "不是数字"
+        user:
+          attributes:
+            password:
+              password: "缺失"
+              confirmation: "缺少确认"
+    models:
+      order: "订单"
+      product: "商品"
+      shop: "店铺"
+    attributes:
+      order:
+        address: "用户名"
+        name: "姓名"
+        email: "邮箱"
+        pay_type: "付款方式"
+        state: "状态"
+      product:
+        title: "书名"
+        price: "价钱"
+        image_url: "图片url"
+        description: "描述"
+      shop:
+        name: "店名"
+        email: "邮箱"
+        telephone: "电话"
+        description: "描述"
+        image_url: "图片 url"
+      user:
+        name: "用户名"
+        password: "密码"
+  errors:
+    template: 
+      body: "以下地方有错误"
+      header:
+        one: "提交表单时有1个错误"
+        other: "提交表单时有%(count)个错误"

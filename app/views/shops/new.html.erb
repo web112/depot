@@ -1,13 +1,13 @@
-<h1>New shop</h1>
+<h1><%=t('.newshop')%></h1>
 <%if flash[:notice]%>
 <p id="notice"><%= flash[:notice] %></p>
 <%end%>
 <div class = "depot_form">
 	<fieldset>
 		<legend>
-			Please Enter The Details
+			<%=t('.details')%>
 		</legend>
 		<%= render 'form' %>
-		<%= link_to 'Back', store_url %>
+		<%= link_to t('.back'), store_url %>
 	</fieldset>
 </div>

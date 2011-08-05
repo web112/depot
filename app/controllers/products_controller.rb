@@ -49,13 +49,16 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     @product_types= BookType.all
-    types = params[:type_name];
+    
+    types = params[:type_name]
+    if types != nil
       types.each do |type|
         type = BookType.find_by_name(type)
         if type
-        @product.book_types << type
+          @product.book_types << type
         end
       end
+    end
     
 
     @product.shop = current_user.shop
@@ -75,14 +78,18 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.book_types = []
-    types = params[:type_name];
+    @product_types= BookType.all
+    types = params[:type_name]
    
-    types.each do |type|
-        type = BookType.find_by_name(type)
-        if type
-        @product.book_types << type
-        end
+    if types != nil
+      types.each do |type|
+          type = BookType.find_by_name(type)
+          if type
+          @product.book_types << type
+          end
+      end
     end
+    
     
     respond_to do |format|
       if @product.update_attributes(params[:product])

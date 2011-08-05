@@ -3,31 +3,32 @@
 	<%= notice %>
 </p>
 <% end %>
+<h1>Shop management</h1>
 <div class="show_details">
-<div id="up">
-	<div class="up_left">
-	<h1>Shop management</h1>
-	<%= image_tag(@shop.image_url, :class => 'list_image') %>	
-	</div>
-	<div class="up_right">
-	<b>Name:</b>
-	<%= @shop.name %>
-	<br/>
-	
-	<b>Email:</b>
-	<%= @shop.email %>
-	<br/>
+	<div id="up">
+		<div class="up_left">
+			<%= image_tag(@shop.image_url) %>
+		</div>
+		<div class="up_right">
 
-	<b>Telephone:</b>
-	<%= @shop.telephone %>
-	<br/>
+			<b><%= t('.name')%>:</b>
+			<%= @shop.name %>
+			<br/>
+
+			<b><%= t('.email')%>:</b>
+			<%= @shop.email %>
+			<br/>
+
+			<b><%= t('.telephone')%>:</b>
+			<%= @shop.telephone %>
+			<br/>
+		</div>
 	</div>
-</div>	
 	<div class="description">
-	<b>Description:</b>
-	<%= @shop.description %>
-	<br/>
+		<b><%= t('.description')%>:</b>
+		<%= @shop.description %>
+		<br/>
 
-<%= link_to 'Edit', edit_shop_path(@shop) %>
+		<%= link_to t('.edit'), edit_shop_path(@shop) %>
 	</div>
 </div>

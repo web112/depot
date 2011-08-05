@@ -1,32 +1,42 @@
-<%if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-
-<p>
-  <b>Title:</b>
-  <%= @product.title %>
+<% if notice %>
+<p id="notice">
+	<%= notice %>
 </p>
-
-<p>
-  <b>Description:</b>
-  <%= @product.description %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @product.image_url %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @product.price %>
-</p>
-
-<p>
-	<b>Type:</b>
-<%@product.book_types.each do |type|%>
-	<%=type.name%><br />
 <%end%>
-</p>
-<%= link_to 'Edit', edit_product_path(@product)%>
-<%= link_to 'Back', products_url %>
+
+
+<h1>Product Management</h1>
+<div class="show_details">
+	<div id="up">
+		<div class="up_left">
+			<%= image_tag(@product.image_url) %><br />
+			<%= number_to_currency(@product.price) %>
+		</div>
+		<div class="up_right">
+			<h3>
+				<%= @product.title %>
+			</h3>
+			<%=t('.type')%>:<%@product.book_types.each do |type|%>
+				<%=type.name%><%end%>
+			</td>
+			<div id = "sales">
+				<%=t('.sales')%>：
+				<%= @product.sales %>
+			</div>
+	
+			<div id = "rating_sales" >
+				<%= render(@product) %>
+			</div>
+		
+			
+		</div>
+
+	</div>
+	<div class="description">
+		
+		<b><%= t('.description')%>:</b>
+		<%=sanitize @product.description %><br/>	
+		<%= link_to t('.edit'), edit_product_path(@product)%>
+		<%= link_to t('.back'), products_url %>
+	</div>
+</div>	
