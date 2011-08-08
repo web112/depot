@@ -229,6 +229,14 @@ zh:
   line_items:
     line_item:
       areyousure: "确定删除产品？"
+
+  Type:
+    type_name: "类别名"
+    edit: "编辑"
+    destroy: "删除"
+    new_type: "新建分类"
+    back: "返回"
+
   activerecord:
     errors:
       messages:

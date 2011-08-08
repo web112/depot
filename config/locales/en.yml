@@ -231,6 +231,73 @@ en:
   line_items:
     line_item:
       areyousure: "Are you sure?"
+
+  news:
+    form:
+      title: "Title"
+      content: "Content"
+      abstraction: "Abstraction"
+    index:
+      title: "Title"
+      content: "Content"
+      abstraction: "Abstraction"
+      edit: "Edit"
+      list_ad: "Listing Advertisement"
+      are_you_sure: "Are you sure?"
+      new_ad: "New Advertisement"
+      destroy: "Destroy"
+      back: "Back"
+  	edit:
+      back: "Back"
+      enter_ad: "Please Enter The Details"
+      edit_ad: "Edit Advertisement"
+  	new:
+      back: "Back"
+      enter_ad: "Please Enter The Details"
+      new_ad: "New Advertisement"
+
+  advertisements:
+    form:
+      image_url: "Image url"
+      link_url: "Link url"
+    index:
+      image_url: "Image url"
+      link_url: "Link url"
+      edit: "Edit"
+      list_ad: "Listing Advertisement"
+      are_you_sure: "Are you sure?"
+      new_ad: "New Advertisement"
+      destroy: "Destroy"
+      back: "Back"
+  	edit:
+      back: "Back"
+      enter_ad: "Please Enter The Details"
+      edit_ad: "Edit Advertisement"
+  	new:
+      back: "Back"
+      enter_ad: "Please Enter The Details"
+      new_ad: "New Advertisement"
+
+  Type:
+    form:
+      type_name: "Type Name"
+    index:
+      type_name: "Type Name"
+      edit: "Edit"
+      list_type: "Listing Type"
+      are_you_sure: "Are you sure?"
+      new_type: "New Type"
+      destroy: "Destroy"
+      back: "Back"
+  	edit:
+      back: "Back"
+      enter_type: "Please Enter The Details"
+      edit_type: "Edit Type"
+  	new:
+      back: "Back"
+      enter_type: "Please Enter The Details"
+      new_type: "New Advertisement"
+
   activerecord:
     errors:
       messages:
