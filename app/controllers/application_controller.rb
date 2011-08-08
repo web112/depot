@@ -68,14 +68,14 @@ class ApplicationController < ActionController::Base
 
   def host_authorize
     user = User.find_by_id(session[:user_id])
-    unless user and user.role == "host"
+    unless user and (user.role == "host" or user.role == "administrator")
       redirect_to login_url, :notice => "You are not the host. Please log in"
     end
   end
 
   def clerk_authorize
     user = User.find_by_id(session[:user_id])
-    unless user and (user.role == "host" or user.role == "clerk")
+    unless user and (user.role == "host" or user.role == "clerk" or user.role == "administrator")
       redirect_to login_url, :notice => "You are not the host or clerk. Please log in"
     end
   end

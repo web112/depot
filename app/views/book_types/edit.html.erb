@@ -1,6 +1,10 @@
-<h1>Editing book_type</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @book_type %> |
-<%= link_to 'Back', book_types_path %>
+<h1><%= t('.edit_type') %></h1>
+<div class = "depot_form">
+	<fieldset>
+		<legend>
+			<%= t('.enter_type') %>
+		</legend>
+		<%= render 'form' %>
+		<%= link_to t('.back'), book_types_path %>
+	</fieldset>
+</div>

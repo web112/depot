@@ -1,0 +1,29 @@
+<h1><%= t('.list_news') %></h1>
+
+
+<div class="orders_table">
+<table>
+  <tr>
+    <th><%=t('.title') %></th>
+    <th><%=t('.time') %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @news.each do |news| %>
+  <tr>
+    <td><%= news.title %></td>
+    
+    <td><%= news.created_at%></td>
+    <td><%= link_to t('.show'), news %></td>
+    <td><%= link_to t('.edit'), edit_news_path(news) %></td>
+    <td><%= link_to t('.destroy'), news, :confirm => t('.are_you_sure'), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<br />
+
+<%= link_to t('.new_news'), new_news_path %>

@@ -1,0 +1,22 @@
+<h1><%= t('.show_ad') %></h1>
+
+<div>
+ <b><%= t('.title') %></b>
+  <%=@advertisement.title %>
+</div>
+
+<div>
+  <%=image_tag @advertisement.image_url,:id => "ads" %>
+</div>
+  <br />
+
+<div>
+<p>
+  <b><%= t('.link_url') %></b>
+  <a href = <%= @advertisement.link_url %>>Link</a>
+</p>
+
+
+<%= link_to t('.edit'), edit_advertisement_path(@advertisement) %> |
+<%= link_to t('.back'), advertisements_path %>
+</div>

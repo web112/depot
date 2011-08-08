@@ -1,5 +1,11 @@
-<h1>New book_type</h1>
+<h1><%= t('.new_type') %></h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', book_types_path %>
+<div class = "depot_form">
+	<fieldset>
+		<legend>
+			<%= t('.enter_type') %>
+		</legend>
+		<%= render 'form' %>
+		<%= link_to t('.back'), book_types_path %>
+	</fieldset>
+</div>

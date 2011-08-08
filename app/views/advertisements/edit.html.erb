@@ -1,0 +1,14 @@
+<h1><%= t('.edit_ad') %></h1>
+
+<div class = "depot_form">
+	<fieldset>
+		<legend>
+			<%= t('.enter_ad') %>
+		</legend>
+		<%= render 'form' %>
+
+		<%= link_to t('.show'), @advertisement %> |
+		<%= link_to t('.back'), advertisements_path %>
+	</fieldset>
+
+</div>

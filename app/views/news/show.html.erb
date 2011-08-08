@@ -1,0 +1,20 @@
+
+<h1>News</h1>
+
+<p>
+  <b><%= t('.title') %> </b>
+  <%= @news.title %>
+</p>
+
+<p>
+  <b><%= t('.content') %></b>
+  <%= @news.content %>
+</p>
+
+<p>
+  <b><%= t('.abstraction') %></b>
+  <%= @news.abstraction %>
+</p>
+
+
+<%= link_to t('.back'), store_url%>

@@ -1,0 +1,27 @@
+<h1> <%= t('.list_ad') %> </h1>
+
+<div class="orders_table">
+<table>
+  <tr>
+    <th><%= t('.image_url') %></th>
+    <th><%= t('.link_url') %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @advertisements.each do |advertisement| %>
+  <tr>
+    <td><%= advertisement.title %></td>
+    <td><a href = <%= advertisement.link_url %>><%= advertisement.link_url %></a></td>
+    <td><%= link_to t('.show'), advertisement %></td>
+    <td><%= link_to t('.edit'), edit_advertisement_path(advertisement) %></td>
+    <td><%= link_to t('.destroy'), advertisement, :confirm => t('.are_you_sure'), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+<br />
+
+<%= link_to t('.new_ad'), new_advertisement_path %>
+

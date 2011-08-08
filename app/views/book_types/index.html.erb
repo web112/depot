@@ -1,9 +1,9 @@
-<h1>Listing book_types</h1>
 
+<h1><%= t('.list_type')%></h1>
+<div class="orders_table">
 <table>
   <tr>
-    <th>Name</th>
-    <th></th>
+    <th><%=t('.type_name')%></th>
     <th></th>
     <th></th>
   </tr>
@@ -11,13 +11,12 @@
 <% @book_types.each do |book_type| %>
   <tr>
     <td><%= book_type.name %></td>
-    <td><%= link_to 'Show', book_type %></td>
-    <td><%= link_to 'Edit', edit_book_type_path(book_type) %></td>
-    <td><%= link_to 'Destroy', book_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('.edit'), edit_book_type_path(book_type) %></td>
+    <td><%= link_to t('.destroy'), book_type, :confirm => t('.are_you_sure'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
 
-<%= link_to 'New Book type', new_book_type_path %>
+<%= link_to t('.new_type'), new_book_type_path %>

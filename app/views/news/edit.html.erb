@@ -1,0 +1,12 @@
+<h1><%= t('.edit_news') %></h1>
+<div class = "depot_form">
+	<fieldset>
+		<legend>
+			<%= t('.enter_news') %>
+		</legend>
+		<%= render 'form' %>
+
+		<%= link_to t('.show'), @news %> |
+		<%= link_to t('.back'), news_index_path %>
+	</fieldset>
+</div>

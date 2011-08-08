@@ -1,5 +1,9 @@
 Depot::Application.routes.draw do
 
+  resources :advertisements
+
+  resources :news
+
   resources :book_types
 
   resources :shops
@@ -28,24 +32,22 @@ Depot::Application.routes.draw do
   end
 
   match 'shops/:id/show_to_buyers', :to => 'shops#show_to_buyers'
+  match 'shops/:id/change_state', :to => 'shops#change_state'
 
   controller :products do
     get 'show_to_buyers' => :show_to_buyers
     get 'rate_to_product' => :rate_to_product
   end
+  
 
 
-    resources :users
+  resources :users
 
-    resources :orders
+  resources :orders
 
-    resources :line_items
+  resources :line_items
 
-    resources :carts
-
-
-
-
+  resources :carts
 
 #match 'products/:id/show_to_buyers', :to => 'products#show_to_buyers'
 

@@ -232,72 +232,93 @@ en:
     line_item:
       areyousure: "Are you sure?"
 
-  news:
-    form:
-      title: "Title"
-      content: "Content"
-      abstraction: "Abstraction"
-    index:
-      title: "Title"
-      content: "Content"
-      abstraction: "Abstraction"
-      edit: "Edit"
-      list_ad: "Listing Advertisement"
-      are_you_sure: "Are you sure?"
-      new_ad: "New Advertisement"
-      destroy: "Destroy"
-      back: "Back"
-  	edit:
-      back: "Back"
-      enter_ad: "Please Enter The Details"
-      edit_ad: "Edit Advertisement"
-  	new:
-      back: "Back"
-      enter_ad: "Please Enter The Details"
-      new_ad: "New Advertisement"
-
-  advertisements:
-    form:
-      image_url: "Image url"
-      link_url: "Link url"
-    index:
-      image_url: "Image url"
-      link_url: "Link url"
-      edit: "Edit"
-      list_ad: "Listing Advertisement"
-      are_you_sure: "Are you sure?"
-      new_ad: "New Advertisement"
-      destroy: "Destroy"
-      back: "Back"
-  	edit:
-      back: "Back"
-      enter_ad: "Please Enter The Details"
-      edit_ad: "Edit Advertisement"
-  	new:
-      back: "Back"
-      enter_ad: "Please Enter The Details"
-      new_ad: "New Advertisement"
-
-  Type:
+  book_types:
     form:
       type_name: "Type Name"
+      submit: "Create Type"
     index:
       type_name: "Type Name"
       edit: "Edit"
       list_type: "Listing Type"
       are_you_sure: "Are you sure?"
-      new_type: "New Type"
+      new_type: "New Book Type"
       destroy: "Destroy"
       back: "Back"
-  	edit:
+    edit:
       back: "Back"
       enter_type: "Please Enter The Details"
-      edit_type: "Edit Type"
-  	new:
+      edit_type: "Edit Book Type"
+    new:
       back: "Back"
       enter_type: "Please Enter The Details"
-      new_type: "New Advertisement"
+      new_type: "New Book Type"
 
+  advertisements:
+    form:
+      image_url: "Image url"
+      link_url: "Link url"
+      title: "Title"
+      submit: "Submit"
+    index:
+      image_url: "Image url"
+      link_url: "Link url"
+      title: "Title"
+      edit: "Edit"
+      list_ad: "Listing Advertisement"
+      are_you_sure: "Are you sure?"
+      new_ad: "New Advertisement"
+      destroy: "Destroy"
+      back: "Back"
+      show: "Show"
+    edit:
+      back: "Back"
+      enter_ad: "Please Enter The Details"
+      edit_ad: "Edit Advertisement"
+      show: "show"
+    new:
+      back: "Back"
+      enter_ad: "Please Enter The Details"
+      new_ad: "New Advertisement"
+    show:
+      show_ad: "Show Advertisement"
+      edit: "Edit"
+      back: "Back"
+      title: "Title"
+      link_url: "Link url"
+
+  news:
+    form:
+      title: "Title"
+      content: "Content"
+      abstraction: "Abstraction"
+      submit: "Submit"
+    index:
+      title: "Title"
+      time: "Time"
+      edit: "Edit"
+      list_news: "Listing News"
+      are_you_sure: "Are you sure?"
+      new_news: "Create News"
+      destroy: "Destroy"
+      back: "Back"
+      show: "Show"
+    edit:
+      back: "Back"
+      enter_news: "Please Enter The Details"
+      edit_news: "Edit News"
+      show: "Show"
+    new:
+      back: "Back"
+      enter_news: "Please Enter The Details"
+      new_news: "Create News"
+    show:
+      show_news: "News"
+      back: "Back"
+      title: "Title"
+      content: "Content"
+      abstraction: "Abstraction"
+
+      
   activerecord:
     errors:
       messages:

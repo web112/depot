@@ -230,12 +230,91 @@ zh:
     line_item:
       areyousure: "确定删除产品？"
 
-  Type:
-    type_name: "类别名"
-    edit: "编辑"
-    destroy: "删除"
-    new_type: "新建分类"
-    back: "返回"
+  book_types:
+    form:
+      type_name: "类别名"
+      submit: "创建分类"
+    index:
+      type_name: "类别名"
+      edit: "编辑"
+      list_type: "分类列表"
+      are_you_sure: "确定删除分类？"
+      new_type: "创建分类"
+      destroy: "删除"
+      back: "返回"
+    edit:
+      back: "返回"
+      enter_type: "请输入分类名"
+      edit_type: "编辑分类"
+    new:
+      back: "返回"
+      enter_type: "请输入分类名"
+      new_type: "创建分类"
+
+  advertisements:
+    form:
+      image_url: "图片url"
+      link_url: "链接url"
+      title: "标题"
+      submit: "提交"
+    index:
+      image_url: "图片url"
+      link_url: "链接url"
+      title: "标题"
+      edit: "编辑"
+      list_ad: "广告列表"
+      are_you_sure: "你确定吗?"
+      new_ad: "新建广告"
+      destroy: "删除"
+      back: "返回"
+      show: "显示"
+    edit:
+      back: "返回"
+      enter_ad: "请输入广告内容"
+      edit_ad: "编辑广告"
+      show: "显示"
+    new:
+      back: "返回"
+      enter_ad: "请输入广告内容"
+      new_ad: "新建广告"
+    show:
+      show_ad: "显示广告"
+      edit: "编辑"
+      back: "返回"
+      title: "标题"
+      link_url: "链接url"
+
+  news:
+    form:
+      title: "标题"
+      content: "内容"
+      abstraction: "摘要"
+      submit: "提交"
+    index:
+      title: "标题"
+      time: "创建"
+      edit: "编辑"
+      list_news: "新闻列表"
+      are_you_sure: "确定此操作？"
+      new_news: "新建新闻"
+      destroy: "删除"
+      back: "返回"
+      show: "显示"
+    edit:
+      back: "返回"
+      enter_news: "请输入详细信息"
+      edit_news: "编辑新闻"
+      show: "显示"
+    new:
+      back: "返回"
+      enter_news: "请输入详细信息"
+      new_news: "创建新闻"
+    show:
+      show_news: "新闻"
+      back: "返回"
+      title: "标题"
+      content: "内容"
+      abstraction: "摘要"
 
   activerecord:
     errors:
