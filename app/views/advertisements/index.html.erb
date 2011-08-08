@@ -1,0 +1,27 @@
+<h1>Listing advertisements</h1>
+
+<div class="orders_table">
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Link url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @advertisements.each do |advertisement| %>
+  <tr>
+    <td><%= advertisement.title %></td>
+    <td><a href = <%= advertisement.link_url %>><%= advertisement.link_url %></a></td>
+    <td><%= link_to 'Show', advertisement %></td>
+    <td><%= link_to 'Edit', edit_advertisement_path(advertisement) %></td>
+    <td><%= link_to 'Destroy', advertisement, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+<br />
+
+<%= link_to 'New Advertisement', new_advertisement_path %>
+

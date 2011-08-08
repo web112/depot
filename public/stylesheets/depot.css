@@ -7,13 +7,11 @@
         margin-right:1em;
 }
 
-
 #store_main{
 	margin: auto;
 	width: 1200px;
 	overflow:hidden;
 }
-
 
 /*Styles for recommendations*/
 .recommendations_border{
@@ -26,11 +24,6 @@
 	border-color:#CCCCCC;
 	text-align: center;
 }
-
-
-
-
-
 /* Styles for products/index */
 
 #product_list table {
@@ -456,23 +449,21 @@
 
 /* Home Page Styles */
 #news{
-	height: 260px;
+	height: 320px;
 	width: 730px;
+	margin-top: 15px;
 }
 
-#news img{
-	height: 240px;
+#ads{
+	height: 300px;
 	width: 445px;
-	border-color:#CCCCCC;
-	border-style: solid;
-	border-width: thick;	
 	float: left;
 }
 
 #news table{
 	float: right;
-	width: 255px;
-	height: 250px;
+	width: 275px;
+	height: 310px;
 	border-color:#66B3FF;
 	border-style: solid;
 	border-width: thick;	
@@ -716,4 +707,96 @@ a:hover{
 	display:block;
 	float:right;
 	margin-right:20px;
+}
+
+.ads_box {
+ width:426px;
+ height:300px;
+ border:thick solid #010101;
+ position:relative;
+ background:#fff;
+ z-index:0;
+}
+
+#ads_box a{
+	text-decoration: none;
+}
+
+#ads_box a:hover{
+	background: none;
+}
+
+.ads_box img{
+	width:426px;
+	height:300px;
+	border: 0;
+}
+
+.ads_box ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ads_box div.img {
+	position:absolute;
+	width:426px;
+	height:300px;
+	left:0;
+	top:0;
+	z-index:10;
+}
+.ads_box div.loding {
+	position:absolute;
+	width:426px;
+	height:300px;
+	z-index:40;
+	background:#fafafa url(/images/loding.gif) no-repeat center 155px;
+	left:0;
+	top:0;
+}
+.ads_box ul.panel {
+	position:absolute;
+	width:426px;
+	height:34px;
+	top:265px;
+	z-index:20;
+}
+.ads_box ul.panel li {
+	width:84px;
+	height:34px;
+	float:left;
+	margin-left:1px;
+	background:#000;
+	filter:alpha(Opacity=50);
+	Opacity:.5;
+}
+
+.ads_box ul.panel li.on {
+	filter:alpha(Opacity=80);
+	Opacity:.8;
+}
+.ads_box ul.title {
+	position:absolute;
+	width:426px;
+	height:34px;
+	top:265px;
+	z-index:30;
+}
+.ads_box ul.title li {
+	width:84px;
+	height:34px;
+	float:left;
+	margin-left:1px;
+	overflow: hidden;
+}
+.ads_box ul.title li a {
+	display:block;
+	text-align:center;
+	color:#FFFDFE;
+	height:34px;
+	line-height:30px;
+}
+#ads_box ul.title li a:hover, .ads_box ul.title li.on a{
+	background:url(/images/arrow_focus.gif) no-repeat center 26px;
 }

@@ -17,7 +17,7 @@ class StoreController < ApplicationController
     if params[:order] == "recommend"
       products.sort!{|p1, p2| p2.rating_sum/(p2.rating_times+0.001) <=> p1.rating_sum/(p1.rating_times+0.001) }
     elsif params[:order] == "hottest" 
-      products.sort!{|p1, p2| p2.sales<=> p1.sales }
+      products.sort!{|p1, p2| p2.sales <=> p1.sales }
     end
     
     if params[:name] == "" || params[:name]== nil

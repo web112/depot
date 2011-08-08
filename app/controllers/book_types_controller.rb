@@ -1,4 +1,6 @@
 class BookTypesController < ApplicationController
+  before_filter :administrator_authorize
+  
   # GET /book_types
   # GET /book_types.xml
   def index

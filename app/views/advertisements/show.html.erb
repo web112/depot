@@ -1,0 +1,17 @@
+<h1>Show advertisement</h1>
+
+<div>
+  <%=image_tag @advertisement.image_url,:id => "ads" %>
+</div>
+  <br />
+
+<div>
+<p>
+  <b>Link url:</b>
+  <a href = <%= @advertisement.link_url %>>Link</a>
+</p>
+
+
+<%= link_to 'Edit', edit_advertisement_path(@advertisement) %> |
+<%= link_to 'Back', advertisements_path %>
+</div>

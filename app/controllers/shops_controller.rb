@@ -1,9 +1,10 @@
 class ShopsController < ApplicationController
 
-  before_filter :administrator_authorize, :only => [:index]
+  before_filter :administrator_authorize, :only => [:index, :change_state]
   before_filter :host_authorize
-  skip_before_filter :host_authorize, :only => [:show_to_buyers, :create, :new, :index]
+  skip_before_filter :host_authorize, :only => [:show_to_buyers, :create, :new, :index,  :change_state]
   before_filter :ensure_your_shop,  :only => [:show, :edit, :update, :destroy]
+  before_filter :ensure_open, :only => [:show, :show_to_buyers]
 
   @@per_page_item = 3
   # GET /shops
@@ -142,14 +143,36 @@ class ShopsController < ApplicationController
       format.xml  { render :xml => @shop }
     end
   end
+  
+  def change_state
+    @shop = Shop.find(params[:id])
+    if @shop.state == "open"
+      @shop.state = "close"
+    else
+      @shop.state = "open"
+    end
+      
+    @shop.save!
+    respond_to do |format|
+      format.html { redirect_to(shops_url, :page => params[:page]) }
+      format.xml  { head :ok }
+    end
+    
+  end
 
   private
-
   def ensure_your_shop
     shop = Shop.find(params[:id])
     if shop.id != current_user.shop.id
       redirect_to current_user.shop, :notice => "Not your shop!"
     end
   end
-
+  
+  def ensure_open
+    shop = Shop.find(params[:id])
+    if shop.state != "open"
+      redirect_to store_url, :notice => "The shop is close!"
+    end
+  end
+  
 end

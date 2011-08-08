@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
-  
-  before_filter :clerk_authorize
-  before_filter :host_authorize, :only => [:new, :create, :index, :destroy, :edit, :update]
-  
+
+  before_filter :clerk_authorize, :only => [:index]
+  before_filter :host_authorize, :only => [:new, :create, :destroy, :edit, :update]
+
   @@per_page_item = 5
-  
   # GET /users
   # GET /users.xml
   def index
-	@users = current_user.shop.users.paginate :page => params[:page], :order=>'created_at desc',
-                             :per_page => @@per_page_item 
+    if current_user.role == "administrator"
+      @users = User.where(:role => "administrator")
+    else
+      @users = current_user.shop.users
+    end
+
+    @users = @users.paginate :page => params[:page], :order=>'created_at desc',
+    :per_page => @@per_page_item
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,16 +26,15 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-	file = File.open("test.txt","w")
-	file.puts @user.attributes
-	file.close
-	
-	
+    file = File.open("test.txt","w")
+    file.puts @user.attributes
+    file.close
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
     end
-  end 
+  end
 
   # GET /users/new
   # GET /users/new.xml
@@ -52,12 +56,15 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-	
-	if(current_user.role == 'host')
-		@user.role = 'clerk'
-		@user.shop = current_user.shop
-	end
 
+    if(current_user.role == 'host')
+      @user.role = 'clerk'
+      @user.shop = current_user.shop
+    end
+    
+    if(current_user.role == 'administrator')
+      @user.role = 'administrator'
+    end
 
     respond_to do |format|
       if @user.save
@@ -90,9 +97,9 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
-	unless @user.id.eql? current_user.id
-		@user.destroy
-	end
+    unless @user.id.eql? current_user.id
+    @user.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(users_url) }
