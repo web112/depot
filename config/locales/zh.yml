@@ -26,6 +26,15 @@ zh:
       signin: "登录"
       logout: "退出"
       newshop: "开店"
+      categorises: "分类"
+      guide: "帮助"
+      customer_guide: "买家手册"
+      salespeople_guide: "卖家手册"
+      shops: "商家"
+      advertising: "广告"
+      news: "新闻"
+      administrators: "管理员"
+      book_types: "书籍类型"
   store: 
     index: 
       pnews: "书籍信息"
@@ -61,6 +70,10 @@ zh:
       sales: "销量："
       type: "分类"
       shop: "商家"
+      product_introduction: "书籍介绍"
+      description: "描述"
+      comment: "评论"
+      submit_comment: "评论"
     index:
       productlist: "书籍列表"
       author: "作者"
@@ -150,6 +163,14 @@ zh:
       description: "描述"
       add: "加入购物车"
       shop: "商家"   
+    index:
+      shop_list: "商店列表"
+      shop_name: "店名"
+      show: "显示"   
+      state: "状态"
+      operation: "操作"
+      open: "开店"
+      close: "关店"
   orders:
     index:
       name: "用户名"
@@ -226,6 +247,7 @@ zh:
       emptycart: "清空购物车"
       checkout: "结账"
       areyousure: "确定清空购物车？"
+      cart_empty: "当前购物车为空"
   line_items:
     line_item:
       areyousure: "确定删除产品？"

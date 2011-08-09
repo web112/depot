@@ -25,6 +25,15 @@ en:
       signin: "Sign In"
       logout: "Logout"
       newshop: "New Shop"
+      categorises: "Categorises"
+      guide: "Guide"
+      customer_guide: "Customer Guide"
+      salespeople_guide: "Sales People Guide"
+      shops: "Shops"
+      advertising: "Advertising"
+      news: "News"
+      administrators: "Administrators"
+      book_types: "Book Types"
   store: 
     index: 
       pnews: "Pragmatic News"
@@ -60,6 +69,10 @@ en:
       sales: "sales:"
       type: "Type"
       shop: "Shop"
+      product_introduction: "Product Introduction"
+      description: "Description"
+      comment: "Comments"
+      submit_comment: "Comment"
     form:
       title: "Title"
       description: "Description"
@@ -151,7 +164,15 @@ en:
       telephone: "Telephone"
       description: "Description"
       add: "Add to Cart"
-      shop: "Shop"   
+      shop: "Shop"
+    index:
+      shop_list: "Listing Shops"
+      name: "Name"
+      show: "Show"   
+      state: "State"
+      operation: "Operation"
+      open: "Open"
+      close: "Close"
   orders:
     index:
       name: "User Name"
@@ -228,6 +249,7 @@ en:
       emptycart: "Empty cart"
       checkout: "Check Out"
       areyousure: "Are you sure?"
+      cart_empty: "Your cart is empty"
   line_items:
     line_item:
       areyousure: "Are you sure?"

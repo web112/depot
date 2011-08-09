@@ -4,7 +4,7 @@
 </p>
 <%end%>
 
-<h1>Product Introduc</h1>
+<h1><%= t('.product_introduction') %></h1>
 <div class="show_details">
 	<div id="up">
 		<div class="up_left">
@@ -49,7 +49,7 @@
 
 </div>
 
-<h1>Comments</h1>
+<h1><%= t('.comment') %></h1>
 <div id="comment">
 	<%@comments.each do |comment| %>
 	<div class="show_floor">
@@ -69,6 +69,6 @@
 	<% form_tag ({:controller=>"products", :action =>"add_comment", :id=>@product.id}) do%>
 	<%= text_area_tag (:content, nil, :cols => 50, :rows => 5)%>
 	<br />
-	<%= submit_tag "Comment"%>
+	<%= submit_tag t('.submit_comment')%>
 	<%end%>
 </div>

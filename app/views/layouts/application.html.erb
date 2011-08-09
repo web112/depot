@@ -102,23 +102,23 @@
 						</div>
 						<div class="tip">
 							<%= image_tag("shop.png") %>
-							<%= link_to "Shops", shops_url %>
+							<%= link_to t('.shops'), shops_url %>
 						</div>
 						<div class="tip">
 							<%= image_tag("book.png") %>
-							<%= link_to "Advertising", advertisements_url %>
+							<%= link_to t('.advertising'), advertisements_url %>
 						</div>
 						<div class="tip">
 							<%= image_tag("order.png") %>
-							<%= link_to "News", :controller => "news", :action => "index" %>
+							<%= link_to t('.news'), :controller => "news", :action => "index" %>
 						</div>
 						<div class="tip">
 							<%= image_tag("colleague.png") %>
-							<%= link_to "Administrators", users_path %>
+							<%= link_to t('.administrators'), users_path %>
 						</div>
 						<div class="tip">
 							<%= image_tag("news.png") %>
-							<%= link_to "Book Types", book_types_path %>
+							<%= link_to t('.book_types'), book_types_path %>
 						</div>
 						<%= button_to t('.logout'), logout_path, :method => :delete %>
 					</div>
@@ -142,7 +142,7 @@
 					</div>
 					<div class="home_page_right">
 						<div class="right_title">
-							Categorises
+							<%= t('.categorises') %>
 						</div>
 
 						<div id="categorises">
@@ -151,16 +151,16 @@
 							<%end%>
 						</div>
 						<div class="right_title">
-							Index
+							<%= t('.guide') %>
 						</div>
 
 						<div id="categorises">
 							</ br>
 							<h2>
-							<a href="/htmls/buyer.html">Customer Guide</a>
+							<a href="/htmls/buyer.html"><%= t('.customer_guide') %> </a>
 							</h2>
 							<h2>
-							<a href="/htmls/saler.html">Salespeople Guide</a>
+							<a href="/htmls/saler.html"><%= t('.salespeople_guide') %></a>
 							</h2>
 						</div>
 					</div>
