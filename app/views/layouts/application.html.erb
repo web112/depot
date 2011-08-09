@@ -9,18 +9,19 @@
 		<%= stylesheet_link_tag "depot", :media => "all" %><!-- <label id ="code.sit"/> -->
 		<!-- END_HIGHLIGHT -->
 		<%= javascript_include_tag :all %>
+		<%= javascript_include_tag :ckeditor %>   
+
 		<%= csrf_meta_tag %><!-- <label id="code.csrf"/> -->
 	</head>
 	<!-- END:head -->
 
 	<body id="store">
-		
-				
+
 		<%= form_tag '', :method => 'GET' do %>
 		<%= select_tag 'locale', options_for_select(LANGUAGES, I18n.locale),
 		:onchange => 'this.form.submit()' %>
 		<% end %>
-		
+
 		<div id="store_main">
 			<div id="banner">
 				<%= image_tag("logo.png") %>
@@ -28,9 +29,11 @@
 			</div>
 			<div id="search_bar">
 				<%= form_for :search,:url=>{:controller => "store",:action=>"show_products"},:html=>{:method=>"get",:id=>"search_form",:onsubmit =>"return false"} do%>
-				<%= image_tag("search.jpg") %><div id="search">
-				<%= text_field_tag :name,params[:name],:autocomplete=>"off",:class=>"search_field",:onkeydown =>"keypress(event)"%><%= submit_tag t('.search'),:class => "search_button",:onclick=>"form_submit()" %>
-				<div id="searchAjax"></div>
+				
+				<div id="search">
+					<%= image_tag("search.jpg") %><%= text_field_tag :name,params[:name],:autocomplete=>"off",:class=>"search_field",:onkeydown =>"keypress(event)"%><%= submit_tag t('.search'),:class => "search_button",:onclick=>"form_submit()" %>
+					<div id="searchAjax">
+					</div>
 				</div>
 				<%= observe_field :name,:frequency=>0.5,:update=>'searchAjax',:url=>{:controller => "store",:action=>"ajax_show_products"},:with => "'name='+encodeURIComponent(value)"%>
 				<%end%>
@@ -47,30 +50,30 @@
 					</div>
 					<div class = "side_module">
 						<div class="side_title">
-							<%= image_tag("bullet.gif") %>&nbsp<%=t('.nav')%>
+							<%= image_tag("bullet.gif") %>&nbsp<%= t('.nav')%>
 						</div>
 						<div class="tip">
 							<%= image_tag("home.png") %>
-							<a href="/">&nbsp<%=t('.home')%></a>
+							<a href="/">&nbsp<%= t('.home')%></a>
 						</div>
 						<div class="tip">
 							<%= image_tag("question.png") %>
-							<a href="http://www..../frq">&nbsp<%=t('.question')%></a>
+							<a href="http://www..../frq">&nbsp<%= t('.question')%></a>
 						</div>
 						<div class="tip">
 							<%= image_tag("news.png") %>
-							<a href="http://www..../news">&nbsp<%=t('.news')%></a>
+							<a href="http://www..../news">&nbsp<%= t('.news')%></a>
 						</div>
 						<div class="tip">
 							<%= image_tag("contact.png") %>
-							<a href="http://www..../contact">&nbsp<%=t('.contact')%></a>
+							<a href="http://www..../contact">&nbsp<%= t('.contact')%></a>
 						</div>
 					</div>
-					<% if session[:user_id] && (User.find(session[:user_id]).role == "host" || "clerk")%>
+					<% if session[:user_id] && (User.find(session[:user_id]).role == "host")%>
 					<% user = User.find(session[:user_id]) %>
 					<div class = "side_module">
 						<div class="side_title">
-							<%= image_tag("account.png") %>&nbsp <%=t('.account')%>
+							<%= image_tag("account.png") %>&nbsp <%= t('.account')%>
 						</div>
 						<div class="tip">
 							<%= image_tag("shop.png") %>
@@ -91,9 +94,37 @@
 
 						<%= button_to t('.logout'), logout_path, :method => :delete %>
 					</div>
+					<% elsif session[:user_id] && (User.find(session[:user_id]).role == "administrator")%>
+					<% user = User.find(session[:user_id]) %>
+					<div class = "side_module">
+						<div class="side_title">
+							<%= image_tag("account.png") %>&nbsp <%= t('.account')%>
+						</div>
+						<div class="tip">
+							<%= image_tag("shop.png") %>
+							<%= link_to "Shops", shops_url %>
+						</div>
+						<div class="tip">
+							<%= image_tag("book.png") %>
+							<%= link_to "Advertising", advertisements_url %>
+						</div>
+						<div class="tip">
+							<%= image_tag("order.png") %>
+							<%= link_to "News", :controller => "news", :action => "index" %>
+						</div>
+						<div class="tip">
+							<%= image_tag("colleague.png") %>
+							<%= link_to "Administrators", users_path %>
+						</div>
+						<div class="tip">
+							<%= image_tag("news.png") %>
+							<%= link_to "Book Types", book_types_path %>
+						</div>
+						<%= button_to t('.logout'), logout_path, :method => :delete %>
+					</div>
 					<%else%>
 					<div class="side_title">
-						<%= image_tag("account.png") %>&nbsp<%=t('.account')%>
+						<%= image_tag("account.png") %>&nbsp<%= t('.account')%>
 					</div>
 					<div class="tip">
 						<%= image_tag("colleague.png") %>
@@ -113,30 +144,32 @@
 						<div class="right_title">
 							Categorises
 						</div>
-						
+
 						<div id="categorises">
-							<h2>literature</h2>
-							<h2>Sicience</h2>
-							<h2>……</h2>
-							</ br>
+							<%BookType.all.each do |type|%>
+							<h2><%= link_to type.name, :controller => "store", :action => "show_products", :type=>type.name%></h2>
+							<%end%>
 						</div>
 						<div class="right_title">
 							Index
 						</div>
-						
+
 						<div id="categorises">
 							</ br>
-							<h2><a href="/htmls/buyer.html">Customer Guide</a></h2>
-							<h2><a href="/htmls/saler.html">Salespeople Guide</a></h2>
+							<h2>
+							<a href="/htmls/buyer.html">Customer Guide</a>
+							</h2>
+							<h2>
+							<a href="/htmls/saler.html">Salespeople Guide</a>
+							</h2>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			
 		</div>
 		<div id="foot">
-				web-112
+			web-112
 		</div>
 	</body>
 </html>

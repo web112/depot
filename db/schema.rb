@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808034219) do
+ActiveRecord::Schema.define(:version => 20110809133150) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "image_url"
@@ -32,6 +32,36 @@ ActiveRecord::Schema.define(:version => 20110808034219) do
   end
 
   create_table "carts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "content_type"
+    t.string   "filename",       :limit => 80
+    t.string   "thumbnail",      :limit => 20
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "type",           :limit => 40
+    t.integer  "user_id"
+    t.integer  "assetable_id"
+    t.string   "assetable_type", :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ckeditor_assets", ["assetable_id", "assetable_type", "type"], :name => "ndx_type_assetable"
+  add_index "ckeditor_assets", ["assetable_id", "assetable_type"], :name => "fk_assets"
+  add_index "ckeditor_assets", ["parent_id", "type"], :name => "ndx_type_name"
+  add_index "ckeditor_assets", ["thumbnail", "parent_id"], :name => "assets_thumbnail_parent_id"
+  add_index "ckeditor_assets", ["user_id", "assetable_type", "assetable_id"], :name => "assets_user_type_assetable_id"
+  add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "product_id"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

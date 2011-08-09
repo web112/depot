@@ -4,39 +4,66 @@
 </p>
 <%end%>
 
-
 <h1>Product Management</h1>
 <div class="show_details">
 	<div id="up">
 		<div class="up_left">
-			<%= image_tag(@product.image_url) %><br />
+			<%= image_tag(@product.image_url) %>
+			<br />
 			<%= number_to_currency(@product.price) %>
 		</div>
 		<div class="up_right">
-			<h3>
-				<%= @product.title %>
-			</h3>
-			<%=t('.type')%>:<%@product.book_types.each do |type|%>
-				<%=type.name%><%end%>
+			<h3>	<%= @product.title %></h3>
+			<%= t('.type')%>:<%@product.book_types.each do |type|%>
+			<%= type.name%><%end%>
 			</td>
 			<div id = "sales">
-				<%=t('.sales')%>：
+				<%= t('.sales')%>：
 				<%= @product.sales %>
 			</div>
-	
+
 			<div id = "rating_sales" >
 				<%= render(@product) %>
 			</div>
-		
-			
+
 		</div>
 
 	</div>
 	<div class="description">
-		
+
 		<b><%= t('.description')%>:</b>
-		<%=sanitize @product.description %><br/>	
+		<%= sanitize @product.description %>
+		<br/>
 		<%= link_to t('.edit'), edit_product_path(@product)%>
 		<%= link_to t('.back'), products_url %>
 	</div>
-</div>	
+</div>
+
+<h1>Comments</h1>
+<div id="comment">
+	<%@comments.each do |comment| %>
+	<div class="show_floor">
+		<%= @num_of_comments_before+@index_in_this_page%>
+		&nbsp;
+
+		<%= link_to "delete",
+		options = {:controller => "products",:action => "destroy_comment", :comment_id => comment.id, :product_id => @product.id,},  html_options={
+		:method => "post"} %>
+	</div>
+	<div class="show_content">
+		<%= comment.content%>
+	</div>
+	<div class="show_time">
+		<%= comment.created_at%>
+	</div>
+	<% @index_in_this_page=@index_in_this_page+1%>
+	<%end%>
+	<p>
+		<%= will_paginate @comments%>
+	</p>
+	<%= form_tag :controller=>"products", :action =>"add_comment", :id=>@product.id do%>
+	<%= text_area_tag :content, nil, :cols => 50, :rows => 5%>
+	<br />
+	<%= submit_tag "Comment"%>
+	<%end%>
+</div>

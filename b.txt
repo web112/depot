@@ -1,4 +1,4 @@
-namebbbdescriptionbbbuploaded_image#<ActionDispatch::Http::UploadedFile:0x7f478a0>telephone123emailbbb
-namebbbcreated_atimage_urluser_files/shop_images/110808115116_large_A2x8_14475k206109.jpgupdated_attelephone123descriptionbbbemailbbb
+nameMyStringcreated_at2011-08-09 07:45:40 UTCimage_urla.jpgupdated_at2011-08-09 07:45:40 UTCid980190962descriptionnothingtelephone12345678emaila@a.comstateopen
+nameMyStringcreated_at2011-08-09 07:45:40 UTCimage_urla.jpgupdated_at2011-08-09 07:45:40 UTCtelephone12345678descriptionnothingstateopenemaila@a.com
 create shop
 save shop

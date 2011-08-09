@@ -26,7 +26,7 @@
 	</div>
 	<div class="description">
 		<b><%= t('.description')%>:</b>
-		<%= @shop.description %>
+		<%=raw @shop.description %>
 		<br/>
 
 		<%= link_to t('.edit'), edit_shop_path(@shop) %>

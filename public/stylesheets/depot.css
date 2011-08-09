@@ -575,7 +575,6 @@ a:hover{
 	background-color:#A7C942;
 	font-size: 18px;
 	color: white;
-	
 }
 
 .depot_form #shop_form{
@@ -715,5 +714,29 @@ a:hover{
 .show_details .description a{
 	display:block;
 	float:right;
+	margin-right:20px;
+}
+
+#comment .show_floor {
+	color: #222277;
+	font-size: 13px;
+	text-align: right;
+	height: 15px;
+}
+
+#comment .show_content {
+	font-size: 16px;
+	color: #000000;
+}
+
+#comment .show_time {
+	color: #CCCCCC;
+	font-size: 10px;
+	text-align: right;
+	border-bottom: solid 1px #CCCCCC;
+}
+
+#comment {
+	
 	margin-right:20px;
 }

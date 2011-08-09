@@ -21,7 +21,10 @@ class ProductsController < ApplicationController
   # GET /products/1.xml
   def show
     @product = Product.find(params[:id])
-
+    @per_page = 6
+    @comments = @product.comments.paginate :page=>params[:page], :order=>'created_at desc', :per_page=>@per_page
+    @num_of_comments_before = (params[:page]?params[:page].to_i-1:0)*@per_page
+    @index_in_this_page = 1
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -125,10 +128,34 @@ class ProductsController < ApplicationController
   def show_to_buyers
     @cart = current_cart
     @product = Product.find(params[:id])
+    @per_page = 6
+    @comments = @product.comments.paginate :page=>params[:page], :order=>'created_at desc', :per_page=>@per_page
+    @num_of_comments_before = (params[:page]?params[:page].to_i-1:0)*@per_page
+    @index_in_this_page = 1
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
+    end
+  end
+    
+  def add_comment
+    @product = Product.find(params[:id])
+    @product.comments << Comment.create(:content=>params[:content])
+    respond_to do |format|
+      format.html {redirect_to :action=>:show_to_buyers, :id=>params[:id]}
+      #format.js {@comments = @product.comments}
+    end
+  end
+  
+  def destroy_comment 
+    @product = Product.find(params[:product_id])
+    @comment = Comment.find(params[:comment_id])
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(product_url @product) }
+      format.xml  { head :ok }
     end
   end
 

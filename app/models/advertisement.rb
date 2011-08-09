@@ -1,4 +1,6 @@
 class Advertisement < ActiveRecord::Base
+  validates :title, :link_url, :image_url,:presence => true
+  
   def uploaded_image= (file_field)
     now = Time.now
     @file_name =  now.strftime("%y%m%d%H%M%S") + '_' + sanitize_filename(file_field.original_filename)
