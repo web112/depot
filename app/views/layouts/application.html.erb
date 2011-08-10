@@ -30,7 +30,10 @@
 			<div id="search_bar">
 				<%= form_for :search,:url=>{:controller => "store",:action=>"show_products"},:html=>{:method=>"get",:id=>"search_form",:onsubmit =>"return false"} do%>
 				<%= image_tag("search.jpg") %><div id="search">
-					<%= text_field_tag :name,params[:name],:autocomplete=>"off",:class=>"search_field",:onkeydown =>"keypress(event)"%><%= submit_tag t('.search'),:class => "search_button",:onclick=>"form_submit()" %>
+					<%= text_field_tag :name,params[:name],:autocomplete=>"off",:class=>"search_field",:onkeydown =>"keypress(event)"%><%= select nil, :type,
+    				BookType.GetTypeNames,
+    				:prompt => t('.categories')
+     				%><%= submit_tag t('.search'),:class => "search_button",:onclick=>"form_submit()" %>
 					<div id="searchAjax">
 					</div>
 				</div>

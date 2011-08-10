@@ -222,6 +222,17 @@
 	vertical-align:middle;
 
 }
+
+#search_bar select{
+	width: 100px;
+	height: 35px;
+	margin-top:10px;
+	border-color:#222277;
+	border-style:solid;
+	border-width:medium;
+	vertical-align:middle;
+	
+}
 	
 
 
