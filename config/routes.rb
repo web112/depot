@@ -56,7 +56,10 @@ Depot::Application.routes.draw do
   
   resources :advertisements
   
-  
+  controller :error do
+    get 'error/building' => :building
+    get 'error/error_info' => :error_info
+  end
 
 #match 'products/:id/show_to_buyers', :to => 'products#show_to_buyers'
 

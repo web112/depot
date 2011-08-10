@@ -60,15 +60,15 @@
 						</div>
 						<div class="tip">
 							<%= image_tag("question.png") %>
-							<a href="http://www..../frq">&nbsp<%= t('.question')%></a>
+							<a href="/error/building">&nbsp<%= t('.question')%></a>
 						</div>
 						<div class="tip">
 							<%= image_tag("news.png") %>
-							<a href="http://www..../news">&nbsp<%= t('.news')%></a>
+							<a href="/error/building">&nbsp<%= t('.news')%></a>
 						</div>
 						<div class="tip">
 							<%= image_tag("contact.png") %>
-							<a href="http://www..../contact">&nbsp<%= t('.contact')%></a>
+							<a href="/error/building">&nbsp<%= t('.contact')%></a>
 						</div>
 					</div>
 					<% if session[:user_id] && (User.find(session[:user_id]).role == "host")%>
