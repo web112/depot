@@ -53,7 +53,7 @@
 	<%= image_tag("ad.png", :class=>"ad") %>
 </div>
 <div class="recommendation">
-<h1><%=t('.hot')%><span class="more"><a href = "/show_products?order=recommend">更多>></a></span></h1>
+<h1><%=t('.hot')%><span class="more"><a href = "/show_products?order=recommend"><%=t('.more')%>></a></span></h1>
         <%= image_tag("list_left.png", :class=>"prev") %>
         <div id="content_list_hot">
         	<div id="content_list_items_hot">
@@ -74,7 +74,7 @@
 </div>
 
 <div class="recommendation">
-<h1><%=t('.recommend')%><span class="more"><a href = "/show_products?order=hottest">更多>></a></span></h1>
+<h1><%=t('.recommend')%><span class="more"><a href = "/show_products?order=hottest"><%=t('.more')%>>></a></span></h1>
         <%= image_tag("list_left.png", :class=>"prev") %>
         <div id="content_list_recommend">
         	<div id="content_list_items_recommend">
