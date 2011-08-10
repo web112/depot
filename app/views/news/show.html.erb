@@ -7,14 +7,16 @@
 </p>
 
 <p>
-  <b><%= t('.content') %></b>
-  <%= @news.content %>
-</p>
-
-<p>
   <b><%= t('.abstraction') %></b>
   <%= @news.abstraction %>
 </p>
 
+<p>
+  <b><%= t('.content') %></b>
+  <%= raw @news.content %>
+</p>
 
-<%= link_to t('.back'), store_url%>
+
+
+
+<%= link_to t('.back'), :controller => :news, :action => :index%>
