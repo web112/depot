@@ -8,24 +8,44 @@
 <div id="news">
 	<div id="holder">
         <ul id="placeholder">
-                <li><a href="#"><img src="images/ads1.jpg" alt="*" /></a></li>
-                <li><a href="#"><img src="images/ads2.jpg" alt="*" /></a></li>
-                <li><a href="#"><img src="images/ads3.jpg" alt="*" /></a></li>
-                <li><a href="#"><img src="images/ads4.jpg" alt="*" /></a></li>
+        	<%Advertisement.all(:order => "updated_at DESC")[0..3].each do |ad|%>
+                <li><a href=<%=ad.link_url%>> <img src=<%="/images/"+ad.image_url%> alt="*" /></a></li>
+            <%end%>
         </ul>
-        <h1><a href="#" id="title">这是第一个标题</a></h1>
+        <h1><a href="#" id="title">&nbsp;</a></h1>
         <div id="nav_bg"></div>
         <ul id="list">
-            <li><a href="#" title="这是第一个标题"><img src="images/ads1.jpg" alt="*" /></a></li>
-            <li><a href="#" title="这是第二个标题" ><img src="images/ads2.jpg" alt="*" /></a></li>
-            <li><a href="#" title="这是第三个标题"><img src="images/ads3.jpg" alt="*" /></a></li>
-            <li><a href="#" title="这是第四个标题"><img src="images/ads4.jpg" alt="*" /></a></li>
+            <%Advertisement.all(:order => "updated_at DESC")[0..3].each do |ad|%>
+                <li><a href=<%=ad.link_url%>  title=<%=ad.title%> > <img src=<%="/images/"+ad.image_url%> alt="*" /></a></li>
+            <%end%>
         </ul>
     </div>
 	<table>
 		<tr >
 			<th class="news_title"><%=t('.latestnews')%></th>
 		</tr>
+		
+		<% latest_news = News.all(:order => "updated_at DESC")[0..6] 
+		   news_show_count = 7%>  
+		   
+		<% latest_news.each do |news| %>		
+			<tr>
+				<td>
+					<%= link_to news.title, :controller=>"news", :action =>"show_to_buyers", :id => news.id %>
+				</td>
+			</tr>
+			<% news_show_count =  news_show_count-1 %>
+		<% end %>
+		
+		<% news_show_count.times do %>	
+			<tr>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		<% end %>
+		
+		<!--
 		<tr>
 			<td><%=t('.welcome')%></td>
 		</tr>
@@ -47,13 +67,14 @@
 		<tr>
 			<td><%=t('.hello')%></td>
 		</tr>
+		-->
 	</table>
 </div>
 <div>
 	<%= image_tag("ad.png", :class=>"ad") %>
 </div>
 <div class="recommendation">
-<h1><%=t('.hot')%><span class="more"><a href = "/show_products?order=recommend">更多>></a></span></h1>
+<h1><%=t('.hot')%><span class="more"><a href = "/show_products?order=recommend"><%=t('.more')%>></a></span></h1>
         <%= image_tag("list_left.png", :class=>"prev") %>
         <div id="content_list_hot">
         	<div id="content_list_items_hot">
@@ -74,7 +95,7 @@
 </div>
 
 <div class="recommendation">
-<h1><%=t('.recommend')%><span class="more"><a href = "/show_products?order=hottest">更多>></a></span></h1>
+<h1><%=t('.recommend')%><span class="more"><a href = "/show_products?order=hottest"><%=t('.more')%>>></a></span></h1>
         <%= image_tag("list_left.png", :class=>"prev") %>
         <div id="content_list_recommend">
         	<div id="content_list_items_recommend">

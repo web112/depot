@@ -1,11 +1,14 @@
 class AdvertisementsController < ApplicationController
   before_filter :administrator_authorize
   
+  @@per_page_item = 10
   
   # GET /advertisements
   # GET /advertisements.xml
   def index
-    @advertisements = Advertisement.all
+    @advertisements = Advertisement.all.paginate :page => params[:page], :order=>'created_at desc',
+    :per_page => @@per_page_item
+
 
     respond_to do |format|
       format.html # index.html.erb

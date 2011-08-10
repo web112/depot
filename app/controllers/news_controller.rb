@@ -1,11 +1,16 @@
 class NewsController < ApplicationController
   
   before_filter :administrator_authorize
+  skip_before_filter :administrator_authorize, :only => [:show_to_buyers]
+  
+  @@per_page_item = 10
   
   # GET /news
   # GET /news.xml
   def index
-    @news = News.all
+    @news = News.all.paginate :page => params[:page], :order=>'created_at desc',
+    :per_page => @@per_page_item
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,6 +86,15 @@ class NewsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(news_index_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def show_to_buyers
+    @news = News.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @news }
     end
   end
 end

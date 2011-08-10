@@ -1,4 +1,8 @@
-nameMyStringcreated_at2011-08-09 07:45:40 UTCimage_urla.jpgupdated_at2011-08-09 07:45:40 UTCid980190962descriptionnothingtelephone12345678emaila@a.comstateopen
-nameMyStringcreated_at2011-08-09 07:45:40 UTCimage_urla.jpgupdated_at2011-08-09 07:45:40 UTCtelephone12345678descriptionnothingstateopenemaila@a.com
+nameaadescription<p>
+	<span style="color:#008000;"><span style="font-size: 72px;">hello world</span></span></p>
+uploaded_image#<ActionDispatch::Http::UploadedFile:0x83a7698>telephone123emailaa
+nameaacreated_atimage_urluser_files/shop_images/110810105410_a.jpgupdated_attelephone123description<p>
+	<span style="color:#008000;"><span style="font-size: 72px;">hello world</span></span></p>
+stateopenemailaa
 create shop
 save shop

@@ -30,6 +30,7 @@ Depot::Application.routes.draw do
   end
 
   match 'shops/:id/show_to_buyers', :to => 'shops#show_to_buyers'
+  match 'news/:id/show_to_buyers', :to => 'news#show_to_buyers'
   match 'shops/:id/change_state', :to => 'shops#change_state'
   
   controller :products do
@@ -37,6 +38,10 @@ Depot::Application.routes.draw do
     get 'rate_to_product' => :rate_to_product
     post 'add_comment' => :add_comment
     post 'destroy_comment' => :destroy_comment
+  end
+  
+  controller :news do
+    get 'show_to_buyers' => :show_to_buyers
   end
 
   resources :users

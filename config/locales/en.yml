@@ -47,6 +47,7 @@ en:
       promise: "We Promise!"
       hot:  "Pragmatic Hottest"
       recommend: "Pragmatic Recommendations"
+      more: "More"
     show_products: 
       category: "Your Pragmatic Category"
       author: "Author"
