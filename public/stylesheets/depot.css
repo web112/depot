@@ -456,10 +456,13 @@
 
 /* Home Page Styles */
 #news{
-	height: 260px;
+	height: 320px;
 	width: 730px;
+	margin-top: 15px;
 }
-
+#news #holder #placeholder img{
+	height:300px;
+}
 #news img{
 	height: 240px;
 	width: 445px;
@@ -472,7 +475,7 @@
 #news table{
 	float: right;
 	width: 255px;
-	height: 250px;
+	height: 302px;
 	border-color:#66B3FF;
 	border-style: solid;
 	border-width: thick;	
@@ -493,42 +496,62 @@
 	width: 730px;
 }
 
-#recommendation{
-	height: 200px;
-	width: 730px;
+.recommendation{
+	width: 716px;
 	border-style: solid;
 	border-width:medium;
 	border-color:#CCCCCC;
 	border-radius: 11px;
+	padding:5px;
 }
-
-#recommendation .img_prev{
+.recommendation .more{
+	float: right;
+}
+.recommendation .more a{
+	text-decoration: none;
+}
+.recommendation .prev{
 	height: 100px;
 	width: 30px;
 	float: left;
-	padding-top: 50px;
+	padding:26px 7px 0 0;
 }
-
-#recommendation .img_next{
+.recommendation .prev:hover{
+	cursor: pointer;
+}
+.recommendation .next{
 	height: 100px;
 	width: 30px;
 	float: right;
-	margin-top: 40px;
-	border-style: none;
+	margin-top:-155px;
 }
-
-
-#recommendation ul{
-	list-style:none; 
+.recommendation .next:hover{
+	cursor: pointer;
 }
-
-
-#recommendation img{
+.recommendation ul{
+	list-style:none;
+	padding:0;
+	margin:0;
+	float: left;
+}
+#content_list_hot,#content_list_recommend{
+	overflow: hidden;
+	height:171px;
+	width:640px;
+	position:relative;
+	padding-top:10px;
+}
+#content_list_items_hot,#content_list_items_recommend{
+	width:1920px;
+	position:absolute;
+	overflow: hidden;
+}
+.recommendation img{
 	width: 100%;
 	height: 100%;
 }
 
-#recommendation .icon{
+.recommendation .icon{
 	width:120px;
 	margin:auto;
 	height: 130px;
@@ -537,15 +560,15 @@
 	border-color:#EEEEEE;
 }
 
-#recommendation .item{
-	float: left;
+.recommendation .item{
 	width: 155px;
 	height: 150px;
-	margin-left: 10px;
+	margin:0 0 0 5px;
 	text-align: center;
+	float:left;
 }
 
-#recommendation a{
+.recommendation a{
 	color:#4444AA;
 	font-size: small;
 	font-weight:900;	
@@ -609,6 +632,7 @@ a:hover{
 	background-color:white;
 	position: absolute;
 	width: 403px;
+	z-index: 99;
 }
 
 #searchAjax table{
@@ -739,4 +763,93 @@ a:hover{
 #comment {
 	
 	margin-right:20px;
+}
+
+#holder{
+    width:445px;
+    height:300px;
+    float:left;
+    position:relative;
+    overflow:hidden;
+    border:1px solid #CCCCCC;
+}
+
+#holder img{
+    border:none;
+}
+#holder ul{
+    list-style-type:none;
+}
+#holder a{
+    text-decoration:none;
+    color:#fff;
+}
+#holder a:hover{
+	background: none;
+}
+#holder ul#placeholder{
+    width:2600px;
+    height:300px;
+    position:absolute;
+}
+#holder ul#placeholder li{
+    float:left;
+}
+
+#holder h1{
+    width:359px;
+    height:30px;
+    background:#000;
+    filter:alpha(opacity=60);
+    -moz-opacity:60;
+    opacity:0.6;
+    line-height:30px;
+    position:absolute;
+    top:260px;
+    left:0px;
+    text-align:center;
+    font-size:16px;
+}
+#holder #nav_bg{
+    width:86px;
+    height:300px;
+    position:absolute;
+    top:0px;
+    left:359px;
+    background:#000;
+    filter:alpha(opacity=60);
+    opacity: 0.6;
+    position:absolute;
+}
+#holder ul#list{
+    width:88px;
+    height:300px;
+    position:absolute;
+    top:-35px;
+    left:359px;
+    padding-top:25px;
+    padding-left:12px;
+}
+#holder ul#list li{
+    width:60px;
+    height:45px;
+    margin-top:20px;
+}
+#holder ul#list img{
+    width:60px;
+    height:45px;
+}
+
+#holder ul#list li a{
+    display:block;
+    width:60px;
+    height:45px;
+}
+#holder ul#list li img{
+    border:2px solid #888;
+    filter:alpha(opacity=70)
+}
+#holder ul#list li a.current img{
+    border:2px solid #fff;
+    filter:alpha(opacity=100)
 }

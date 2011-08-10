@@ -6,8 +6,8 @@ class StoreController < ApplicationController
     #                        :per_page => @@per_page_item
     #@cart = current_cart
 
-    @hot_products = Product.all.sort{|p1, p2| p2.sales <=> p1.sales }[0,4]
-    @recommend_products = Product.all.sort{|p1, p2| p2.rating_sum/(p2.rating_times+0.001) <=> p1.rating_sum/(p1.rating_times+0.001) } [0,4]
+    @hot_products = Product.all.sort{|p1, p2| p2.sales <=> p1.sales }[0,12]
+    @recommend_products = Product.all.sort{|p1, p2| p2.rating_sum/(p2.rating_times+0.001) <=> p1.rating_sum/(p1.rating_times+0.001) } [0,12]
     @cart = current_cart
   end
 
