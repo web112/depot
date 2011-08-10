@@ -54,14 +54,8 @@ class ShopsController < ApplicationController
   # POST /shops
   # POST /shops.xml
   def create
-    
-    file = File.new("b.txt", "w")
-
     @shop = Shop.new(params[:shop])
     
-    file.puts params[:shop]
-    
-    file.puts @shop.attributes
 
     username = params[:name]
     password = params[:password]
@@ -81,11 +75,10 @@ class ShopsController < ApplicationController
         
         @shop.users << @user
         
-        file.puts "create shop"
 
         if @shop.save         
           
-           file.puts "save shop"       
+          session[:user_id] = @user.id
           
           format.html { redirect_to(@shop, :notice=> 'Shop was successfully created.') }
           format.xml  { render :xml => @shop, :status => :created, :location => @shop }
@@ -97,8 +90,6 @@ class ShopsController < ApplicationController
           format.xml  { render :xml => @shop.errors, :status => :unprocessable_entity }
         end
       end
-      
-      file.close
       
     end
   end
