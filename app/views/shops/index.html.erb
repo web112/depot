@@ -14,17 +14,19 @@
     <td><%= shop.name %></td>
     <td><%= link_to t('.show'), :id => shop.id, :controller => "shops", :action => "show_to_buyers" %></td>
     
-   
-    <td><%=t('.'+shop.state) %></td>
-    
     <%
-    operation = ""
+    	operation = ""
+    	light_image = ""
     	if shop.state == "open"
     		operation = "close"
+    		light_image =  "green_light.png"
     	else 
     	    operation = "open"
+    		light_image =  "red_light.png"
     	end
     %>
+    
+    <td><%=image_tag(light_image, :class => "shop_state")%><%=t('.'+shop.state) %></td>
     <td><%= link_to t('.'+operation), :id => shop.id, :controller => "shops", :action => "change_state"%></td>
   </tr>
 <% end %>

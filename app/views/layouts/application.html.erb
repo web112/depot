@@ -25,7 +25,7 @@
 		<div id="store_main">
 			<div id="banner">
 				<%= image_tag("logo.png") %>
-				<%= @page_title || t('.title')%><!-- <label id="code.depot.e.title"/> -->
+				<%= "Pragmatic Bookshelf"%><!-- <label id="code.depot.e.title"/> -->
 			</div>
 			<div id="search_bar">
 				<%= form_for :search,:url=>{:controller => "store",:action=>"show_products"},:html=>{:method=>"get",:id=>"search_form",:onsubmit =>"return false"} do%>

@@ -483,6 +483,10 @@
 	float: left;
 }
 
+#news a{
+	text-decoration: none;
+}
+
 #news table{
 	float: right;
 	width: 255px;
@@ -863,4 +867,9 @@ a:hover{
 #holder ul#list li a.current img{
     border:2px solid #fff;
     filter:alpha(opacity=100)
+}
+
+.shop_state{
+	width: 20px;
+	height: 20px;
 }
