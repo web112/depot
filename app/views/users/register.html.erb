@@ -1,0 +1,49 @@
+<h1><%= t('.new_user') %></h1>
+
+<div class = "depot_form">
+	<fieldset>
+		<legend>
+			<%= t('.enteruser') %>
+		</legend>
+		<%= form_for(@user, :url => {:controller => :users, :action => :create_buyer}) do |f| %>
+		<% if @user.errors.any? %>
+		<div id="error_explanation">
+			<!--<h2>	<%= pluralize(@user.errors.count, "error") %>
+			prohibited this user from being saved:</h2>
+			-->
+			<h2>	<%= t('errors.template.header', :count=>@user.errors.size, :model=>t('activerecord.models.user'))%></h2>
+
+			<ul>
+				<% @user.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<div  class="field">
+			<%= f.label t('.name')+":" %>
+			<br />
+			<%= f.text_field :name, :size => 40 %>
+		</div>
+		<div  class="field">
+			<%= f.label :password, t('.password')+":" %>
+			<br />
+			<%= f.password_field :password, :size => 40 %>
+		</div>
+		<div  class="field">
+			<%= f.label :password_confirmation, t('.password_confirm')+":" %>
+			<br />
+			<%= f.password_field :password_confirmation, :size => 40 %>
+		</div>
+		<div  class="field">
+			<%= f.submit 'registe' %>
+		</div>
+
+		<% end %>
+
+		<%= link_to t('.back'), users_path %>
+	</fieldset>
+</div>

@@ -27,4 +27,10 @@ administrator:
   salt: MyString
   shop: one
   role: administrator
-  
+
+
+buyer:
+  name: MyString
+  hashed_password: MyString
+  salt: MyString
+  role: buyer

@@ -1,0 +1,57 @@
+<% if notice %>
+<p id="notice">
+	<%= notice %>
+</p>
+<%end%>
+
+<h1><%= "My Collections"%></h1>
+<% if @products.size==0 %>
+	still empty...
+<%else%>
+
+<% @products.each do |product| %>
+<div class="entry">
+	<table>
+		<tr>
+			<td rowspan="5">	<%= image_tag(product.image_url, :class=>"product_logo ") %></td>
+			<td class="product_title">	<%= link_to product.title.length>30?product.title[0,30]+"...": product.title,
+			:controller=>"products",
+			:action =>"show_to_buyers",
+			:id=>product	 %>
+			&nbsp;
+			<% (product.rating_sum/(product.rating_times+0.001)).round.times do%>
+			<%= image_tag("rating_start.png", :class => "star") %>
+			<%end%></td>
+		</tr>
+		<tr class="product_line">
+			<td><%= t('.author')%>:</td>
+		</tr>
+		<tr class="product_line">
+			<td><%= t('.shop')%>:<%= link_to product.shop.name, :controller=>"shops", :action => "show_to_buyers", :id=>product.shop %></td>
+		</tr>
+		<tr class="product_line">
+			<td><%= t('.type')%>:<%product.book_types.each do |type|%><%= type.name+" "%><%end%></td>
+		</tr>
+		<tr>
+			<td><%= sanitize product.description %></td>
+		</tr>
+
+		<tr>
+			<td>
+			<div class ="price_line">
+				<span class="price"><%= number_to_currency(product.price) %></span>
+			</div>
+
+			</td>
+			<td>	<%= button_to "Add to cart",
+			line_items_path(:product_id => product),
+			:remote => true%></td>
+		</tr>
+	</table>
+</div>
+<%end%>
+<p>
+	<%= will_paginate @products%>
+</p>
+<%end%>
+<input type=hidden id="tem">

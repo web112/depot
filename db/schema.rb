@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110809133150) do
+ActiveRecord::Schema.define(:version => 20110811140028) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "image_url"
@@ -66,6 +66,19 @@ ActiveRecord::Schema.define(:version => 20110809133150) do
     t.datetime "updated_at"
   end
 
+  create_table "history_items", :force => true do |t|
+    t.string   "product_name"
+    t.decimal  "price"
+    t.integer  "product_id"
+    t.string   "shop_name"
+    t.integer  "shop_id"
+    t.string   "shop_email"
+    t.string   "shop_telephone"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
@@ -105,6 +118,11 @@ ActiveRecord::Schema.define(:version => 20110809133150) do
     t.integer  "rating_sum",   :default => 0
     t.integer  "rating_times", :default => 0
     t.integer  "sales",        :default => 0
+  end
+
+  create_table "products_users", :id => false, :force => true do |t|
+    t.integer "product_id"
+    t.integer "user_id"
   end
 
   create_table "shops", :force => true do |t|

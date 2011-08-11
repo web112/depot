@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
   before_filter :clerk_authorize, :only => [:index]
+  before_filter :buyer_authorize, :only => [:collections]
   before_filter :host_authorize, :only => [:new, :create, :destroy, :edit, :update]
 
   @@per_page_item = 5
+  
   # GET /users
   # GET /users.xml
   def index
@@ -106,4 +108,54 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def register
+    @user = User.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @user }
+    end
+  end
+  
+  def create_buyer
+    @user = User.new(params[:user])
+
+    @user.role = 'buyer'
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to(users_url, :notice => "#{@user.role} #{@user.name} was successfully created.") }
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  def collections
+    @products = current_user.products
+    @products = @products.paginate :page => params[:page], :per_page => @@per_page_item
+  end
+  
+  def add_collection
+    product = Product.find(params[:id])
+    
+    if current_user.products.select{|p| p.id == product.id}.length == 0
+      current_user.products<< product
+    end
+    
+    respond_to do |format|
+      if current_user.save!
+        format.html { redirect_to(collections_url, :notice => "collections was successfully created.") }
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+    
+  end
+  
 end

@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   belongs_to :shop
+  has_many :history_items
   
-  ROLE = ['host', 'clerk']
+  ROLE = ['host', 'clerk', 'buyer']
   MANAGER_ROLE = ['administrator']
   
   validates :name, :presence => true, :uniqueness => true

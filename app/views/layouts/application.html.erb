@@ -71,7 +71,7 @@
 							<a href="/error/building">&nbsp<%= t('.contact')%></a>
 						</div>
 					</div>
-					<% if session[:user_id] && (User.find(session[:user_id]).role == "host")%>
+					<% if session[:user_id] && (User.find(session[:user_id]).role == "host"||User.find(session[:user_id]).role == "clerk")%>
 					<% user = User.find(session[:user_id]) %>
 					<div class = "side_module">
 						<div class="side_title">
@@ -93,6 +93,24 @@
 							<%= image_tag("colleague.png") %>
 							<%= link_to t('.mycolleague'), users_path %>
 						</div>
+
+						<%= button_to t('.logout'), logout_path, :method => :delete %>
+					</div>
+					<% elsif session[:user_id] && (User.find(session[:user_id]).role == "buyer")%>
+					<% user = User.find(session[:user_id]) %>
+					<div class = "side_module">
+						<div class="side_title">
+							<%= image_tag("account.png") %>&nbsp <%= t('.account')%>
+						</div>
+						<div class="tip">
+							<%= image_tag("shop.png") %>
+							<%= link_to "buying history", history_items_url %>
+						</div>
+						<div class="tip">
+							<%= image_tag("book.png") %>
+							<%= link_to "my collect", :controller=>:users, :action => :collections %>
+						</div>
+						
 
 						<%= button_to t('.logout'), logout_path, :method => :delete %>
 					</div>
@@ -135,6 +153,10 @@
 					<div class="tip">
 						<%= image_tag("colleague.png") %>
 						<%= link_to t('.newshop'), new_shop_url %>
+					</div>
+					<div class="tip">
+						<%= image_tag("colleague.png") %>
+						<%= link_to t('.registe'), :controller=>"users", :action=>"register" %>
 					</div>
 					<% end %>
 				</div>

@@ -55,7 +55,11 @@ class ApplicationController < ActionController::Base
     end
 
   def current_user
-    return User.find(session[:user_id])
+    if session[:user_id] != nil
+      return User.find(session[:user_id])
+    else
+      return nil
+    end
   end
 
   protected
@@ -86,7 +90,14 @@ class ApplicationController < ActionController::Base
       redirect_to login_url, :notice => "You are not the administrator. Please log in"
     end
   end
-
+  
+  def buyer_authorize
+    user = User.find_by_id(session[:user_id])
+    unless user and (user.role == "buyer")
+      redirect_to login_url, :notice => "You are not the buyer. Please log in"
+    end
+  end
+  
   def forbiden_authorize
     redirect_to login_url, :notice => "we are sorry the page is forbiden."
   end

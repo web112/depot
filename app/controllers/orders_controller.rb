@@ -59,7 +59,19 @@ class OrdersController < ApplicationController
     #orders
     current_cart.line_items.each do
     |item|
-    
+      
+      if current_user != nil
+        history_item = HistoryItem.new
+        history_item.shop_name = item.product.shop.name
+        history_item.product_name = item.product.title
+        history_item.product_id = item.product.id
+        history_item.price = item.product.price
+        history_item.shop_id = item.product.shop.id
+        history_item.shop_email = item.product.shop.email
+        history_item.shop_telephone = item.product.shop.telephone
+        history_item.user_id = current_user.id
+        history_item.save
+      end
     
       item.product.sales += item.quantity
       item.product.save

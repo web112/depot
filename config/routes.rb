@@ -1,5 +1,7 @@
 Depot::Application.routes.draw do
 
+  resources :history_items
+
   resources :comments
 
   resources :book_types
@@ -45,7 +47,13 @@ Depot::Application.routes.draw do
   end
 
   resources :users
-
+  controller :users do
+    get 'register' => :register
+    post 'create_buyer' => :create_buyer
+    get 'collections' => :collections
+    post 'add_product' => :add_collection
+  end
+  
   resources :orders
 
   resources :line_items

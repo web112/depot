@@ -68,7 +68,7 @@
 			</td>
 			<td>	<%= button_to t('.add'),
 			line_items_path(:product_id => product),
-			:remote => true%></td>
+			:remote => true%>&nbsp<%= button_to "collect",:controller=>:users, :action=>:add_collection, :id=>product.id%></td>
 		</tr>
 	</table>
 </div>
