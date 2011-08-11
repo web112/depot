@@ -12,8 +12,13 @@
 			<br />
 			<%= number_to_currency(@product.price) %>
 		</div>
+		
 		<div class="up_right">
 			<h3>	<%= @product.title %></h3>
+			<tr class="product_line">
+			<td><%= t('.shop')%>:<%= link_to @product.shop.name, :controller=>"shops", :action => "show_to_buyers", :id=>@product.shop %></td>
+		    </tr>
+		    <br/>
 			<%= t('.type')%>:<%@product.book_types.each do |type|%>
 			<%= type.name%><%end%>
 			</td>
