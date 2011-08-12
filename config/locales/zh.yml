@@ -35,6 +35,9 @@ zh:
       news: "新闻"
       administrators: "管理员"
       book_types: "书籍类型"
+      registe: "买家注册"
+      buying_history: "购买历史"
+      my_collect: "我的收藏"         
   store: 
     index: 
       pnews: "书籍信息"
@@ -63,6 +66,7 @@ zh:
       suggestc: "3. 调整关键字"
       type: "分类"
       shop: "商家"
+      collect: "收藏"                            
   products: 
     show_to_buyers: 
       back: "返回"
@@ -75,6 +79,7 @@ zh:
       description: "描述"
       comment: "评论"
       submit_comment: "评论"
+      collect: "收藏"
     index:
       productlist: "书籍列表"
       author: "作者"
@@ -164,6 +169,7 @@ zh:
       description: "描述"
       add: "加入购物车"
       shop: "商家"   
+      collect: "收藏"      
     index:
       shop_list: "商店列表"
       shop_name: "店名"
@@ -241,6 +247,21 @@ zh:
       back: "返回"
       enteruser: "请输入相关信息"
       newuser: "添加员工"
+    register:
+      new_user: "注册用户"
+      name: "用户名 "
+      password: "密码"
+      password_confirm: "密码确认"
+      registe: "注册"
+      back: "返回"    
+    collections:
+      my_collections: "我的收藏"
+      still_empty: "收藏夹为空"
+      author: "作者"
+      shop: "商家"
+      type: "类型"
+      add_to_cart: "加入购物车"
+      cancel: "取消"              
   carts:
     cart:
       yourcart: "购物车"
@@ -338,7 +359,17 @@ zh:
       title: "标题"
       content: "内容"
       abstraction: "摘要"
-
+  history_items:
+    index:
+      listing_history_items: "购买记录"
+      book: "书籍"
+      price: "价钱"
+      shop: "商家"
+      email: "邮箱"
+      telephone: "电话"
+      destroy: "删除"
+      back: "返回"
+      are_you_sure: "确定此操作"      
   activerecord:
     errors:
       messages:

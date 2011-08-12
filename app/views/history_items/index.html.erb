@@ -1,13 +1,13 @@
-<h1>Listing history_items</h1>
+<h1><%= t('.listing_history_items')%></h1>
 
 <div class="orders_table">
 <table>
   <tr>
-    <th>Book</th>
-    <th>Price</th>
-    <th>Shop</th>
-    <th>Email</th>
-    <th>Telephone</th>
+    <th><%=t('.book')%></th>
+    <th><%=t('.price')%></th>
+    <th><%=t('.shop')%></th>
+    <th><%=t('.email')%></th>
+    <th><%=t('.telephone')%></th>
     <th></th>
   </tr>
 
@@ -18,7 +18,7 @@
     <td><%= history_item.shop_name %></td>
     <td><%= history_item.shop_email %></td>
     <td><%= history_item.shop_telephone %></td>
-    <td><%= link_to 'Destroy', history_item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('.destroy'), history_item, :confirm => t('.are_you_sure'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

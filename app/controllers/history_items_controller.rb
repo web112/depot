@@ -4,7 +4,7 @@ class HistoryItemsController < ApplicationController
   before_filter :buyer_authorize
   
   def index
-    
+    @cart = current_cart
     @history_items = current_user.history_items.sort{|x,y|y.created_at<=>x.created_at}
 
     respond_to do |format|

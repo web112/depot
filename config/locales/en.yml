@@ -34,6 +34,9 @@ en:
       news: "News"
       administrators: "Administrators"
       book_types: "Book Types"
+      registe: "Reigste"  
+      buying_history: "Buying History"
+      my_collect: "My Collect"                
   store: 
     index: 
       pnews: "Pragmatic News"
@@ -62,6 +65,7 @@ en:
       suggestc: "3. adjust your key word"
       type: "Type"
       shop: "Shop"
+      collect: "Collect"      
   products: 
     show_to_buyers: 
       back: "back"
@@ -74,6 +78,7 @@ en:
       description: "Description"
       comment: "Comments"
       submit_comment: "Comment"
+      collect: "Collect"      
     form:
       title: "Title"
       description: "Description"
@@ -166,6 +171,7 @@ en:
       description: "Description"
       add: "Add to Cart"
       shop: "Shop"
+      collect: "Collect"      
     index:
       shop_list: "Listing Shops"
       name: "Name"
@@ -235,14 +241,29 @@ en:
       newuser: "New User"
       listuser: "Listing Users"
       areyousure: "Are you sure?"
-  	edit:
+    edit:
       back: "Back"
       enteruser: "Please Enter The Details"
       edituser: "Edit User"
-  	new:
+    new:
       back: "Back"
       enteruser: "Please Enter The Details"
       newuser: "New User"
+    register:
+      new_user: "New User"
+      name: "Name"
+      password: "Password"
+      password_confirm: "Password Confirm"
+      registe: "Registe"
+      back: "Back"  
+    collections:
+      my_collections: "My Collections"
+      still_empty: "Still Empty"
+      author: "Author"
+      shop: "Shop"
+      type: "Type"
+      add_to_cart: "Add to Cart"
+      cancel: "Cancel"
   carts:
     cart:
       yourcart: "Your Cart"
@@ -340,8 +361,17 @@ en:
       title: "Title"
       content: "Content"
       abstraction: "Abstraction"
-
-      
+  history_items:
+    index:
+      listing_history_items: "Listing History Items"
+      book: "Book"
+      price: "Price"
+      shop: "Shop"
+      email: "Email"
+      telephone: "Telephone"
+      destroy: "Destroy"
+      back: "Back"
+      are_you_sure: "Are you sure?"      
   activerecord:
     errors:
       messages:

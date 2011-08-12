@@ -135,6 +135,7 @@ class UsersController < ApplicationController
   end
   
   def collections
+    @cart = current_cart
     @products = current_user.products.sort{|p1, p2| p2.created_at <=> p1.created_at }
     @products = @products.paginate :page => params[:page], :per_page => @@per_page_item
   end

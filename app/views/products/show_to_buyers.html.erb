@@ -36,7 +36,7 @@
 			<%= link_to image_tag("3.jpg"), {:controller=>"products", :action =>"rate_to_product", :id=>@product, :rate=>'3'}, { :remote=>true} %>
 			<%= link_to image_tag("4.jpg"), {:controller=>"products", :action =>"rate_to_product", :id=>@product, :rate=>'4'}, { :remote=>true} %>
 			<%= link_to image_tag("5.jpg"), {:controller=>"products", :action =>"rate_to_product", :id=>@product, :rate=>'5'}, { :remote=>true} %>
-			<%= button_to t('.add'),line_items_path(:product_id => @product),:remote => true%><%= button_to "collect",:controller=>:users, :action=>:add_collection, :id=>@product.id%>
+			<%= button_to t('.add'),line_items_path(:product_id => @product),:remote => true%><%= button_to t('.collect'),:controller=>:users, :action=>:add_collection, :id=>@product.id%>
 		</div>
 
 	</div>
