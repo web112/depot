@@ -51,7 +51,8 @@ Depot::Application.routes.draw do
     get 'register' => :register
     post 'create_buyer' => :create_buyer
     get 'collections' => :collections
-    post 'add_product' => :add_collection
+    post 'add_collection' => :add_collection
+    post 'cancel_collection' => :cancel_collection
   end
   
   resources :orders

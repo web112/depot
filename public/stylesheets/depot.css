@@ -740,7 +740,11 @@ a:hover{
 
 .show_details #up{
 	width:710px;
-	height:260px;
+	height:300px;
+}
+
+#up input{
+	width: 100px;
 }
 
 .show_details .description{

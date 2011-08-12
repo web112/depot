@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :clerk_authorize, :only => [:index]
-  before_filter :buyer_authorize, :only => [:collections]
+  before_filter :buyer_authorize, :only => [:collections, :add_collection, :cancel_collection]
   before_filter :host_authorize, :only => [:new, :create, :destroy, :edit, :update]
 
   @@per_page_item = 5
@@ -135,7 +135,7 @@ class UsersController < ApplicationController
   end
   
   def collections
-    @products = current_user.products
+    @products = current_user.products.sort{|p1, p2| p2.created_at <=> p1.created_at }
     @products = @products.paginate :page => params[:page], :per_page => @@per_page_item
   end
   
@@ -144,6 +144,25 @@ class UsersController < ApplicationController
     
     if current_user.products.select{|p| p.id == product.id}.length == 0
       current_user.products<< product
+    end
+    
+    respond_to do |format|
+      if current_user.save!
+        format.html { redirect_to(collections_url, :notice => "collections was successfully created.") }
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+    
+  end
+  
+  def cancel_collection   
+    current_user.products.each do |p|
+      if p.id = params[:id]
+        current_user.products.delete p
+      end
     end
     
     respond_to do |format|

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :shop
   has_many :history_items
+  has_and_belongs_to_many :products
   
   ROLE = ['host', 'clerk', 'buyer']
   MANAGER_ROLE = ['administrator']
