@@ -27,7 +27,7 @@
 	</div>
 	<div class="description">
 		<b><%= t('.description')%>:</b><br />
-		<%=raw @shop.description %>
+		<%= @shop.description.html_safe %>
 		<br/>
 	</div>
 </div>
